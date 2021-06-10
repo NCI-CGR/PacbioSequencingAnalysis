@@ -1,0 +1,7 @@
+default:
+    account  : lix33
+    queue    : bigmem.q
+    pe       : by_node
+    numCore  : 4
+    smlogDir : /scratch/lix33/lxwg/Test/pacbio/06_04_2021/sv/log
+    
