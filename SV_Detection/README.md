@@ -37,6 +37,14 @@
   - /CGF/Bioinformatics/Production/Wen/20191120_pacbio_24320/bam_location_post
 3. Reference
   - /DCEG/CGF/TempFileSwap/Kristie/References/GRCh38.p2.maimcontigs.fa
+
+## Conda env 
+1. You can load the precompile conda env named "envCGR". 
+2. How to use it
+```
+source /scratch/lix33/lxwg/software/conda/miniconda3/condabin/activate envCGR
+```
+
 ## How to run it
 1. Command line
 ```
