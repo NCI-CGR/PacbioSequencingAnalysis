@@ -1,5 +1,7 @@
+import sys
+sys.path.insert(0, '/scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/Scripts')
 from RunPacbioSV import *
-configfile: "pacbioSV.yaml"
+configfile: "../Configs/pacbioSV.yaml"
 
 
 

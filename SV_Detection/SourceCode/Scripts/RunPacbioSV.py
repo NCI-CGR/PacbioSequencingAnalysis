@@ -85,7 +85,7 @@ def GetInfo(vSample):
     return vBAM, vSampleFullName, vSignature
 
 def RunSnakemake():
-    f = open('cluster_config.yaml')
+    f = open('../Configs/cluster_config.yaml')
     data = yaml.load(f, Loader=yaml.FullLoader)
     f.close()
     
@@ -108,7 +108,7 @@ def RunSnakemake():
                       " -j y" +   
                       " -o " + smlogDir)
     
-    CMD = ("bash ./wrapper.sh " + 
+    CMD = ("source ../DownstreamAnalysis/wrapper.sh " + 
            "\"" + strClusterPara + "\"")
     print(">>> Call wrapper")            
     print(CMD)
