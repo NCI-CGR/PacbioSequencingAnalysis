@@ -1,0 +1,65 @@
+import sys
+import os
+sys.path.insert(0, '/scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/Scripts')
+from RunPacbioSV import *
+
+configfile: "../../Configs/benchmarkTest.yaml"
+workdir: os.environ['PWD']
+shell.executable('bash')
+
+
+svRootDir = config["GeneralInfo"]["svDir"]
+refSeq = config["GeneralInfo"]["ref"]
+
+#bamRootDir = config["GeneralInfo"]["bamDir"]
+bamRootDir = "/scratch/lix33/Test/Debug/snakemake"
+
+
+
+#for wcAligner in ["ngmlr", "pbmm2"]:
+#    for wcRefVersion in ["v37"]:
+#        for wcReadsType in ["StdReads", "UltraLowReads"]:
+#            strDir = bamRootDir + "/" + wcAligner + "/" + wcRefVersion + "/" + wcReadsType
+#            strfile = strDir + "/" + wcReadsType + ".HG002.MD.sorted.bam"
+#            if not os.path.exists(strfile):
+#                CMD = "mkdir -p " + strDir
+#                os.system(CMD)
+#                CMD = "touch " + strfile
+#                os.system(CMD)
+
+#rule all:
+#    input:
+#        expand(svRootDir + "/{wcRefVersion}/{wcSVCaller}/{wcAligner}/{wcReadsType}/minSupport_{wcMinSupport}/{wcReadsType}.HG002.MD.sorted.{wcMinSupport}.{wcSVCaller}.vcf", 
+#                wcRefVersion = ["v37"],
+#                wcSVCaller = ["cuteSV"],
+#                wcAligner = ["ngmlr", "pbmm2"],
+#                wcReadsType = ["StdReads", "UltraLowReads"],
+#                wcMinSupport = config["cuteSV"]["minSupport"].split(','))        
+        
+rule CallCuteSV:
+    input:
+        sortedBam = bamRootDir + "/{wcAligner}/{wcRefVersion}/{wcReadsType}/{wcReadsType}.HG002.MD.sorted.bam",        
+    output:
+        vcf = svRootDir + "/{wcRefVersion}/cuteSV/{wcAligner}/{wcReadsType}/minSupport_{wcMinSupportCuteSV}/{wcReadsType}.HG002.MD.sorted.{wcMinSupportCuteSV}.cuteSV.vcf",
+        workDir = svRootDir + "/{wcRefVersion}/cuteSV/{wcAligner}/{wcReadsType}/minSupport_{wcMinSupportCuteSV}/Tmp"
+    params:
+        ms = lambda wildcards: wildcards.wcMinSupportCuteSV,
+        ref = refSeq                
+    threads:
+        24
+    log:
+        svRootDir + "/{wcRefVersion}/cuteSV/{wcAligner}/{wcReadsType}/minSupport_{wcMinSupportCuteSV}/Log/{wcReadsType}.HG002.MD.sorted.{wcMinSupportCuteSV}.cuteSV.log"
+    benchmark:
+        svRootDir + "/{wcRefVersion}/cuteSV/{wcAligner}/{wcReadsType}/minSupport_{wcMinSupportCuteSV}/Benchmark/{wcReadsType}.HG002.MD.sorted.{wcMinSupportCuteSV}.cuteSV.benchmark"
+    shell:
+        """
+        (cuteSV --threads {threads} \
+                --genotype True \
+                --min_support {params.ms} \
+                {input.sortedBam} {params.ref} \
+                {output.vcf} {output.workDir}) > {log} 2>&1        
+        """        
+        
+        
+        
+        

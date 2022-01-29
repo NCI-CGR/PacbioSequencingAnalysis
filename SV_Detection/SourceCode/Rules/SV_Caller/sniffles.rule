@@ -1,0 +1,50 @@
+import sys
+import os
+sys.path.insert(0, '/scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/Scripts')
+from RunPacbioSV import *
+
+configfile: "../../Configs/benchmarkTest.yaml"
+workdir: os.environ['PWD']
+shell.executable('bash')
+
+svRootDir = config["GeneralInfo"]["svDir"]
+#bamRootDir = config["GeneralInfo"]["bamDir"]
+bamRootDir = "/scratch/lix33/Test/Debug/snakemake"
+
+for wcAligner in ["ngmlr", "pbmm2"]:
+    for wcRefVersion in ["v37"]:
+        for wcReadsType in ["StdReads", "UltraLowReads"]:
+            strDir = bamRootDir + "/" + wcAligner + "/" + wcRefVersion + "/" + wcReadsType
+            strfile = strDir + "/" + wcReadsType + ".HG002.MD.sorted.bam"
+            if not os.path.exists(strfile):
+                CMD = "mkdir -p " + strDir
+                os.system(CMD)
+                CMD = "touch " + strfile
+                os.system(CMD)
+
+#rule all:
+#    input:
+#        expand(svRootDir + "/{wcRefVersion}/{wcSVCaller}/{wcAligner}/{wcReadsType}/minSupport_{wcMinSupport}/{wcReadsType}.HG002.MD.sorted.{wcMinSupport}.{wcSVCaller}.vcf", 
+#                wcRefVersion = ["v37"],
+#                wcSVCaller = ["sniffles"],
+#                wcAligner = ["ngmlr", "pbmm2"],
+#                wcReadsType = ["StdReads", "UltraLowReads"],
+#                wcMinSupport = config["sniffles"]["minSupport"].split(','))                
+        
+        
+rule CallSniffle:
+    input:
+        bamRootDir + "/{wcAligner}/{wcRefVersion}/{wcReadsType}/{wcReadsType}.HG002.MD.sorted.bam"
+    output:
+        svRootDir + "/{wcRefVersion}/sniffles/{wcAligner}/{wcReadsType}/minSupport_{wcMinSupportSniffle}/{wcReadsType}.HG002.MD.sorted.{wcMinSupportSniffle}.sniffles.vcf"
+    params:
+        ms = lambda wildcards: wildcards.wcMinSupportSniffle
+    threads:
+        24
+    log:
+        svRootDir + "/{wcRefVersion}/sniffles/{wcAligner}/{wcReadsType}/minSupport_{wcMinSupportSniffle}/Log/{wcReadsType}.HG002.MD.sorted.{wcMinSupportSniffle}.sniffles.log"
+    benchmark:
+        svRootDir + "/{wcRefVersion}/sniffles/{wcAligner}/{wcReadsType}/minSupport_{wcMinSupportSniffle}/Benchmark/{wcReadsType}.HG002.MD.sorted.{wcMinSupportSniffle}.sniffles.benchmark"
+    shell:
+        "(sniffles -t {threads} --min_support {params.ms} -m {input} -v {output}) > {log} 2>&1"
+

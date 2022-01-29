@@ -1,0 +1,11 @@
+rule TestC:
+    input:
+        "Input/Empty.txt"
+    output:
+        "Output/OutputC.txt"
+    shell:
+        """
+        echo "Hello World C!" > {output}
+        sleep 10s
+        echo "All Set C!" >> {output}
+        """

@@ -85,15 +85,15 @@ def GetInfo(vSample):
     return vBAM, vSampleFullName, vSignature
 
 def RunSnakemake():
-    f = open('../Configs/cluster_config.yaml')
+    f = open('../../Configs/cluster_config.yaml')
     data = yaml.load(f, Loader=yaml.FullLoader)
     f.close()
     
     # Get cluster info from cluster_config.yaml
-    partition = data["default"]["queue"]
-    pe = data["default"]["pe"]
-    numCore = data["default"]["numCore"]
-    smlogDir = data["default"]["smlogDir"]
+    partition = data["BenchmarkTest"]["queue"]
+    pe = data["BenchmarkTest"]["pe"]
+    numCore = data["BenchmarkTest"]["numCore"]
+    smlogDir = data["BenchmarkTest"]["smlogDir"]
     
     # Check if log directory exist ->
     if not os.path.exists(smlogDir):
@@ -101,19 +101,43 @@ def RunSnakemake():
         os.system(CMD)
     
     # Prepare Cluster Parameters used in snakemake command line  
+    # strClusterPara = ("qsub -q " + partition +
+    #                   " -pe " + pe + " " + str(numCore) +  
+    #                   " -cwd" + 
+    #                   " -V" + 
+    #                   " -j y" +   
+    #                   " -o " + smlogDir)
     strClusterPara = ("qsub -q " + partition +
-                      " -pe " + pe + " " + str(numCore) +  
+                      " -pe " + pe + " " + "{threads}" +  
                       " -cwd" + 
                       " -V" + 
                       " -j y" +   
                       " -o " + smlogDir)
     
-    CMD = ("source ../DownstreamAnalysis/wrapper.sh " + 
+    CMD = ("bash ./wrapper.sh " + 
            "\"" + strClusterPara + "\"")
     print(">>> Call wrapper")            
     print(CMD)
     print
-    os.system(CMD)    
+    os.system(CMD)   
+
+def GetBenchmarkTestRawData():
+    f = open('../../Configs/benchmarkTest.yaml')
+    data = yaml.load(f, Loader=yaml.FullLoader)
+    f.close()
+    vStdRawReads = [] 
+    vUltraLowRawRead = []
+    # 1: Get Std Raw
+    for i in range(1,4): # For reads 1,2,3
+         vStdRawReads.append(data["StdReads"]["rawReads" + str(i)])
+    # 2: Get UntraLow Raw
+    for i in range(1,5): # For reads 1,2,3,4
+         vUltraLowRawRead.append(data["UltraLowReads"]["rawReads" + str(i)])
+        
+    strBAMDir = data["GeneralInfo"]["bamDir"]
+    strRef = data["GeneralInfo"]["ref"]
+        
+    return vStdRawReads, vUltraLowRawRead, strBAMDir, strRef
 
 def main():
     strFuncName = sys.argv[1]        
@@ -129,8 +153,18 @@ def main():
         objBuild = GetBuild(strBAMDir, strOutputDir)
         print("All Set!")
         return objBuild.vSample
+    
+    if strFuncName == "GetSampleBenchmark":
+        vStdRawReads = []
+        vUltraLowRawRead = []
+        GetBenchmarkTestRawData(vStdRawReads, vUltraLowRawRead)
+        print(vStdRawReads)
+        print(vUltraLowRawRead)
+        return vStdRawReads, vUltraLowRawRead
+
     if strFuncName == "RunSnakemake":
-        RunSnakemake()    
+        RunSnakemake()  
+        return   
 
 if __name__ == "__main__":        
     main()

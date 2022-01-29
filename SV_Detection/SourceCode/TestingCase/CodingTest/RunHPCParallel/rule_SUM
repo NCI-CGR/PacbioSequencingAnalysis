@@ -1,0 +1,12 @@
+rule TestSUM:
+    input:
+        "Input/Empty.txt"
+    output:
+        "Output/Sum.txt"
+    threads: 5
+    shell:
+        """
+        echo "Hello World SUM!" > {output}
+        sleep 120s
+        echo "All Set SUM!" >> {output}
+        """

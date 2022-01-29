@@ -1,0 +1,129 @@
+import sys
+import os
+import glob
+sys.path.insert(0, '/scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/Scripts')
+from RunPacbioSV import *
+
+configfile: "../../Configs/benchmarkTest.yaml"
+workdir: os.environ['PWD']
+shell.executable('bash')
+
+vStdRawReads, vUltraLowRawReads, strBAMDir, strRef = GetBenchmarkTestRawData()
+
+
+#Get output list -->
+strStdTmpDir = strBAMDir + "/pbmm2/v37/StdReads/Tmp"
+strUltraLowTmpDir = strBAMDir + "/pbmm2/v37/UltraLowReads/Tmp"
+
+if not os.path.exists(strStdTmpDir):
+    CMD = "mkdir -p " + strStdTmpDir
+    os.system(CMD) 
+
+if not os.path.exists(strUltraLowTmpDir):
+    CMD = "mkdir -p " + strUltraLowTmpDir
+    os.system(CMD)
+# <----
+    
+
+expand('{wcReadsType}', wcReadsType = ["StdReads", "UltraLowReads"])
+print(config["StdReads"])
+
+print("-----------------------------------------")
+print(glob.glob(strBAMDir + "/pbmm2/v37/" + "{wcReadsType}" + "/Tmp/*.MD.bam"))
+print("-----------------------------------------")
+
+          
+# Rules -> Go!
+rule all:
+      input:
+        expand(strBAMDir + "/pbmm2/v37/{wcReadsType}/{wcReadsType}.HG002.MD.sorted.bam.bai", wcReadsType = ["StdReads", "UltraLowReads"])
+
+rule buildIndex:
+    input:
+        ref = strRef
+    output:
+        index = strRef + ".mmi"
+    threads:
+        12    
+    shell:
+        "pbmm2 index -j {threads} {input} {output}"
+
+rule alignment:                        
+    input:
+        lambda wildcards: config[wildcards.wcReadsType]["rawReads" + wildcards.readsIndex]                                
+        #config["{wcReadsType}"]["rawReads{readsIndex}"]
+    output:        
+        strBAMDir + "/pbmm2/v37/{wcReadsType}/Tmp/rawReads{readsIndex}.bam"  
+    threads:
+        24
+    params:
+        index = rules.buildIndex.output
+    log:
+        strBAMDir + "/pbmm2/v37/{wcReadsType}/Log/rawReads{readsIndex}.log"
+    benchmark:
+        strBAMDir + "/pbmm2/v37/{wcReadsType}/Benchmark/rawReads{readsIndex}.benchmark.txt"
+    shell:
+      "pbmm2 align -j {threads} {params.index} {input} {output}"
+      
+rule addMDTag:
+    input:
+        rules.alignment.output        
+    output: 
+        strBAMDir + "/pbmm2/v37/{wcReadsType}/Tmp/rawReads{readsIndex}.MD.bam"               
+    params:
+        ref = strRef
+    threads:
+        24
+    log:
+        strBAMDir + "/pbmm2/v37/{wcReadsType}/Log/rawReads{readsIndex}.MD.log"
+    benchmark:
+        strBAMDir + "/pbmm2/v37/{wcReadsType}/Benchmark/rawReads{readsIndex}.MD.benchmark.txt"
+    shell:
+        "samtools calmd -@ {threads} {input} {params.ref} -b > {output}"
+        
+
+def input_mdBAM(wildcards):
+    #print(wildcards)    
+    vBAM = glob.glob(strBAMDir + "/pbmm2/v37/" + wildcards.wcReadsType + "/Tmp/*.MD.bam")
+    #fnames = glob.glob("/scratch/lix33/lxwg/SourceCode/PacbioSV/Log/*.MD.bam")      
+    print("*********************")
+    print(vBAM)
+    print("*********************")    
+    
+    return vBAM
+
+dictReadsIndex = {"StdReads": [1,2,3], "UltraLowReads": [1,2,3,4]}
+
+rule mergeBAM:
+    input:        
+        vBAM = lambda wildcards: expand(strBAMDir + "/pbmm2/v37/" + wildcards.wcReadsType + "/Tmp/rawReads{index}.MD.bam", index = dictReadsIndex[wildcards.wcReadsType])
+    output:
+        strBAMDir + "/pbmm2/v37/" + "{wcReadsType}" + "/" + "{wcReadsType}" + ".HG002.MD.bam"         
+    threads:
+        32
+    log:
+        strBAMDir + "/pbmm2/v37/{wcReadsType}/Log/" + "{wcReadsType}" + ".HG002.MD.log"
+    run:    
+        print({input})
+        shell("samtools merge -@ {threads} -f {output} %s" %' '.join({input.vBAM}))        
+        #shell("samtools merge -@ {threads} -f {output} {input}")
+
+rule sortBAM:
+    input:
+        rules.mergeBAM.output
+    output:
+        strBAMDir + "/pbmm2/v37/" + "{wcReadsType}" + "/" + "{wcReadsType}" + ".HG002.MD.sorted.bam"        
+    threads:
+        32
+    shell:
+        "samtools sort -@ {threads} -o {output} {input}"                
+
+rule buildSortedIndex:
+    input:
+        rules.sortBAM.output
+    output:
+        strBAMDir + "/pbmm2/v37/" + "{wcReadsType}" + "/" + "{wcReadsType}" + ".HG002.MD.sorted.bam.bai"
+    threads:
+        32
+    shell:
+        "samtools index -@ {threads} {input} {output}"    
