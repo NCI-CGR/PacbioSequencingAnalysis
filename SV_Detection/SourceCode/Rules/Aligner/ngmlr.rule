@@ -1,0 +1,104 @@
+import sys
+import os
+import glob
+sys.path.insert(0, '/scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/Scripts')
+from RunPacbioSV import *
+
+configfile: "../../Configs/benchmarkTest.yaml"
+workdir: os.environ['PWD']
+shell.executable('bash')
+
+# Main Coding Part
+strRef = config["GeneralInfo"]["ref"]
+strBAMDir = config["GeneralInfo"]["bamDir"]
+#expand('{wcReadsType}', wcReadsType = ["StdReads", "UltraLowReads"])
+
+#Get output list -->
+strStdTmpDir = strBAMDir + "/ngmlr/v37/StdReads/Tmp"
+strUltraLowTmpDir = strBAMDir + "/ngmlr/v37/UltraLowReads/Tmp"
+
+if not os.path.exists(strStdTmpDir):
+    CMD = "mkdir -p " + strStdTmpDir
+    os.system(CMD) 
+
+if not os.path.exists(strUltraLowTmpDir):
+    CMD = "mkdir -p " + strUltraLowTmpDir
+    os.system(CMD)
+
+#rule all:
+#    input:
+#        expand(strBAMDir + "/ngmlr/v37/{wcReadsType}/{wcReadsType}.HG002.MD.sorted.bam.bai", wcReadsType = ["StdReads", "UltraLowReads"])
+
+
+# Rules
+rule bam2fastq:
+    input: 
+        lambda wildcards: config[wildcards.wcReadsType]["rawReads" + wildcards.readsIndex]
+    output:
+        strBAMDir + "/ngmlr/v37/{wcReadsType}/Tmp/rawReads{readsIndex}.fastq"
+    shell:
+        "bedtools bamtofastq -i {input} -fq {output}"
+         
+rule ngmlr_alignment:
+    input:
+        rules.bam2fastq.output
+    output:        
+        strBAMDir + "/ngmlr/v37/{wcReadsType}/Tmp/rawReads{readsIndex}.sam"  
+    threads:
+        24
+    params:
+        ref = strRef
+    log:
+        strBAMDir + "/ngmlr/v37/{wcReadsType}/Log/rawReads{readsIndex}.log"
+    benchmark:
+        strBAMDir + "/ngmlr/v37/{wcReadsType}/Benchmark/rawReads{readsIndex}.benchmark.txt"
+    shell:
+        "ngmlr -t {threads} -r {params.ref} -q {input} -o {output}"
+
+rule ngmlr_sam2bam:
+    input:
+        rules.ngmlr_alignment.output
+    output:
+        strBAMDir + "/ngmlr/v37/{wcReadsType}/Tmp/rawReads{readsIndex}.bam"
+    threads:
+        24
+    shell:
+        "samtools view -@ {threads} -S -b {input} > {output}"
+
+dictReadsIndex = {"StdReads": [1,2,3], "UltraLowReads": [1,2,3,4]}
+
+rule ngmlr_mergeBAM:
+    input:        
+        vBAM = lambda wildcards: expand(strBAMDir + "/ngmlr/v37/" + wildcards.wcReadsType + "/Tmp/rawReads{index}.bam", index = dictReadsIndex[wildcards.wcReadsType])
+    output:
+        strBAMDir + "/ngmlr/v37/{wcReadsType}/{wcReadsType}.HG002.bam"         
+    threads:
+        32
+    log:
+        strBAMDir + "/ngmlr/v37/{wcReadsType}/Log/{wcReadsType}.HG002.log"
+    shell:
+        #"echo {input}"        
+        "samtools merge -@ {threads} -f {output} {input.vBAM}"
+
+rule ngmlr_sortBAM:
+    input:
+        rules.ngmlr_mergeBAM.output
+    output:
+        strBAMDir + "/ngmlr/v37/{wcReadsType}/{wcReadsType}.HG002.MD.sorted.bam"        
+    threads:
+        32
+    shell:
+        "samtools sort -@ {threads} -o {output} {input}"                
+
+rule ngmlr_buildSortedIndex:
+    input:
+        rules.ngmlr_sortBAM.output
+    output:
+        strBAMDir + "/ngmlr/v37/{wcReadsType}/{wcReadsType}.HG002.MD.sorted.bam.bai"
+    threads:
+        32
+    shell:
+        "samtools index -@ {threads} {input} {output}"          
+
+        
+    

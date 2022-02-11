@@ -39,10 +39,13 @@ mkdir -p ${strSortBAMDir}
 
 strSortedBAM=${strSortBAMDir}/${strSampleName}.sorted.bam
 
-samtools sort -@ ${coreNum} -o ${strSortedBAM} ${strBAM}
+if [ ! -f ${strSortedBAM} ]; then
+    # sort BAM
+    samtools sort -@ ${coreNum} -o ${strSortedBAM} ${strBAM}
 
-# Build index for sorted BAM
-samtools index -@ ${coreNum} ${strSortedBAM}
+    # Build index for sorted BAM
+    samtools index -@ ${coreNum} ${strSortedBAM}
+fi
 
 # # Generate MD tag -> Go!
 # strOutputSortedBAMWithMDTag="${strOutputRoot}/m64159_111111_111111.GRCh38.MD.bam"
@@ -67,7 +70,7 @@ samtools index -@ ${coreNum} ${strSortedBAM}
 
 # Call SV
 echo "Run sniffles ->"
-strSVReport=${strResultDir}/${strSampleName}.sv.sniffles.vcf"
+strSVReport="${strResultDir}/${strSampleName}.sv.sniffles.vcf"
 CMD="${sniffles} -t ${coreNum} -m ${strSortedBAM} -v ${strSVReport}"
 
 SECONDS=0

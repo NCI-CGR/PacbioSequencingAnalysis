@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 1 of /home/lixin/Documents/Prototype/PythonProject/PacbioSV/TestingCase/CodingTest/Include/rule_SUM:
+Missing input files for rule TestSUM:
+Input/Empty.txt

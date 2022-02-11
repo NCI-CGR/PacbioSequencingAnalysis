@@ -1,0 +1,25 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	TestNext
+	1	all
+	2
+
+[Wed Jan 19 20:49:09 2022]
+localrule TestNext:
+    input: /home/lix33/hiSeqData/Data/210615_A00423_0127_AHCJYGDSX2/CASAVA/L1/Project_NP0409-HE1/Sample_SC005617-TGGATCAC-GCATTGGT/SC005617_TGGATCAC-GCATTGGT_L001_UMI.fastq.gz, /home/lix33/hiSeqData/Data/210615_A00423_0127_AHCJYGDSX2/CASAVA/L1/Project_NP0409-HE1/Sample_SC005617-TGGATCAC-GCATTGGT/SC005617_TGGATCAC-GCATTGGT_L001_R1_001.fastq.gz, /home/lix33/hiSeqData/Data/210615_A00423_0127_AHCJYGDSX2/CASAVA/L1/Project_NP0409-HE1/Sample_SC005617-TGGATCAC-GCATTGGT/SC005617_TGGATCAC-GCATTGGT_L001_R1_001_HQ_paired.fastq.gz, /home/lix33/hiSeqData/Data/210615_A00423_0127_AHCJYGDSX2/CASAVA/L1/Project_NP0409-HE1/Sample_SC005617-TGGATCAC-GCATTGGT/SC005617_TGGATCAC-GCATTGGT_L001_R1_001_HQ_singleton.fastq.gz, /home/lix33/hiSeqData/Data/210615_A00423_0127_AHCJYGDSX2/CASAVA/L1/Project_NP0409-HE1/Sample_SC005617-TGGATCAC-GCATTGGT/SC005617_TGGATCAC-GCATTGGT_L001_R2_001_HQ_paired.fastq.gz, /home/lix33/hiSeqData/Data/210615_A00423_0127_AHCJYGDSX2/CASAVA/L1/Project_NP0409-HE1/Sample_SC005617-TGGATCAC-GCATTGGT/SC005617_TGGATCAC-GCATTGGT_L001_R2_001.fastq.gz, /home/lix33/hiSeqData/Data/210615_A00423_0127_AHCJYGDSX2/CASAVA/L1/Project_NP0409-HE1/Sample_SC005617-TGGATCAC-GCATTGGT/SC005617_TGGATCAC-GCATTGGT_L001_R2_001_HQ_singleton.fastq.gz
+    output: RNA.QC.Complete
+    jobid: 1
+    wildcards: sampleID=RNA.QC.Complete
+
+Waiting at most 5 seconds for missing files.
+MissingOutputException in line 32 of /mnt/nfs/gigantor/ifs/DCEG/Home/lix33/lxwg/Git/CGR/PacbioSequencingAnalysis/SV_Detection/SourceCode/TestingCase/CodingTest/Wildcard/Snakefile:
+Missing files after 5 seconds:
+RNA.QC.Complete
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /mnt/nfs/gigantor/ifs/DCEG/Home/lix33/lxwg/Git/CGR/PacbioSequencingAnalysis/SV_Detection/SourceCode/TestingCase/CodingTest/Wildcard/.snakemake/log/2022-01-19T204908.920887.snakemake.log

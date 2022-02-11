@@ -1,0 +1,68 @@
+Building DAG of jobs...
+Building DAG of jobs...
+Building DAG of jobs...
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 64
+Rules claiming more threads will be scaled down.
+Select jobs to execute...
+Using shell: /bin/bash
+Using shell: /bin/bash
+Using shell: /bin/bash
+Provided cores: 64
+Provided cores: 64
+Provided cores: 64
+Rules claiming more threads will be scaled down.
+Rules claiming more threads will be scaled down.
+Rules claiming more threads will be scaled down.
+Select jobs to execute...
+Select jobs to execute...
+Select jobs to execute...
+
+[Fri Jan 21 11:06:43 2022]
+rule TestC:
+    input: Input/Empty.txt
+    output: Output/OutputC.txt
+    jobid: 0
+    threads: 4
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/3007797.1.all.q
+
+
+[Fri Jan 21 11:06:43 2022]
+rule TestB:
+    input: Input/Empty.txt
+    output: Output/OutputB.txt
+    jobid: 0
+    threads: 3
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/3007798.1.all.q
+
+
+[Fri Jan 21 11:06:43 2022]
+rule TestA:
+    input: Input/Empty.txt
+    output: Output/OutputA.txt
+    jobid: 0
+    threads: 2
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/3007796.1.all.q
+
+
+[Fri Jan 21 11:06:43 2022]
+rule TestSUM:
+    input: Input/Empty.txt
+    output: Output/Sum.txt
+    jobid: 0
+    threads: 5
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/3007799.1.all.q
+
+[Fri Jan 21 11:06:53 2022]
+Finished job 0.
+1 of 1 steps (100%) done
+[Fri Jan 21 11:07:43 2022]
+Finished job 0.
+1 of 1 steps (100%) done
+[Fri Jan 21 11:07:43 2022]
+Finished job 0.
+1 of 1 steps (100%) done
+[Fri Jan 21 11:08:43 2022]
+Finished job 0.
+1 of 1 steps (100%) done

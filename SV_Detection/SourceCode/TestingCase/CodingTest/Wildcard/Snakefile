@@ -1,0 +1,56 @@
+import os
+import subprocess
+import glob
+
+configfile: 'test.yaml'
+
+completeflag = 'RNA.QC.Complete'
+
+strTargetDir = "/home/lix33/hiSeqData/Data/210615_A00423_0127_AHCJYGDSX2/CASAVA/L1/Project_NP0409-HE1/Sample_SC005617-TGGATCAC-GCATTGGT"
+CMD = "find " + strTargetDir + " -iname '*.gz'"
+vZipFile = subprocess.getoutput(CMD).split('\n')
+
+# Check the real meaning of wildcard -> Go!
+
+rule all:
+    input: 
+        expand("merged/{sampleID}_merged_R1.fastq.gz", sampleID=vZipFile) 
+
+def funcTest(wildcards):
+    print("###########################################################")
+    print("###########################################################")
+    print(wildcards.sampleID)
+    print("###########################################################")
+    print("###########################################################")
+    fnames = glob.glob(config['fq_glob']  %wildcards.sampleID) # the %s wildcard is already in the config string
+    #return sorted(fnames) # make sure R1 is first
+    print("**********************************************************")
+    print("**********************************************************")
+    print(wildcards.sampleID)
+    print("**********************************************************")
+    print("**********************************************************")
+    return wildcards.sampleID
+
+
+rule CheckWildCard:
+    input: 
+        funcTest
+    output: 
+        'merged/{sampleID}_merged_R1.fastq.gz'
+    run:
+        shell('mkdir merged')
+        shell('touch merged/{output[0]}_merged_R1.fastq.gz')
+
+#rule TestNext:
+#    input:
+#        expand('{sampleID}', sampleID=vZipFile)
+#    output:
+#        ID = "{sampleID}.txt"
+
+#rule End:
+#    input:
+#        rules.CheckWildCard.output
+#    output:
+#        "{sampleID}.txt",
+#        completeflag
+ 

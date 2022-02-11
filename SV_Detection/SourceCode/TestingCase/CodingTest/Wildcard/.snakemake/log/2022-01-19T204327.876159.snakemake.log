@@ -1,0 +1,5 @@
+Building DAG of jobs...
+InputFunctionException in line 23 of /mnt/nfs/gigantor/ifs/DCEG/Home/lix33/lxwg/Git/CGR/PacbioSequencingAnalysis/SV_Detection/SourceCode/TestingCase/CodingTest/Wildcard/Snakefile:
+NameError: name 'wildcards' is not defined
+Wildcards:
+

@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 15 of /mnt/nfs/gigantor/ifs/DCEG/Home/lix33/lxwg/Git/CGR/PacbioSequencingAnalysis/SV_Detection/SourceCode/TestingCase/CodingTest/Wildcard/Snakefile:
+Missing input files for rule all:
+RNA.QC.Complete

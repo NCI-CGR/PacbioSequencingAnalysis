@@ -1,0 +1,47 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job        count    min threads    max threads
+-------  -------  -------------  -------------
+TestA          1              1              1
+TestB          1              1              1
+TestC          1              1              1
+TestSUM        1              1              1
+all            1              1              1
+total          5              1              1
+
+Select jobs to execute...
+
+[Thu Jan 20 18:50:52 2022]
+rule TestB:
+    input: Input/Empty.txt
+    output: Output/OutputB.txt
+    jobid: 2
+    resources: tmpdir=/tmp
+
+[Thu Jan 20 18:51:52 2022]
+Finished job 2.
+1 of 5 steps (20%) done
+Select jobs to execute...
+
+[Thu Jan 20 18:51:52 2022]
+rule TestSUM:
+    input: Input/Empty.txt
+    output: Output/Sum.txt
+    jobid: 4
+    resources: tmpdir=/tmp
+
+[Thu Jan 20 18:53:52 2022]
+Finished job 4.
+2 of 5 steps (40%) done
+Select jobs to execute...
+
+[Thu Jan 20 18:54:54 2022]
+rule TestA:
+    input: Input/Empty.txt
+    output: Output/OutputA.txt
+    jobid: 1
+    resources: tmpdir=/tmp
+

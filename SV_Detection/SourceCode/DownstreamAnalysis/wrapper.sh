@@ -1,4 +1,5 @@
 #!/bin/bash
+set -o pipefail
 
 # subshells do not inherit bash functions, so conda must be initialized again
 #. /etc/profile.d/modules.sh
@@ -16,17 +17,27 @@
 
 # Check version in Wrapper 
 echo 
+
 echo "> Check Version number in Wrapper ->"
 echo "1) Check Python3 -- "
 python3 --version
 echo
+
 echo "2) Check GCC -- "
 gcc --version
 echo
+
 echo "3) Check PBSV -- "
 pbsv --version
 echo
-echo "4) Check Snakemake version --"
+
+echo "4) Check sniffles -- "
+echo
+sniffles 2> >(grep -i 'Version')
+
+echo
+
+echo "5) Check Snakemake version --"
 which snakemake 
 snakemake --version
 echo
