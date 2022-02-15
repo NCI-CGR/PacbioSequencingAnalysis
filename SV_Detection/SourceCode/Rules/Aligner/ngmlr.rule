@@ -77,16 +77,30 @@ rule ngmlr_mergeBAM:
     log:
         strBAMDir + "/ngmlr/v37/{wcReadsType}/Log/{wcReadsType}.HG002.log"
     shell:
-        #"echo {input}"        
         "samtools merge -@ {threads} -f {output} {input.vBAM}"
+
+rule ngmlr_addRG:
+    input:        
+        #rules.ngmlr_mergeBAM.output
+        strBAMDir + "/ngmlr/v37/{wcReadsType}/{wcReadsType}.HG002.bam"        
+    output:
+        strBAMDir + "/ngmlr/v37/{wcReadsType}/{wcReadsType}.HG002.RG.bam"         
+    threads:
+        12
+    log:
+        strBAMDir + "/ngmlr/v37/{wcReadsType}/Log/{wcReadsType}.HG002.RG.log"
+    shell:        
+        """
+        samtools addreplacerg -@ {threads} -r '@RG\tID:Pacbio\tSM:WGS' -o {output} {input}
+        """
 
 rule ngmlr_sortBAM:
     input:
-        rules.ngmlr_mergeBAM.output
+        rules.ngmlr_addRG.output
     output:
         strBAMDir + "/ngmlr/v37/{wcReadsType}/{wcReadsType}.HG002.MD.sorted.bam"        
     threads:
-        32
+        24
     shell:
         "samtools sort -@ {threads} -o {output} {input}"                
 
@@ -96,9 +110,6 @@ rule ngmlr_buildSortedIndex:
     output:
         strBAMDir + "/ngmlr/v37/{wcReadsType}/{wcReadsType}.HG002.MD.sorted.bam.bai"
     threads:
-        32
+        24
     shell:
-        "samtools index -@ {threads} {input} {output}"          
-
-        
-    
+        "samtools index -@ {threads} {input} {output}"

@@ -48,7 +48,7 @@ os.system("cuteSV --version")
 dicKWMD = {"ngmlr": "MD.", "pbmm2": "MD."}
 #expand({wcAligner}, wcAligner=["ngmlr", "pbmm2"])
 
-rule CallCuteSV:
+rule cuteSV_call:
     input:
         bam = bamRootDir + "/{wcAligner}/{wcRefVersion}/{wcReadsType}/{wcReadsType}.HG002.MD.sorted.bam"
     output:
@@ -56,7 +56,11 @@ rule CallCuteSV:
         workDir = svRootDir + "/{wcRefVersion}/cuteSV/{wcAligner}/{wcReadsType}/minSupport_{wcMinSupportCuteSV}/Tmp"
     params:
         ms = lambda wildcards: wildcards.wcMinSupportCuteSV,
-        ref = refSeq                
+        ref = refSeq,
+        mcbINS = 1000,
+        drmINS = 0.9,
+        mcbDEL = 1000,
+        drmDEL = 0.5        
     threads:
         24
     log:
@@ -67,13 +71,16 @@ rule CallCuteSV:
         """
         mkdir -p {output.workDir}
         
-        (cuteSV --threads {threads} \
-                --genotype True \
-                --min_support {params.ms} \
-                {input.bam} {params.ref} \
-                {output.vcf} {output.workDir}) > {log} 2>&1        
-        """        
-        
+        cuteSV {input.bam} {params.ref} \
+               {output.vcf} {output.workDir} \
+               --threads {threads} \
+               --genotype \
+               --min_support {params.ms} \
+               --max_cluster_bias_INS {params.mcbINS} \
+               --diff_ratio_merging_INS {params.drmINS} \
+               --max_cluster_bias_DEL {params.mcbDEL} \
+               --diff_ratio_merging_DEL {params.drmDEL} \ > {log} 2>&1
+        """
         
         
         

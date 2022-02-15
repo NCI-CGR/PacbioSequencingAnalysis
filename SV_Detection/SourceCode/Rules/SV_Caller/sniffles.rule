@@ -13,16 +13,16 @@ bamRootDir = config["GeneralInfo"]["bamDir"]
 
 dicKWMD = {"ngmlr": "MD.", "pbmm2": "MD."}
 
-for wcAligner in ["ngmlr", "pbmm2"]:
-    for wcRefVersion in ["v37"]:
-        for wcReadsType in ["StdReads", "UltraLowReads"]:
-            strDir = bamRootDir + "/" + wcAligner + "/" + wcRefVersion + "/" + wcReadsType
-            strfile = strDir + "/" + wcReadsType + ".HG002.MD.sorted.bam"
-            if not os.path.exists(strfile):
-                CMD = "mkdir -p " + strDir
-                os.system(CMD)
-                CMD = "touch " + strfile
-                os.system(CMD)
+#for wcAligner in ["ngmlr", "pbmm2"]:
+#    for wcRefVersion in ["v37"]:
+#        for wcReadsType in ["StdReads", "UltraLowReads"]:
+#            strDir = bamRootDir + "/" + wcAligner + "/" + wcRefVersion + "/" + wcReadsType
+#            strfile = strDir + "/" + wcReadsType + ".HG002.MD.sorted.bam"
+#            if not os.path.exists(strfile):
+#                CMD = "mkdir -p " + strDir
+#                os.system(CMD)
+#                CMD = "touch " + strfile
+#                os.system(CMD)
 
 #rule all:
 #    input:
@@ -41,7 +41,7 @@ def GetSortedBAM(wcs):
         sortedBam = bamRootDir + "/{wcAligner}/{wcRefVersion}/{wcReadsType}/{wcReadsType}.HG002.sorted.bam"
     return sortedBam
         
-rule CallSniffle:
+rule sniffles_call:
     input:
         bam = bamRootDir + "/{wcAligner}/{wcRefVersion}/{wcReadsType}/{wcReadsType}.HG002.MD.sorted.bam" 
     output:

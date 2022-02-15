@@ -34,15 +34,14 @@ rule pbsv_discover:
         svRootDir + "/{wcRefVersion}/pbsv/{wcAligner}/{wcReadsType}/discover/Benchmark/{wcReadsType}.HG002.MD.sorted.benchmark"
     params:        
         loglevel = "INFO",
-        min_gap_comp_id_perc = 97.0,
+        mgcPerc = 97.0,
         tr_bed = config["GeneralInfo"]["tr_bed"]
     shell:
         """
-        (pbsv discover \
-            --log-level {params.loglevel} \
-            --min-gap-comp-id-perc {params.min_gap_comp_id_perc} \            
-            --tandem-repeats {params.tr_bed} \
-            {input.bam} {output}) > {log} 2>&1
+        pbsv discover --log-level {params.loglevel} \
+                      --min-gap-comp-id-perc {params.mgcPerc} \
+                      --tandem-repeats {params.tr_bed} \
+                      {input.bam} {output} > {log} 2>&1
         """
 
 rule pbsv_call:
@@ -64,11 +63,11 @@ rule pbsv_call:
     message: "Executing {rule}: Calling structural variants from SVSIGs: {input.svsigs}"
     shell:
         """
-        (pbsv call {params.extra} \
-            --log-level {params.loglevel} \
-            --num-threads {threads} \
-            --call-min-reads-per-strand-all-samples {params.minReads} \
-            {input.reference} {input.svsigs} {output}) > {log} 2>&1
+        pbsv call {params.extra} \
+                  --log-level {params.loglevel} \
+                  --num-threads {threads} \
+                  --call-min-reads-per-strand-all-samples {params.minReads} \
+                  {input.reference} {input.svsigs} {output} > {log} 2>&1
         """
 
 

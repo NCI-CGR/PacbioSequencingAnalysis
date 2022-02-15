@@ -13,7 +13,7 @@ GeneralInfo:
     ref: /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa
     bamDir: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark
     svDir: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV
-    tr_bed: ../../Configs/human_hs37d5.trf.bed
+    tr_bed: /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/Configs/human_hs37d5.trf.bed
 
 sniffles:
     minSupport: 10,5
