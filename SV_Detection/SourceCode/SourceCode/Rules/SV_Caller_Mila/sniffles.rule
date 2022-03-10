@@ -1,0 +1,28 @@
+import sys
+import os
+sys.path.insert(0, '/scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/Scripts')
+from RunPacbioSV import *
+
+configfile: "../../Configs/MilaTesting.yaml"
+workdir: os.environ['PWD']
+shell.executable('bash')
+
+svRootDir = config["GeneralInfo"]["svDir"]
+bamRootDir = config["GeneralInfo"]["bamDir"]
+        
+rule sniffles_call:
+    input:
+        bam = bamRootDir + "/{wcAligner}/{wcRefVersion}/{wcSampleID}/{wcSampleID}.MD.sorted.bam" 
+    output:
+        svRootDir + "/{wcRefVersion}/sniffles/{wcAligner}/{wcSampleID}/minSupport_{wcMinSupportSniffle}/{wcSampleID}.MD.sorted.{wcMinSupportSniffle}.sniffles.vcf"
+    params:
+        ms = lambda wildcards: wildcards.wcMinSupportSniffle
+    threads:
+        24
+    log:
+        svRootDir + "/{wcRefVersion}/sniffles/{wcAligner}/{wcSampleID}/minSupport_{wcMinSupportSniffle}/Log/{wcSampleID}.MD.sorted.{wcMinSupportSniffle}.sniffles.log"
+    benchmark:
+        svRootDir + "/{wcRefVersion}/sniffles/{wcAligner}/{wcSampleID}/minSupport_{wcMinSupportSniffle}/Benchmark/{wcSampleID}.MD.sorted.{wcMinSupportSniffle}.sniffles.benchmark"
+    shell:
+        "(sniffles -t {threads} --min_support {params.ms} -m {input.bam} -v {output}) > {log} 2>&1"
+

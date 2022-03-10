@@ -1,0 +1,128 @@
+import sys
+import os
+sys.path.insert(0, '/scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/Scripts')
+from RunPacbioSV import *
+
+configfile: "../../Configs/benchmarkTest.yaml"
+workdir: os.environ['PWD']
+shell.executable('bash')
+
+
+svRootDir = config["GeneralInfo"]["svDir"]
+refSeq = config["GeneralInfo"]["ref"]
+svTrueSet= config["GeneralInfo"]["svTrueSet"]
+
+bamRootDir = config["GeneralInfo"]["bamDir"]
+#bamRootDir = "/scratch/lix33/Test/Debug/snakemake"
+
+print("This is cuteSV SMK ----->")
+os.system("cuteSV --version")
+
+#for wcAligner in ["ngmlr", "pbmm2"]:
+#    for wcRefVersion in ["v37"]:
+#        for wcReadsType in ["StdReads", "UltraLowReads"]:
+#            strDir = bamRootDir + "/" + wcAligner + "/" + wcRefVersion + "/" + wcReadsType
+#            strfile = strDir + "/" + wcReadsType + ".HG002.MD.sorted.bam"
+#            if not os.path.exists(strfile):
+#                CMD = "mkdir -p " + strDir
+#                os.system(CMD)
+#                CMD = "touch " + strfile
+#                os.system(CMD)
+
+#rule all:/CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Tmp
+#    input:
+#        expand(svRootDir + "/{wcRefVersion}/{wcSVCaller}/{wcAligner}/{wcReadsType}/minSupport_{wcMinSupport}/{wcReadsType}.HG002.MD.sorted.{wcMinSupport}.{wcSVCaller}.vcf", 
+#                wcRefVersion = ["v37"],
+#                wcSVCaller = ["cuteSV"],
+#                wcAligner = ["ngmlr", "pbmm2"],
+#                wcReadsType = ["StdReads", "UltraLowReads"],
+#                wcMinSupport = config["cuteSV"]["minSupport"].split(','))        
+
+#def GetSortedBAM(wcs):
+#    if wcs.wcAligner == "ngmlr":
+#        sortedBam = bamRootDir + "/{wcAligner}/{wcRefVersion}/{wcReadsType}/{wcReadsType}.HG002.MD.sorted.bam"
+#    else:
+#        sortedBam = bamRootDir + "/{wcAligner}/{wcRefVersion}/{wcReadsType}/{wcReadsType}.HG002.sorted.bam"
+#    return sortedBam
+    
+
+dicKWMD = {"ngmlr": "MD.", "pbmm2": "MD."}
+#expand({wcAligner}, wcAligner=["ngmlr", "pbmm2"])
+
+rule cuteSV_call:
+    input:
+        bam = bamRootDir + "/{wcAligner}/{wcRefVersion}/{wcReadsType}/{wcReadsType}.HG002.MD.sorted.bam"        
+    output:
+        vcf = svRootDir + "/{wcRefVersion}/cuteSV/{wcAligner}/{wcReadsType}/minSupport_{wcMinSupportCuteSV}/{wcReadsType}.HG002.MD.sorted.{wcMinSupportCuteSV}.cuteSV.vcf"            
+    params:
+        workDir = svRootDir + "/{wcRefVersion}/cuteSV/{wcAligner}/{wcReadsType}/minSupport_{wcMinSupportCuteSV}/{wcAligner}_Mid_File",
+        ms = lambda wildcards: wildcards.wcMinSupportCuteSV,
+        ref = refSeq,
+        mcbINS = 1000,
+        drmINS = 0.9,
+        mcbDEL = 1000,
+        drmDEL = 0.5        
+    threads:
+        12
+    log:
+        svRootDir + "/{wcRefVersion}/cuteSV/{wcAligner}/{wcReadsType}/minSupport_{wcMinSupportCuteSV}/Log/{wcReadsType}.HG002.MD.sorted.{wcMinSupportCuteSV}.cuteSV.log"
+    benchmark:
+        svRootDir + "/{wcRefVersion}/cuteSV/{wcAligner}/{wcReadsType}/minSupport_{wcMinSupportCuteSV}/Benchmark/{wcReadsType}.HG002.MD.sorted.{wcMinSupportCuteSV}.cuteSV.benchmark"
+    run:
+        shell("mkdir -p {params.workDir}")
+        
+        shell("(cuteSV {input.bam} {params.ref} {output.vcf} {params.workDir} \
+                --threads {threads} \
+                --genotype \
+                --min_support {params.ms} \
+                --max_cluster_bias_INS {params.mcbINS} \
+                --diff_ratio_merging_INS {params.drmINS} \
+                --max_cluster_bias_DEL {params.mcbDEL} \
+                --diff_ratio_merging_DEL {params.drmDEL}) > {log} 2>&1")
+            
+rule cuteSV_truvari:
+    input:
+        svCallSet = rules.cuteSV_call.output
+    output:
+        cmpSummaryFile = svRootDir + "/{wcRefVersion}/cuteSV/{wcAligner}/{wcReadsType}/minSupport_{wcMinSupportCuteSV}/Output_Benchmark_Cmp/summary.txt"
+    params:
+        reference = refSeq,
+        trueSet = svTrueSet,
+        bgzipDir = svRootDir + "/{wcRefVersion}/cuteSV/{wcAligner}/{wcReadsType}/minSupport_{wcMinSupportCuteSV}/Bgzip",
+        bgZipSVCallSet = svRootDir + "/{wcRefVersion}/cuteSV/{wcAligner}/{wcReadsType}/minSupport_{wcMinSupportCuteSV}/Bgzip/{wcReadsType}.HG002.MD.sorted.{wcMinSupportCuteSV}.cuteSV.vcf.gz",
+        compOutDir = svRootDir + "/{wcRefVersion}/cuteSV/{wcAligner}/{wcReadsType}/minSupport_{wcMinSupportCuteSV}/Output_Benchmark_Cmp"
+    log:
+        svRootDir + "/{wcRefVersion}/cuteSV/{wcAligner}/{wcReadsType}/minSupport_{wcMinSupportCuteSV}/Log/{wcReadsType}.HG002.MD.sorted.{wcMinSupportCuteSV}.cuteSV_truvari.log"
+    shell:
+        """
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p {params.bgzipDir}
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat <(cat {input.svCallSet} | grep "^#") \
+            <(cat {input.svCallSet} | grep -vE "^#" | \
+            grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g) \
+            | bgzip -c > {params.bgZipSVCallSet}
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix {params.bgZipSVCallSet} 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf {params.compOutDir}
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench \
+                -b {params.trueSet} \
+                -c {params.bgZipSVCallSet} \
+                -f {params.reference} \
+                -o {params.compOutDir} > {log} 2>&1
+        """

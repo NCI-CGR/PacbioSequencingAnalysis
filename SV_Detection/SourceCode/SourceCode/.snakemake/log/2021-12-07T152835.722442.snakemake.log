@@ -1,0 +1,130 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 100
+Job stats:
+job                    count    min threads    max threads
+-------------------  -------  -------------  -------------
+all                        1              1              1
+call_sv                    1              4              4
+discover_signatures        8              1              1
+total                     10              1              4
+
+Select jobs to execute...
+
+[Tue Dec  7 15:28:36 2021]
+rule discover_signatures:
+    input: /CGF/Bioinformatics/Production/Wen/20191120_pacbio_24320/bam_location_post/UST1008-2000_SC064818.bam
+    output: /scratch/lix33/lxwg/Test/pacbio/06_04_2021/sv/Signature/UST1008-2000_SC064818.svsig.gz
+    jobid: 1
+    wildcards: sample=UST1008-2000_SC064818
+    resources: tmpdir=/tmp
+
+Submitted job 1 with external jobid 'Your job 2889156 ("snakejob.discover_signatures.1.sh") has been submitted'.
+
+[Tue Dec  7 15:28:36 2021]
+rule discover_signatures:
+    input: /CGF/Bioinformatics/Production/Wen/20191120_pacbio_24320/bam_location_post/UST1041-2000_SC061909.bam
+    output: /scratch/lix33/lxwg/Test/pacbio/06_04_2021/sv/Signature/UST1041-2000_SC061909.svsig.gz
+    jobid: 4
+    wildcards: sample=UST1041-2000_SC061909
+    resources: tmpdir=/tmp
+
+Submitted job 4 with external jobid 'Your job 2889157 ("snakejob.discover_signatures.4.sh") has been submitted'.
+
+[Tue Dec  7 15:28:36 2021]
+rule discover_signatures:
+    input: /CGF/Bioinformatics/Production/Wen/20191120_pacbio_24320/bam_location_post/UST1030-2000_SC061903.bam
+    output: /scratch/lix33/lxwg/Test/pacbio/06_04_2021/sv/Signature/UST1030-2000_SC061903.svsig.gz
+    jobid: 6
+    wildcards: sample=UST1030-2000_SC061903
+    resources: tmpdir=/tmp
+
+Submitted job 6 with external jobid 'Your job 2889158 ("snakejob.discover_signatures.6.sh") has been submitted'.
+
+[Tue Dec  7 15:28:36 2021]
+rule discover_signatures:
+    input: /CGF/Bioinformatics/Production/Wen/20191120_pacbio_24320/bam_location_post/UST1009-2000_SC064814.bam
+    output: /scratch/lix33/lxwg/Test/pacbio/06_04_2021/sv/Signature/UST1009-2000_SC064814.svsig.gz
+    jobid: 8
+    wildcards: sample=UST1009-2000_SC064814
+    resources: tmpdir=/tmp
+
+Submitted job 8 with external jobid 'Your job 2889159 ("snakejob.discover_signatures.8.sh") has been submitted'.
+
+[Tue Dec  7 15:28:36 2021]
+rule discover_signatures:
+    input: /CGF/Bioinformatics/Production/Wen/20191120_pacbio_24320/bam_location_post/UST1037-2000_SC061918.bam
+    output: /scratch/lix33/lxwg/Test/pacbio/06_04_2021/sv/Signature/UST1037-2000_SC061918.svsig.gz
+    jobid: 2
+    wildcards: sample=UST1037-2000_SC061918
+    resources: tmpdir=/tmp
+
+Submitted job 2 with external jobid 'Your job 2889160 ("snakejob.discover_signatures.2.sh") has been submitted'.
+
+[Tue Dec  7 15:28:36 2021]
+rule discover_signatures:
+    input: /CGF/Bioinformatics/Production/Wen/20191120_pacbio_24320/bam_location_post/UST1035-2000_SC061920.bam
+    output: /scratch/lix33/lxwg/Test/pacbio/06_04_2021/sv/Signature/UST1035-2000_SC061920.svsig.gz
+    jobid: 3
+    wildcards: sample=UST1035-2000_SC061920
+    resources: tmpdir=/tmp
+
+Submitted job 3 with external jobid 'Your job 2889161 ("snakejob.discover_signatures.3.sh") has been submitted'.
+
+[Tue Dec  7 15:28:37 2021]
+rule discover_signatures:
+    input: /CGF/Bioinformatics/Production/Wen/20191120_pacbio_24320/bam_location_post/UST1013-2000_SC064821.bam
+    output: /scratch/lix33/lxwg/Test/pacbio/06_04_2021/sv/Signature/UST1013-2000_SC064821.svsig.gz
+    jobid: 5
+    wildcards: sample=UST1013-2000_SC064821
+    resources: tmpdir=/tmp
+
+Submitted job 5 with external jobid 'Your job 2889162 ("snakejob.discover_signatures.5.sh") has been submitted'.
+
+[Tue Dec  7 15:28:37 2021]
+rule discover_signatures:
+    input: /CGF/Bioinformatics/Production/Wen/20191120_pacbio_24320/bam_location_post/UST1159-2000_SC066150.bam
+    output: /scratch/lix33/lxwg/Test/pacbio/06_04_2021/sv/Signature/UST1159-2000_SC066150.svsig.gz
+    jobid: 7
+    wildcards: sample=UST1159-2000_SC066150
+    resources: tmpdir=/tmp
+
+Submitted job 7 with external jobid 'Your job 2889163 ("snakejob.discover_signatures.7.sh") has been submitted'.
+[Tue Dec  7 15:29:06 2021]
+Finished job 1.
+1 of 10 steps (10%) done
+[Tue Dec  7 15:29:06 2021]
+Finished job 4.
+2 of 10 steps (20%) done
+[Tue Dec  7 15:29:06 2021]
+Finished job 6.
+3 of 10 steps (30%) done
+[Tue Dec  7 15:29:06 2021]
+Finished job 8.
+4 of 10 steps (40%) done
+[Tue Dec  7 15:29:06 2021]
+Finished job 2.
+5 of 10 steps (50%) done
+[Tue Dec  7 15:29:06 2021]
+Finished job 3.
+6 of 10 steps (60%) done
+[Tue Dec  7 15:29:06 2021]
+Finished job 5.
+7 of 10 steps (70%) done
+[Tue Dec  7 15:29:06 2021]
+Finished job 7.
+8 of 10 steps (80%) done
+Select jobs to execute...
+
+[Tue Dec  7 15:29:06 2021]
+rule call_sv:
+    input: /DCEG/CGF/TempFileSwap/Kristie/References/GRCh38.p2.maimcontigs.fa, /scratch/lix33/lxwg/Test/pacbio/06_04_2021/sv/Signature/UST1008-2000_SC064818.svsig.gz, /scratch/lix33/lxwg/Test/pacbio/06_04_2021/sv/Signature/UST1037-2000_SC061918.svsig.gz, /scratch/lix33/lxwg/Test/pacbio/06_04_2021/sv/Signature/UST1035-2000_SC061920.svsig.gz, /scratch/lix33/lxwg/Test/pacbio/06_04_2021/sv/Signature/UST1041-2000_SC061909.svsig.gz, /scratch/lix33/lxwg/Test/pacbio/06_04_2021/sv/Signature/UST1013-2000_SC064821.svsig.gz, /scratch/lix33/lxwg/Test/pacbio/06_04_2021/sv/Signature/UST1030-2000_SC061903.svsig.gz, /scratch/lix33/lxwg/Test/pacbio/06_04_2021/sv/Signature/UST1159-2000_SC066150.svsig.gz, /scratch/lix33/lxwg/Test/pacbio/06_04_2021/sv/Signature/UST1009-2000_SC064814.svsig.gz
+    output: /scratch/lix33/lxwg/Test/pacbio/06_04_2021/sv/Result/sv.vcf
+    jobid: 9
+    threads: 4
+    resources: tmpdir=/tmp
+
+Submitted job 9 with external jobid 'Your job 2889164 ("snakejob.call_sv.9.sh") has been submitted'.
+Terminating processes on user request, this might take some time.
+Will exit after finishing currently running jobs.
+Complete log: /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/.snakemake/log/2021-12-07T152835.722442.snakemake.log

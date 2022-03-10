@@ -1,0 +1,4 @@
+Building DAG of jobs...
+WildcardError in line 29 of /home/lixin/Documents/Prototype/PythonProject/PacbioSV/smCallSV.snake:
+Wildcards in input files cannot be determined from output files:
+'mapped_reads'

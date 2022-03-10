@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 11 of /home/lixin/Documents/Prototype/PythonProject/PacbioSV/smCallSV.snake:
+Missing input files for rule bwa_map:
+/home/lixin/lxwg/Data/snakemake/06_03_2021/data/samples/{A}.fastq

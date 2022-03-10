@@ -1,0 +1,28 @@
+BAM_pbmm2:
+    RootDir: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_location
+    HT1376: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_location/HT1376_STD.bam
+    RT4: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_location/RT4_STD.bam
+    SCaBER: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_location/SCaBER_STD.bam
+    T24: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_location/T24_STD.bam
+
+BAM_ngmlr:
+    RootDir: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_location_ngmlr
+    HT1376: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_location_ngmlr/PC61378_B1_HT1376_WGS_STD_reheader.bam
+    RT4: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_location_ngmlr/PC61378_A1_RT4_WGS_STD_reheader.bam
+    SCaBER: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_location_ngmlr/PC61378_C1_SCaBER_WGS_STD_reheader.bam
+    T24: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_location_ngmlr/PC59989_A1_T24_WGS-STD_70pM_reheader.bam
+
+GeneralInfo:
+    ref: /DCEG/CGF/TempFileSwap/Kristie/References/GRCh38.p2.maimcontigs.fa
+    bamDir: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/BAM
+    svDir: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset
+    tr_bed: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/Dependence/human_GRCh38_no_alt_analysis_set.trf.bed
+
+sniffles:
+    minSupport: 10,5
+    
+cuteSV:
+    minSupport: 10,5
+    
+pbsv:    
+    minReads: 1,5

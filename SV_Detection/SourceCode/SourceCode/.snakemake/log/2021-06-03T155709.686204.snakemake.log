@@ -1,0 +1,3 @@
+NameError in line 5 of /home/lixin/Documents/Prototype/PythonProject/PacbioSV/smCallSV.snake:
+name 'Sample' is not defined
+  File "/home/lixin/Documents/Prototype/PythonProject/PacbioSV/smCallSV.snake", line 5, in <module>

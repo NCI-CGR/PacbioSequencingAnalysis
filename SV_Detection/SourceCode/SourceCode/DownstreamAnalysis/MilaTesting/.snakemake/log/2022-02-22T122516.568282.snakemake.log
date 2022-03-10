@@ -1,0 +1,258 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 50
+Job counts:
+	count	jobs
+	1	all
+	16	cuteSV_call
+	17
+
+[Tue Feb 22 12:25:20 2022]
+rule cuteSV_call:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/BAM/pbmm2/v38/HT1376/HT1376.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/HT1376/minSupport_5/HT1376.MD.sorted.5.cuteSV.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/HT1376/minSupport_5/Log/HT1376.MD.sorted.5.cuteSV.log
+    jobid: 34
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/HT1376/minSupport_5/Benchmark/HT1376.MD.sorted.5.cuteSV.benchmark
+    wildcards: wcRefVersion=v38, wcAligner=pbmm2, wcSampleID=HT1376, wcMinSupportCuteSV=5
+    threads: 12
+
+Submitted job 34 with external jobid 'Your job 3124644 ("snakejob.cuteSV_call.34.sh") has been submitted'.
+
+[Tue Feb 22 12:25:20 2022]
+rule cuteSV_call:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/BAM/pbmm2/v38/T24/T24.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/T24/minSupport_10/T24.MD.sorted.10.cuteSV.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/T24/minSupport_10/Log/T24.MD.sorted.10.cuteSV.log
+    jobid: 39
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/T24/minSupport_10/Benchmark/T24.MD.sorted.10.cuteSV.benchmark
+    wildcards: wcRefVersion=v38, wcAligner=pbmm2, wcSampleID=T24, wcMinSupportCuteSV=10
+    threads: 12
+
+Submitted job 39 with external jobid 'Your job 3124645 ("snakejob.cuteSV_call.39.sh") has been submitted'.
+
+[Tue Feb 22 12:25:20 2022]
+rule cuteSV_call:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/BAM/ngmlr/v38/SCaBER/SCaBER.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/SCaBER/minSupport_10/SCaBER.MD.sorted.10.cuteSV.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/SCaBER/minSupport_10/Log/SCaBER.MD.sorted.10.cuteSV.log
+    jobid: 29
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/SCaBER/minSupport_10/Benchmark/SCaBER.MD.sorted.10.cuteSV.benchmark
+    wildcards: wcRefVersion=v38, wcAligner=ngmlr, wcSampleID=SCaBER, wcMinSupportCuteSV=10
+    threads: 12
+
+Submitted job 29 with external jobid 'Your job 3124646 ("snakejob.cuteSV_call.29.sh") has been submitted'.
+
+[Tue Feb 22 12:25:20 2022]
+rule cuteSV_call:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/BAM/ngmlr/v38/RT4/RT4.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/RT4/minSupport_5/RT4.MD.sorted.5.cuteSV.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/RT4/minSupport_5/Log/RT4.MD.sorted.5.cuteSV.log
+    jobid: 28
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/RT4/minSupport_5/Benchmark/RT4.MD.sorted.5.cuteSV.benchmark
+    wildcards: wcRefVersion=v38, wcAligner=ngmlr, wcSampleID=RT4, wcMinSupportCuteSV=5
+    threads: 12
+
+Submitted job 28 with external jobid 'Your job 3124647 ("snakejob.cuteSV_call.28.sh") has been submitted'.
+
+[Tue Feb 22 12:25:20 2022]
+rule cuteSV_call:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/BAM/pbmm2/v38/RT4/RT4.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/RT4/minSupport_10/RT4.MD.sorted.10.cuteSV.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/RT4/minSupport_10/Log/RT4.MD.sorted.10.cuteSV.log
+    jobid: 35
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/RT4/minSupport_10/Benchmark/RT4.MD.sorted.10.cuteSV.benchmark
+    wildcards: wcRefVersion=v38, wcAligner=pbmm2, wcSampleID=RT4, wcMinSupportCuteSV=10
+    threads: 12
+
+Submitted job 35 with external jobid 'Your job 3124648 ("snakejob.cuteSV_call.35.sh") has been submitted'.
+
+[Tue Feb 22 12:25:21 2022]
+rule cuteSV_call:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/BAM/ngmlr/v38/T24/T24.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/T24/minSupport_5/T24.MD.sorted.5.cuteSV.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/T24/minSupport_5/Log/T24.MD.sorted.5.cuteSV.log
+    jobid: 32
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/T24/minSupport_5/Benchmark/T24.MD.sorted.5.cuteSV.benchmark
+    wildcards: wcRefVersion=v38, wcAligner=ngmlr, wcSampleID=T24, wcMinSupportCuteSV=5
+    threads: 12
+
+Submitted job 32 with external jobid 'Your job 3124649 ("snakejob.cuteSV_call.32.sh") has been submitted'.
+
+[Tue Feb 22 12:25:21 2022]
+rule cuteSV_call:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/BAM/pbmm2/v38/SCaBER/SCaBER.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/SCaBER/minSupport_5/SCaBER.MD.sorted.5.cuteSV.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/SCaBER/minSupport_5/Log/SCaBER.MD.sorted.5.cuteSV.log
+    jobid: 38
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/SCaBER/minSupport_5/Benchmark/SCaBER.MD.sorted.5.cuteSV.benchmark
+    wildcards: wcRefVersion=v38, wcAligner=pbmm2, wcSampleID=SCaBER, wcMinSupportCuteSV=5
+    threads: 12
+
+Submitted job 38 with external jobid 'Your job 3124650 ("snakejob.cuteSV_call.38.sh") has been submitted'.
+
+[Tue Feb 22 12:25:21 2022]
+rule cuteSV_call:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/BAM/ngmlr/v38/HT1376/HT1376.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/HT1376/minSupport_10/HT1376.MD.sorted.10.cuteSV.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/HT1376/minSupport_10/Log/HT1376.MD.sorted.10.cuteSV.log
+    jobid: 25
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/HT1376/minSupport_10/Benchmark/HT1376.MD.sorted.10.cuteSV.benchmark
+    wildcards: wcRefVersion=v38, wcAligner=ngmlr, wcSampleID=HT1376, wcMinSupportCuteSV=10
+    threads: 12
+
+Submitted job 25 with external jobid 'Your job 3124651 ("snakejob.cuteSV_call.25.sh") has been submitted'.
+
+[Tue Feb 22 12:25:21 2022]
+rule cuteSV_call:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/BAM/pbmm2/v38/HT1376/HT1376.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/HT1376/minSupport_10/HT1376.MD.sorted.10.cuteSV.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/HT1376/minSupport_10/Log/HT1376.MD.sorted.10.cuteSV.log
+    jobid: 33
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/HT1376/minSupport_10/Benchmark/HT1376.MD.sorted.10.cuteSV.benchmark
+    wildcards: wcRefVersion=v38, wcAligner=pbmm2, wcSampleID=HT1376, wcMinSupportCuteSV=10
+    threads: 12
+
+Submitted job 33 with external jobid 'Your job 3124652 ("snakejob.cuteSV_call.33.sh") has been submitted'.
+
+[Tue Feb 22 12:25:21 2022]
+rule cuteSV_call:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/BAM/ngmlr/v38/RT4/RT4.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/RT4/minSupport_10/RT4.MD.sorted.10.cuteSV.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/RT4/minSupport_10/Log/RT4.MD.sorted.10.cuteSV.log
+    jobid: 27
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/RT4/minSupport_10/Benchmark/RT4.MD.sorted.10.cuteSV.benchmark
+    wildcards: wcRefVersion=v38, wcAligner=ngmlr, wcSampleID=RT4, wcMinSupportCuteSV=10
+    threads: 12
+
+Submitted job 27 with external jobid 'Your job 3124653 ("snakejob.cuteSV_call.27.sh") has been submitted'.
+
+[Tue Feb 22 12:25:21 2022]
+rule cuteSV_call:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/BAM/ngmlr/v38/SCaBER/SCaBER.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/SCaBER/minSupport_5/SCaBER.MD.sorted.5.cuteSV.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/SCaBER/minSupport_5/Log/SCaBER.MD.sorted.5.cuteSV.log
+    jobid: 30
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/SCaBER/minSupport_5/Benchmark/SCaBER.MD.sorted.5.cuteSV.benchmark
+    wildcards: wcRefVersion=v38, wcAligner=ngmlr, wcSampleID=SCaBER, wcMinSupportCuteSV=5
+    threads: 12
+
+Submitted job 30 with external jobid 'Your job 3124654 ("snakejob.cuteSV_call.30.sh") has been submitted'.
+
+[Tue Feb 22 12:25:21 2022]
+rule cuteSV_call:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/BAM/pbmm2/v38/T24/T24.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/T24/minSupport_5/T24.MD.sorted.5.cuteSV.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/T24/minSupport_5/Log/T24.MD.sorted.5.cuteSV.log
+    jobid: 40
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/T24/minSupport_5/Benchmark/T24.MD.sorted.5.cuteSV.benchmark
+    wildcards: wcRefVersion=v38, wcAligner=pbmm2, wcSampleID=T24, wcMinSupportCuteSV=5
+    threads: 12
+
+Submitted job 40 with external jobid 'Your job 3124655 ("snakejob.cuteSV_call.40.sh") has been submitted'.
+
+[Tue Feb 22 12:25:21 2022]
+rule cuteSV_call:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/BAM/pbmm2/v38/SCaBER/SCaBER.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/SCaBER/minSupport_10/SCaBER.MD.sorted.10.cuteSV.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/SCaBER/minSupport_10/Log/SCaBER.MD.sorted.10.cuteSV.log
+    jobid: 37
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/SCaBER/minSupport_10/Benchmark/SCaBER.MD.sorted.10.cuteSV.benchmark
+    wildcards: wcRefVersion=v38, wcAligner=pbmm2, wcSampleID=SCaBER, wcMinSupportCuteSV=10
+    threads: 12
+
+Submitted job 37 with external jobid 'Your job 3124656 ("snakejob.cuteSV_call.37.sh") has been submitted'.
+
+[Tue Feb 22 12:25:21 2022]
+rule cuteSV_call:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/BAM/ngmlr/v38/T24/T24.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/T24/minSupport_10/T24.MD.sorted.10.cuteSV.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/T24/minSupport_10/Log/T24.MD.sorted.10.cuteSV.log
+    jobid: 31
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/T24/minSupport_10/Benchmark/T24.MD.sorted.10.cuteSV.benchmark
+    wildcards: wcRefVersion=v38, wcAligner=ngmlr, wcSampleID=T24, wcMinSupportCuteSV=10
+    threads: 12
+
+Submitted job 31 with external jobid 'Your job 3124657 ("snakejob.cuteSV_call.31.sh") has been submitted'.
+
+[Tue Feb 22 12:25:22 2022]
+rule cuteSV_call:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/BAM/pbmm2/v38/RT4/RT4.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/RT4/minSupport_5/RT4.MD.sorted.5.cuteSV.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/RT4/minSupport_5/Log/RT4.MD.sorted.5.cuteSV.log
+    jobid: 36
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/RT4/minSupport_5/Benchmark/RT4.MD.sorted.5.cuteSV.benchmark
+    wildcards: wcRefVersion=v38, wcAligner=pbmm2, wcSampleID=RT4, wcMinSupportCuteSV=5
+    threads: 12
+
+Submitted job 36 with external jobid 'Your job 3124658 ("snakejob.cuteSV_call.36.sh") has been submitted'.
+
+[Tue Feb 22 12:25:22 2022]
+rule cuteSV_call:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/BAM/ngmlr/v38/HT1376/HT1376.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/HT1376/minSupport_5/HT1376.MD.sorted.5.cuteSV.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/HT1376/minSupport_5/Log/HT1376.MD.sorted.5.cuteSV.log
+    jobid: 26
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/HT1376/minSupport_5/Benchmark/HT1376.MD.sorted.5.cuteSV.benchmark
+    wildcards: wcRefVersion=v38, wcAligner=ngmlr, wcSampleID=HT1376, wcMinSupportCuteSV=5
+    threads: 12
+
+Submitted job 26 with external jobid 'Your job 3124659 ("snakejob.cuteSV_call.26.sh") has been submitted'.
+[Tue Feb 22 12:34:42 2022]
+Finished job 31.
+1 of 17 steps (6%) done
+[Tue Feb 22 12:34:42 2022]
+Finished job 36.
+2 of 17 steps (12%) done
+[Tue Feb 22 12:36:31 2022]
+Finished job 33.
+3 of 17 steps (18%) done
+[Tue Feb 22 12:38:21 2022]
+Finished job 29.
+4 of 17 steps (24%) done
+[Tue Feb 22 12:38:21 2022]
+Finished job 25.
+5 of 17 steps (29%) done
+[Tue Feb 22 12:38:32 2022]
+Finished job 30.
+6 of 17 steps (35%) done
+[Tue Feb 22 12:38:43 2022]
+Finished job 26.
+7 of 17 steps (41%) done
+[Tue Feb 22 12:38:54 2022]
+Finished job 27.
+8 of 17 steps (47%) done
+[Tue Feb 22 12:39:35 2022]
+Finished job 37.
+9 of 17 steps (53%) done
+[Tue Feb 22 12:42:25 2022]
+Finished job 28.
+10 of 17 steps (59%) done
+[Tue Feb 22 12:42:25 2022]
+Finished job 35.
+11 of 17 steps (65%) done
+[Tue Feb 22 12:42:25 2022]
+Finished job 38.
+12 of 17 steps (71%) done
+[Tue Feb 22 12:43:05 2022]
+Finished job 32.
+13 of 17 steps (76%) done
+[Tue Feb 22 12:43:05 2022]
+Finished job 40.
+14 of 17 steps (82%) done
+[Tue Feb 22 12:43:25 2022]
+Finished job 39.
+15 of 17 steps (88%) done
+[Tue Feb 22 12:48:16 2022]
+Finished job 34.
+16 of 17 steps (94%) done
+
+[Tue Feb 22 12:48:16 2022]
+localrule all:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/BAM/ngmlr/v38/HT1376/HT1376.MD.sorted.bam.bai, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/BAM/ngmlr/v38/RT4/RT4.MD.sorted.bam.bai, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/BAM/ngmlr/v38/SCaBER/SCaBER.MD.sorted.bam.bai, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/BAM/ngmlr/v38/T24/T24.MD.sorted.bam.bai, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/BAM/pbmm2/v38/HT1376/HT1376.MD.sorted.bam.bai, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/BAM/pbmm2/v38/RT4/RT4.MD.sorted.bam.bai, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/BAM/pbmm2/v38/SCaBER/SCaBER.MD.sorted.bam.bai, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/BAM/pbmm2/v38/T24/T24.MD.sorted.bam.bai, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/sniffles/ngmlr/HT1376/minSupport_10/HT1376.MD.sorted.10.sniffles.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/sniffles/ngmlr/HT1376/minSupport_5/HT1376.MD.sorted.5.sniffles.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/sniffles/ngmlr/RT4/minSupport_10/RT4.MD.sorted.10.sniffles.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/sniffles/ngmlr/RT4/minSupport_5/RT4.MD.sorted.5.sniffles.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/sniffles/ngmlr/SCaBER/minSupport_10/SCaBER.MD.sorted.10.sniffles.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/sniffles/ngmlr/SCaBER/minSupport_5/SCaBER.MD.sorted.5.sniffles.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/sniffles/ngmlr/T24/minSupport_10/T24.MD.sorted.10.sniffles.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/sniffles/ngmlr/T24/minSupport_5/T24.MD.sorted.5.sniffles.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/sniffles/pbmm2/HT1376/minSupport_10/HT1376.MD.sorted.10.sniffles.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/sniffles/pbmm2/HT1376/minSupport_5/HT1376.MD.sorted.5.sniffles.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/sniffles/pbmm2/RT4/minSupport_10/RT4.MD.sorted.10.sniffles.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/sniffles/pbmm2/RT4/minSupport_5/RT4.MD.sorted.5.sniffles.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/sniffles/pbmm2/SCaBER/minSupport_10/SCaBER.MD.sorted.10.sniffles.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/sniffles/pbmm2/SCaBER/minSupport_5/SCaBER.MD.sorted.5.sniffles.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/sniffles/pbmm2/T24/minSupport_10/T24.MD.sorted.10.sniffles.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/sniffles/pbmm2/T24/minSupport_5/T24.MD.sorted.5.sniffles.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/HT1376/minSupport_10/HT1376.MD.sorted.10.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/HT1376/minSupport_5/HT1376.MD.sorted.5.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/RT4/minSupport_10/RT4.MD.sorted.10.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/RT4/minSupport_5/RT4.MD.sorted.5.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/SCaBER/minSupport_10/SCaBER.MD.sorted.10.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/SCaBER/minSupport_5/SCaBER.MD.sorted.5.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/T24/minSupport_10/T24.MD.sorted.10.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/ngmlr/T24/minSupport_5/T24.MD.sorted.5.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/HT1376/minSupport_10/HT1376.MD.sorted.10.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/HT1376/minSupport_5/HT1376.MD.sorted.5.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/RT4/minSupport_10/RT4.MD.sorted.10.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/RT4/minSupport_5/RT4.MD.sorted.5.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/SCaBER/minSupport_10/SCaBER.MD.sorted.10.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/SCaBER/minSupport_5/SCaBER.MD.sorted.5.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/T24/minSupport_10/T24.MD.sorted.10.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/cuteSV/pbmm2/T24/minSupport_5/T24.MD.sorted.5.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/pbsv/ngmlr/HT1376/minReads_1/HT1376.MD.sorted.1.pbsv.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/pbsv/ngmlr/HT1376/minReads_5/HT1376.MD.sorted.5.pbsv.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/pbsv/ngmlr/RT4/minReads_1/RT4.MD.sorted.1.pbsv.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/pbsv/ngmlr/RT4/minReads_5/RT4.MD.sorted.5.pbsv.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/pbsv/ngmlr/SCaBER/minReads_1/SCaBER.MD.sorted.1.pbsv.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/pbsv/ngmlr/SCaBER/minReads_5/SCaBER.MD.sorted.5.pbsv.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/pbsv/ngmlr/T24/minReads_1/T24.MD.sorted.1.pbsv.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/pbsv/ngmlr/T24/minReads_5/T24.MD.sorted.5.pbsv.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/pbsv/pbmm2/HT1376/minReads_1/HT1376.MD.sorted.1.pbsv.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/pbsv/pbmm2/HT1376/minReads_5/HT1376.MD.sorted.5.pbsv.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/pbsv/pbmm2/RT4/minReads_1/RT4.MD.sorted.1.pbsv.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/pbsv/pbmm2/RT4/minReads_5/RT4.MD.sorted.5.pbsv.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/pbsv/pbmm2/SCaBER/minReads_1/SCaBER.MD.sorted.1.pbsv.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/pbsv/pbmm2/SCaBER/minReads_5/SCaBER.MD.sorted.5.pbsv.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/pbsv/pbmm2/T24/minReads_1/T24.MD.sorted.1.pbsv.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/SVCallset/v38/pbsv/pbmm2/T24/minReads_5/T24.MD.sorted.5.pbsv.vcf
+    jobid: 0
+
+[Tue Feb 22 12:48:16 2022]
+Finished job 0.
+17 of 17 steps (100%) done
+Complete log: /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/MilaTesting/.snakemake/log/2022-02-22T122516.568282.snakemake.log

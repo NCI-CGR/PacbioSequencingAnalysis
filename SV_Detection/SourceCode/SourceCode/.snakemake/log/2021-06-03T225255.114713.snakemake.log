@@ -1,0 +1,3 @@
+IndexError in line 21 of /home/lixin/Documents/Prototype/PythonProject/PacbioSV/smCallSV.snake:
+tuple index out of range
+  File "/home/lixin/Documents/Prototype/PythonProject/PacbioSV/smCallSV.snake", line 21, in <module>

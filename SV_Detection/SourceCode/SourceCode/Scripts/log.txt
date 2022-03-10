@@ -1,0 +1,459 @@
+iSVNum    : 74012
+dicTypeNum: {'DEL': 37412, 'INS': 36600}
+
+========== Ground True Set Info ===========
+iSVNum    : 249257
+dicTypeNum: {'BND': 1667, 'DEL': 15096, 'INS': 228367, 'DUP': 3611, 'INV': 516}
+
+------- Sample Info --------
+strRefVersion: v37
+strSVCaller  : cuteSV
+strAligner   : pbmm2
+strReadsType : StdReads
+strThreashold: minSupport_5
+
+>>>>>> Cmp Metrics Info <<<<<<<
+dicTypeNum  : {'BND': 1667, 'DEL': 15096, 'INS': 228367, 'DUP': 3611, 'INV': 516}
+dicHitSVNum : {'INS': 2475, 'DEL': 6971}
+iTrueNum    : 9446
+iFalseNum   : 239811
+fAccuracy   : 0.0379
+fSensitivity: 0.1276
+fF1         : 0.0000
+========== Ground True Set Info ===========
+iSVNum    : 103755
+dicTypeNum: {'BND': 695, 'DEL': 14278, 'INS': 86978, 'DUP': 1489, 'INV': 315}
+
+------- Sample Info --------
+strRefVersion: v37
+strSVCaller  : cuteSV
+strAligner   : pbmm2
+strReadsType : StdReads
+strThreashold: minSupport_10
+
+>>>>>> Cmp Metrics Info <<<<<<<
+dicTypeNum  : {'BND': 695, 'DEL': 14278, 'INS': 86978, 'DUP': 1489, 'INV': 315}
+dicHitSVNum : {'INS': 2374, 'DEL': 6776}
+iTrueNum    : 9150
+iFalseNum   : 94605
+fAccuracy   : 0.0882
+fSensitivity: 0.1236
+fF1         : 0.0000
+========== Ground True Set Info ===========
+iSVNum    : 58352
+dicTypeNum: {'INS': 40949, 'DEL': 13001, 'BND': 1531, 'DUP': 2431, 'INV': 440}
+
+------- Sample Info --------
+strRefVersion: v37
+strSVCaller  : cuteSV
+strAligner   : pbmm2
+strReadsType : UltraLowReads
+strThreashold: minSupport_5
+
+>>>>>> Cmp Metrics Info <<<<<<<
+dicTypeNum  : {'INS': 40949, 'DEL': 13001, 'BND': 1531, 'DUP': 2431, 'INV': 440}
+dicHitSVNum : {'DEL': 6805, 'INS': 4253}
+iTrueNum    : 11058
+iFalseNum   : 47294
+fAccuracy   : 0.1895
+fSensitivity: 0.1494
+fF1         : 0.0000
+========== Ground True Set Info ===========
+iSVNum    : 24839
+dicTypeNum: {'INS': 12706, 'DEL': 10184, 'BND': 598, 'DUP': 1108, 'INV': 243}
+
+------- Sample Info --------
+strRefVersion: v37
+strSVCaller  : cuteSV
+strAligner   : pbmm2
+strReadsType : UltraLowReads
+strThreashold: minSupport_10
+
+>>>>>> Cmp Metrics Info <<<<<<<
+dicTypeNum  : {'INS': 12706, 'DEL': 10184, 'BND': 598, 'DUP': 1108, 'INV': 243}
+dicHitSVNum : {'DEL': 5361, 'INS': 3051}
+iTrueNum    : 8412
+iFalseNum   : 16427
+fAccuracy   : 0.3387
+fSensitivity: 0.1137
+fF1         : 0.0000
+========== Ground True Set Info ===========
+iSVNum    : 228936
+dicTypeNum: {'BND': 1000, 'INS': 205104, 'DUP': 8302, 'DEL': 14044, 'INV': 486}
+
+------- Sample Info --------
+strRefVersion: v37
+strSVCaller  : cuteSV
+strAligner   : ngmlr
+strReadsType : StdReads
+strThreashold: minSupport_5
+
+>>>>>> Cmp Metrics Info <<<<<<<
+dicTypeNum  : {'BND': 1000, 'INS': 205104, 'DUP': 8302, 'DEL': 14044, 'INV': 486}
+dicHitSVNum : {'INS': 1809, 'DEL': 3773}
+iTrueNum    : 5582
+iFalseNum   : 223354
+fAccuracy   : 0.0244
+fSensitivity: 0.0754
+fF1         : 0.0000
+========== Ground True Set Info ===========
+iSVNum    : 89503
+dicTypeNum: {'BND': 531, 'DUP': 4463, 'INS': 70792, 'DEL': 13448, 'INV': 269}
+
+------- Sample Info --------
+strRefVersion: v37
+strSVCaller  : cuteSV
+strAligner   : ngmlr
+strReadsType : StdReads
+strThreashold: minSupport_10
+
+>>>>>> Cmp Metrics Info <<<<<<<
+dicTypeNum  : {'BND': 531, 'DUP': 4463, 'INS': 70792, 'DEL': 13448, 'INV': 269}
+dicHitSVNum : {'DEL': 3652, 'INS': 1713}
+iTrueNum    : 5365
+iFalseNum   : 84138
+fAccuracy   : 0.0599
+fSensitivity: 0.0725
+fF1         : 0.0000
+========== Ground True Set Info ===========
+iSVNum    : 54942
+dicTypeNum: {'BND': 1245, 'INS': 32438, 'DUP': 8078, 'DEL': 12677, 'INV': 504}
+
+------- Sample Info --------
+strRefVersion: v37
+strSVCaller  : cuteSV
+strAligner   : ngmlr
+strReadsType : UltraLowReads
+strThreashold: minSupport_5
+
+>>>>>> Cmp Metrics Info <<<<<<<
+dicTypeNum  : {'BND': 1245, 'INS': 32438, 'DUP': 8078, 'DEL': 12677, 'INV': 504}
+dicHitSVNum : {'INS': 2304, 'DEL': 3322}
+iTrueNum    : 5626
+iFalseNum   : 49316
+fAccuracy   : 0.1024
+fSensitivity: 0.0760
+fF1         : 0.0000
+========== Ground True Set Info ===========
+iSVNum    : 25358
+dicTypeNum: {'BND': 620, 'INS': 10503, 'DEL': 9854, 'DUP': 4142, 'INV': 239}
+
+------- Sample Info --------
+strRefVersion: v37
+strSVCaller  : cuteSV
+strAligner   : ngmlr
+strReadsType : UltraLowReads
+strThreashold: minSupport_10
+
+>>>>>> Cmp Metrics Info <<<<<<<
+dicTypeNum  : {'BND': 620, 'INS': 10503, 'DEL': 9854, 'DUP': 4142, 'INV': 239}
+dicHitSVNum : {'INS': 1725, 'DEL': 2648}
+iTrueNum    : 4373
+iFalseNum   : 20985
+fAccuracy   : 0.1725
+fSensitivity: 0.0591
+fF1         : 0.0000
+========== Ground True Set Info ===========
+iSVNum    : 36437
+dicTypeNum: {'INV': 863, 'INS': 18016, 'DEL': 13223, 'DUP': 1207, 'DEL/INV': 244, 'INVDUP': 6, 'INV/INVDUP': 1, 'DUP/INS': 4, 'BND': 2873}
+
+------- Sample Info --------
+strRefVersion: v37
+strSVCaller  : sniffles
+strAligner   : pbmm2
+strReadsType : StdReads
+strThreashold: minSupport_5
+
+>>>>>> Cmp Metrics Info <<<<<<<
+dicTypeNum  : {'INV': 863, 'INS': 18016, 'DEL': 13223, 'DUP': 1207, 'DEL/INV': 244, 'INVDUP': 6, 'INV/INVDUP': 1, 'DUP/INS': 4, 'BND': 2873}
+dicHitSVNum : {'INS': 10899, 'DEL': 7912}
+iTrueNum    : 18811
+iFalseNum   : 17626
+fAccuracy   : 0.5163
+fSensitivity: 0.2542
+fF1         : 0.0000
+========== Ground True Set Info ===========
+iSVNum    : 30504
+dicTypeNum: {'INV': 421, 'INS': 16608, 'DEL': 11276, 'DUP': 723, 'DEL/INV': 99, 'INVDUP': 3, 'BND': 1374}
+
+------- Sample Info --------
+strRefVersion: v37
+strSVCaller  : sniffles
+strAligner   : pbmm2
+strReadsType : StdReads
+strThreashold: minSupport_10
+
+>>>>>> Cmp Metrics Info <<<<<<<
+dicTypeNum  : {'INV': 421, 'INS': 16608, 'DEL': 11276, 'DUP': 723, 'DEL/INV': 99, 'INVDUP': 3, 'BND': 1374}
+dicHitSVNum : {'INS': 10408, 'DEL': 7052}
+iTrueNum    : 17460
+iFalseNum   : 13044
+fAccuracy   : 0.5724
+fSensitivity: 0.2359
+fF1         : 0.0000
+========== Ground True Set Info ===========
+iSVNum    : 25920
+dicTypeNum: {'INS': 11673, 'DEL': 10118, 'DEL/INV': 414, 'DUP': 785, 'INV': 838, 'DUP/INS': 5, 'INVDUP': 2, 'BND': 2085}
+
+------- Sample Info --------
+strRefVersion: v37
+strSVCaller  : sniffles
+strAligner   : pbmm2
+strReadsType : UltraLowReads
+strThreashold: minSupport_5
+
+>>>>>> Cmp Metrics Info <<<<<<<
+dicTypeNum  : {'INS': 11673, 'DEL': 10118, 'DEL/INV': 414, 'DUP': 785, 'INV': 838, 'DUP/INS': 5, 'INVDUP': 2, 'BND': 2085}
+dicHitSVNum : {'INS': 7251, 'DEL': 5860}
+iTrueNum    : 13111
+iFalseNum   : 12809
+fAccuracy   : 0.5058
+fSensitivity: 0.1771
+fF1         : 0.0000
+========== Ground True Set Info ===========
+iSVNum    : 17485
+dicTypeNum: {'INS': 8614, 'DEL': 7031, 'DUP': 435, 'INV': 461, 'DEL/INV': 171, 'DUP/INS': 3, 'INVDUP': 1, 'BND': 769}
+
+------- Sample Info --------
+strRefVersion: v37
+strSVCaller  : sniffles
+strAligner   : pbmm2
+strReadsType : UltraLowReads
+strThreashold: minSupport_10
+
+>>>>>> Cmp Metrics Info <<<<<<<
+dicTypeNum  : {'INS': 8614, 'DEL': 7031, 'DUP': 435, 'INV': 461, 'DEL/INV': 171, 'DUP/INS': 3, 'INVDUP': 1, 'BND': 769}
+dicHitSVNum : {'INS': 5357, 'DEL': 4070}
+iTrueNum    : 9427
+iFalseNum   : 8058
+fAccuracy   : 0.5391
+fSensitivity: 0.1274
+fF1         : 0.0000
+========== Ground True Set Info ===========
+iSVNum    : 32823
+dicTypeNum: {'DUP': 3211, 'DEL': 12842, 'INS': 14725, 'DUP/INS': 51, 'DEL/INV': 59, 'INV': 504, 'INVDUP': 22, 'BND': 1409}
+
+------- Sample Info --------
+strRefVersion: v37
+strSVCaller  : sniffles
+strAligner   : ngmlr
+strReadsType : StdReads
+strThreashold: minSupport_5
+
+>>>>>> Cmp Metrics Info <<<<<<<
+dicTypeNum  : {'DUP': 3211, 'DEL': 12842, 'INS': 14725, 'DUP/INS': 51, 'DEL/INV': 59, 'INV': 504, 'INVDUP': 22, 'BND': 1409}
+dicHitSVNum : {'INS': 4007, 'DEL': 3228}
+iTrueNum    : 7235
+iFalseNum   : 25588
+fAccuracy   : 0.2204
+fSensitivity: 0.0978
+fF1         : 0.0000
+========== Ground True Set Info ===========
+iSVNum    : 28163
+dicTypeNum: {'DUP': 2339, 'DEL': 11461, 'INS': 13254, 'DEL/INV': 24, 'INV': 282, 'DUP/INS': 34, 'INVDUP': 6, 'BND': 763}
+
+------- Sample Info --------
+strRefVersion: v37
+strSVCaller  : sniffles
+strAligner   : ngmlr
+strReadsType : StdReads
+strThreashold: minSupport_10
+
+>>>>>> Cmp Metrics Info <<<<<<<
+dicTypeNum  : {'DUP': 2339, 'DEL': 11461, 'INS': 13254, 'DEL/INV': 24, 'INV': 282, 'DUP/INS': 34, 'INVDUP': 6, 'BND': 763}
+dicHitSVNum : {'INS': 3707, 'DEL': 2993}
+iTrueNum    : 6700
+iFalseNum   : 21463
+fAccuracy   : 0.2379
+fSensitivity: 0.0905
+fF1         : 0.0000
+========== Ground True Set Info ===========
+iSVNum    : 25234
+dicTypeNum: {'DUP': 2535, 'DEL': 10698, 'INS': 9954, 'DUP/INS': 47, 'INV': 463, 'DEL/INV': 141, 'INVDUP': 16, 'INV/INVDUP': 1, 'BND': 1379}
+
+------- Sample Info --------
+strRefVersion: v37
+strSVCaller  : sniffles
+strAligner   : ngmlr
+strReadsType : UltraLowReads
+strThreashold: minSupport_5
+
+>>>>>> Cmp Metrics Info <<<<<<<
+dicTypeNum  : {'DUP': 2535, 'DEL': 10698, 'INS': 9954, 'DUP/INS': 47, 'INV': 463, 'DEL/INV': 141, 'INVDUP': 16, 'INV/INVDUP': 1, 'BND': 1379}
+dicHitSVNum : {'INS': 2818, 'DEL': 2395}
+iTrueNum    : 5213
+iFalseNum   : 20021
+fAccuracy   : 0.2066
+fSensitivity: 0.0704
+fF1         : 0.0000
+========== Ground True Set Info ===========
+iSVNum    : 17462
+dicTypeNum: {'DUP': 1656, 'DEL': 7484, 'INS': 7261, 'DUP/INS': 25, 'INV': 247, 'DEL/INV': 45, 'INVDUP': 8, 'INV/INVDUP': 1, 'BND': 735}
+
+------- Sample Info --------
+strRefVersion: v37
+strSVCaller  : sniffles
+strAligner   : ngmlr
+strReadsType : UltraLowReads
+strThreashold: minSupport_10
+
+>>>>>> Cmp Metrics Info <<<<<<<
+dicTypeNum  : {'DUP': 1656, 'DEL': 7484, 'INS': 7261, 'DUP/INS': 25, 'INV': 247, 'DEL/INV': 45, 'INVDUP': 8, 'INV/INVDUP': 1, 'BND': 735}
+dicHitSVNum : {'INS': 2138, 'DEL': 1796}
+iTrueNum    : 3934
+iFalseNum   : 13528
+fAccuracy   : 0.2253
+fSensitivity: 0.0532
+fF1         : 0.0000
+========== Ground True Set Info ===========
+iSVNum    : 53302
+dicTypeNum: {'DEL': 23334, 'INS': 19264, 'DUP': 10446, 'BND': 124, 'cnv': 17, 'INV': 117}
+
+------- Sample Info --------
+strRefVersion: v37
+strSVCaller  : pbsv
+strAligner   : pbmm2
+strReadsType : StdReads
+strThreashold: minReads_1
+
+>>>>>> Cmp Metrics Info <<<<<<<
+dicTypeNum  : {'DEL': 23334, 'INS': 19264, 'DUP': 10446, 'BND': 124, 'cnv': 17, 'INV': 117}
+dicHitSVNum : {'DEL': 17885, 'INS': 12270}
+iTrueNum    : 30155
+iFalseNum   : 23147
+fAccuracy   : 0.5657
+fSensitivity: 0.4074
+fF1         : 0.0000
+========== Ground True Set Info ===========
+iSVNum    : 53302
+dicTypeNum: {'DEL': 23334, 'INS': 19264, 'DUP': 10446, 'BND': 124, 'cnv': 17, 'INV': 117}
+
+------- Sample Info --------
+strRefVersion: v37
+strSVCaller  : pbsv
+strAligner   : pbmm2
+strReadsType : StdReads
+strThreashold: minReads_5
+
+>>>>>> Cmp Metrics Info <<<<<<<
+dicTypeNum  : {'DEL': 23334, 'INS': 19264, 'DUP': 10446, 'BND': 124, 'cnv': 17, 'INV': 117}
+dicHitSVNum : {'DEL': 17885, 'INS': 12270}
+iTrueNum    : 30155
+iFalseNum   : 23147
+fAccuracy   : 0.5657
+fSensitivity: 0.4074
+fF1         : 0.0000
+========== Ground True Set Info ===========
+iSVNum    : 45572
+dicTypeNum: {'DUP': 8761, 'INS': 14994, 'DEL': 21574, 'BND': 156, 'cnv': 12, 'INV': 75}
+
+------- Sample Info --------
+strRefVersion: v37
+strSVCaller  : pbsv
+strAligner   : pbmm2
+strReadsType : UltraLowReads
+strThreashold: minReads_1
+
+>>>>>> Cmp Metrics Info <<<<<<<
+dicTypeNum  : {'DUP': 8761, 'INS': 14994, 'DEL': 21574, 'BND': 156, 'cnv': 12, 'INV': 75}
+dicHitSVNum : {'INS': 10169, 'DEL': 16311}
+iTrueNum    : 26480
+iFalseNum   : 19092
+fAccuracy   : 0.5811
+fSensitivity: 0.3578
+fF1         : 0.0000
+========== Ground True Set Info ===========
+iSVNum    : 45572
+dicTypeNum: {'DUP': 8761, 'INS': 14994, 'DEL': 21574, 'BND': 156, 'cnv': 12, 'INV': 75}
+
+------- Sample Info --------
+strRefVersion: v37
+strSVCaller  : pbsv
+strAligner   : pbmm2
+strReadsType : UltraLowReads
+strThreashold: minReads_5
+
+>>>>>> Cmp Metrics Info <<<<<<<
+dicTypeNum  : {'DUP': 8761, 'INS': 14994, 'DEL': 21574, 'BND': 156, 'cnv': 12, 'INV': 75}
+dicHitSVNum : {'INS': 10169, 'DEL': 16311}
+iTrueNum    : 26480
+iFalseNum   : 19092
+fAccuracy   : 0.5811
+fSensitivity: 0.3578
+fF1         : 0.0000
+========== Ground True Set Info ===========
+iSVNum    : 49813
+dicTypeNum: {'INS': 17466, 'DEL': 22208, 'DUP': 9587, 'BND': 366, 'INV': 141, 'cnv': 45}
+
+------- Sample Info --------
+strRefVersion: v37
+strSVCaller  : pbsv
+strAligner   : ngmlr
+strReadsType : StdReads
+strThreashold: minReads_1
+
+>>>>>> Cmp Metrics Info <<<<<<<
+dicTypeNum  : {'INS': 17466, 'DEL': 22208, 'DUP': 9587, 'BND': 366, 'INV': 141, 'cnv': 45}
+dicHitSVNum : {'INS': 11681, 'DEL': 17422}
+iTrueNum    : 29103
+iFalseNum   : 20710
+fAccuracy   : 0.5842
+fSensitivity: 0.3932
+fF1         : 0.0000
+========== Ground True Set Info ===========
+iSVNum    : 49813
+dicTypeNum: {'INS': 17466, 'DEL': 22208, 'DUP': 9587, 'BND': 366, 'INV': 141, 'cnv': 45}
+
+------- Sample Info --------
+strRefVersion: v37
+strSVCaller  : pbsv
+strAligner   : ngmlr
+strReadsType : StdReads
+strThreashold: minReads_5
+
+>>>>>> Cmp Metrics Info <<<<<<<
+dicTypeNum  : {'INS': 17466, 'DEL': 22208, 'DUP': 9587, 'BND': 366, 'INV': 141, 'cnv': 45}
+dicHitSVNum : {'INS': 11681, 'DEL': 17422}
+iTrueNum    : 29103
+iFalseNum   : 20710
+fAccuracy   : 0.5842
+fSensitivity: 0.3932
+fF1         : 0.0000
+========== Ground True Set Info ===========
+iSVNum    : 43592
+dicTypeNum: {'BND': 560, 'INS': 13965, 'DEL': 20819, 'DUP': 8097, 'INV': 105, 'cnv': 46}
+
+------- Sample Info --------
+strRefVersion: v37
+strSVCaller  : pbsv
+strAligner   : ngmlr
+strReadsType : UltraLowReads
+strThreashold: minReads_1
+
+>>>>>> Cmp Metrics Info <<<<<<<
+dicTypeNum  : {'BND': 560, 'INS': 13965, 'DEL': 20819, 'DUP': 8097, 'INV': 105, 'cnv': 46}
+dicHitSVNum : {'INS': 9840, 'DEL': 15880}
+iTrueNum    : 25720
+iFalseNum   : 17872
+fAccuracy   : 0.5900
+fSensitivity: 0.3475
+fF1         : 0.0000
+========== Ground True Set Info ===========
+iSVNum    : 43592
+dicTypeNum: {'BND': 560, 'INS': 13965, 'DEL': 20819, 'DUP': 8097, 'INV': 105, 'cnv': 46}
+
+------- Sample Info --------
+strRefVersion: v37
+strSVCaller  : pbsv
+strAligner   : ngmlr
+strReadsType : UltraLowReads
+strThreashold: minReads_5
+
+>>>>>> Cmp Metrics Info <<<<<<<
+dicTypeNum  : {'BND': 560, 'INS': 13965, 'DEL': 20819, 'DUP': 8097, 'INV': 105, 'cnv': 46}
+dicHitSVNum : {'INS': 9840, 'DEL': 15880}
+iTrueNum    : 25720
+iFalseNum   : 17872
+fAccuracy   : 0.5900
+fSensitivity: 0.3475
+fF1         : 0.0000

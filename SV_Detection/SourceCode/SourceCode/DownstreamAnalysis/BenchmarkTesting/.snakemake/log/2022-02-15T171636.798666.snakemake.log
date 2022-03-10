@@ -1,0 +1,19 @@
+Building DAG of jobs...
+MissingInputException in line 37 of /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/BenchmarkTesting/BenchmarkTest.smk:
+Missing input files for rule all:
+/CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/StdReads/minReads_1/StdReads.HG002.MD.sorted.1.pbsv.vcf
+/CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf
+/CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf
+/CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf
+/CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/UltraLowReads/minReads_5/UltraLowReads.HG002.MD.sorted.5.pbsv.vcf
+/CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.sniffles.vcf
+/CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf
+/CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/StdReads/minReads_5/StdReads.HG002.MD.sorted.5.pbsv.vcf
+/CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/UltraLowReads/minReads_1/UltraLowReads.HG002.MD.sorted.1.pbsv.vcf
+/CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.sniffles.vcf
+/CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf
+/CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf
+/CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.sniffles.vcf
+/CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf
+/CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.sniffles.vcf
+/CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf

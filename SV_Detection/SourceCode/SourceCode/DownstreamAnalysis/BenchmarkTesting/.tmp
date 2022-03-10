@@ -1,0 +1,7 @@
++ eval
++ mv .tmp ''
+mv: cannot move `.tmp' to `': No such file or directory
+++ report_error
+++ echo_err 'ERROR!'
+++ echo 'ERROR!'
+ERROR!

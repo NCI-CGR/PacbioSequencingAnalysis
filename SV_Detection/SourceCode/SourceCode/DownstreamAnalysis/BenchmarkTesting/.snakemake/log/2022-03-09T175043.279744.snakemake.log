@@ -1,0 +1,1135 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 50
+Job stats:
+job               count    min threads    max threads
+--------------  -------  -------------  -------------
+all                   1              1              1
+cuteSV_truvari        8              1              1
+total                 9              1              1
+
+Select jobs to execute...
+
+[Wed Mar  9 17:51:00 2022]
+rule cuteSV_truvari:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Output_Benchmark_Cmp/summary.txt
+    jobid: 73
+    wildcards: wcRefVersion=v37, wcAligner=pbmm2, wcReadsType=StdReads, wcMinSupportCuteSV=10
+    resources: tmpdir=/tmp/3189887.1.seq-calling.q
+
+
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Bgzip/StdReads.HG002.MD.sorted.10.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Bgzip/StdReads.HG002.MD.sorted.10.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Bgzip/StdReads.HG002.MD.sorted.10.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Output_Benchmark_Cmp) >>  2>&1
+        
+Submitted job 73 with external jobid 'Your job 3189888 ("snakejob.cuteSV_truvari.73.sh") has been submitted'.
+
+[Wed Mar  9 17:51:00 2022]
+rule cuteSV_truvari:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Output_Benchmark_Cmp/summary.txt
+    jobid: 75
+    wildcards: wcRefVersion=v37, wcAligner=pbmm2, wcReadsType=StdReads, wcMinSupportCuteSV=5
+    resources: tmpdir=/tmp/3189887.1.seq-calling.q
+
+
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Bgzip/StdReads.HG002.MD.sorted.5.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Bgzip/StdReads.HG002.MD.sorted.5.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Bgzip/StdReads.HG002.MD.sorted.5.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Output_Benchmark_Cmp) >>  2>&1
+        
+Submitted job 75 with external jobid 'Your job 3189889 ("snakejob.cuteSV_truvari.75.sh") has been submitted'.
+
+[Wed Mar  9 17:51:01 2022]
+rule cuteSV_truvari:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Output_Benchmark_Cmp/summary.txt
+    jobid: 67
+    wildcards: wcRefVersion=v37, wcAligner=ngmlr, wcReadsType=StdReads, wcMinSupportCuteSV=5
+    resources: tmpdir=/tmp/3189887.1.seq-calling.q
+
+
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Bgzip/StdReads.HG002.MD.sorted.5.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Bgzip/StdReads.HG002.MD.sorted.5.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Bgzip/StdReads.HG002.MD.sorted.5.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Output_Benchmark_Cmp) >>  2>&1
+        
+Submitted job 67 with external jobid 'Your job 3189890 ("snakejob.cuteSV_truvari.67.sh") has been submitted'.
+
+[Wed Mar  9 17:51:01 2022]
+rule cuteSV_truvari:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Output_Benchmark_Cmp/summary.txt
+    jobid: 69
+    wildcards: wcRefVersion=v37, wcAligner=ngmlr, wcReadsType=UltraLowReads, wcMinSupportCuteSV=10
+    resources: tmpdir=/tmp/3189887.1.seq-calling.q
+
+
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Bgzip/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Bgzip/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Bgzip/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Output_Benchmark_Cmp) >>  2>&1
+        
+Submitted job 69 with external jobid 'Your job 3189891 ("snakejob.cuteSV_truvari.69.sh") has been submitted'.
+
+[Wed Mar  9 17:51:01 2022]
+rule cuteSV_truvari:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Output_Benchmark_Cmp/summary.txt
+    jobid: 71
+    wildcards: wcRefVersion=v37, wcAligner=ngmlr, wcReadsType=UltraLowReads, wcMinSupportCuteSV=5
+    resources: tmpdir=/tmp/3189887.1.seq-calling.q
+
+
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Bgzip/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Bgzip/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Bgzip/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Output_Benchmark_Cmp) >>  2>&1
+        
+Submitted job 71 with external jobid 'Your job 3189892 ("snakejob.cuteSV_truvari.71.sh") has been submitted'.
+
+[Wed Mar  9 17:51:01 2022]
+rule cuteSV_truvari:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Output_Benchmark_Cmp/summary.txt
+    jobid: 77
+    wildcards: wcRefVersion=v37, wcAligner=pbmm2, wcReadsType=UltraLowReads, wcMinSupportCuteSV=10
+    resources: tmpdir=/tmp/3189887.1.seq-calling.q
+
+
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Bgzip/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Bgzip/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Bgzip/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Output_Benchmark_Cmp) >>  2>&1
+        
+Submitted job 77 with external jobid 'Your job 3189893 ("snakejob.cuteSV_truvari.77.sh") has been submitted'.
+
+[Wed Mar  9 17:51:01 2022]
+rule cuteSV_truvari:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Output_Benchmark_Cmp/summary.txt
+    jobid: 79
+    wildcards: wcRefVersion=v37, wcAligner=pbmm2, wcReadsType=UltraLowReads, wcMinSupportCuteSV=5
+    resources: tmpdir=/tmp/3189887.1.seq-calling.q
+
+
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Bgzip/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Bgzip/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Bgzip/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Output_Benchmark_Cmp) >>  2>&1
+        
+Submitted job 79 with external jobid 'Your job 3189894 ("snakejob.cuteSV_truvari.79.sh") has been submitted'.
+
+[Wed Mar  9 17:51:01 2022]
+rule cuteSV_truvari:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Output_Benchmark_Cmp/summary.txt
+    jobid: 65
+    wildcards: wcRefVersion=v37, wcAligner=ngmlr, wcReadsType=StdReads, wcMinSupportCuteSV=10
+    resources: tmpdir=/tmp/3189887.1.seq-calling.q
+
+
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Bgzip/StdReads.HG002.MD.sorted.10.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Bgzip/StdReads.HG002.MD.sorted.10.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Bgzip/StdReads.HG002.MD.sorted.10.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Output_Benchmark_Cmp) >>  2>&1
+        
+Submitted job 65 with external jobid 'Your job 3189895 ("snakejob.cuteSV_truvari.65.sh") has been submitted'.
+[Wed Mar  9 17:51:40 2022]
+Error in rule cuteSV_truvari:
+    jobid: 73
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Output_Benchmark_Cmp/summary.txt
+    shell:
+        
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Bgzip/StdReads.HG002.MD.sorted.10.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Bgzip/StdReads.HG002.MD.sorted.10.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Bgzip/StdReads.HG002.MD.sorted.10.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Output_Benchmark_Cmp) >>  2>&1
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3189888 ("snakejob.cuteSV_truvari.73.sh") has been submitted
+
+Error executing rule cuteSV_truvari on cluster (jobid: 73, external: Your job 3189888 ("snakejob.cuteSV_truvari.73.sh") has been submitted, jobscript: /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/BenchmarkTesting/.snakemake/tmp.vu04rgxz/snakejob.cuteSV_truvari.73.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Wed Mar  9 17:51:40 2022]
+Error in rule cuteSV_truvari:
+    jobid: 75
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Output_Benchmark_Cmp/summary.txt
+    shell:
+        
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Bgzip/StdReads.HG002.MD.sorted.5.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Bgzip/StdReads.HG002.MD.sorted.5.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Bgzip/StdReads.HG002.MD.sorted.5.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Output_Benchmark_Cmp) >>  2>&1
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3189889 ("snakejob.cuteSV_truvari.75.sh") has been submitted
+
+Error executing rule cuteSV_truvari on cluster (jobid: 75, external: Your job 3189889 ("snakejob.cuteSV_truvari.75.sh") has been submitted, jobscript: /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/BenchmarkTesting/.snakemake/tmp.vu04rgxz/snakejob.cuteSV_truvari.75.sh). For error details see the cluster log and the log files of the involved rule(s).
+Trying to restart job 73.
+Select jobs to execute...
+
+[Wed Mar  9 17:51:40 2022]
+rule cuteSV_truvari:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Output_Benchmark_Cmp/summary.txt
+    jobid: 73
+    wildcards: wcRefVersion=v37, wcAligner=pbmm2, wcReadsType=StdReads, wcMinSupportCuteSV=10
+    resources: tmpdir=/tmp/3189887.1.seq-calling.q
+
+
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Bgzip/StdReads.HG002.MD.sorted.10.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Bgzip/StdReads.HG002.MD.sorted.10.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Bgzip/StdReads.HG002.MD.sorted.10.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Output_Benchmark_Cmp) >>  2>&1
+        
+[Wed Mar  9 17:51:40 2022]
+Error in rule cuteSV_truvari:
+    jobid: 67
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Output_Benchmark_Cmp/summary.txt
+    shell:
+        
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Bgzip/StdReads.HG002.MD.sorted.5.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Bgzip/StdReads.HG002.MD.sorted.5.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Bgzip/StdReads.HG002.MD.sorted.5.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Output_Benchmark_Cmp) >>  2>&1
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3189890 ("snakejob.cuteSV_truvari.67.sh") has been submitted
+
+Error executing rule cuteSV_truvari on cluster (jobid: 67, external: Your job 3189890 ("snakejob.cuteSV_truvari.67.sh") has been submitted, jobscript: /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/BenchmarkTesting/.snakemake/tmp.vu04rgxz/snakejob.cuteSV_truvari.67.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Wed Mar  9 17:51:40 2022]
+Error in rule cuteSV_truvari:
+    jobid: 69
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Output_Benchmark_Cmp/summary.txt
+    shell:
+        
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Bgzip/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Bgzip/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Bgzip/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Output_Benchmark_Cmp) >>  2>&1
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3189891 ("snakejob.cuteSV_truvari.69.sh") has been submitted
+
+Error executing rule cuteSV_truvari on cluster (jobid: 69, external: Your job 3189891 ("snakejob.cuteSV_truvari.69.sh") has been submitted, jobscript: /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/BenchmarkTesting/.snakemake/tmp.vu04rgxz/snakejob.cuteSV_truvari.69.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Wed Mar  9 17:51:40 2022]
+Error in rule cuteSV_truvari:
+    jobid: 71
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Output_Benchmark_Cmp/summary.txt
+    shell:
+        
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Bgzip/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Bgzip/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Bgzip/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Output_Benchmark_Cmp) >>  2>&1
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3189892 ("snakejob.cuteSV_truvari.71.sh") has been submitted
+
+Error executing rule cuteSV_truvari on cluster (jobid: 71, external: Your job 3189892 ("snakejob.cuteSV_truvari.71.sh") has been submitted, jobscript: /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/BenchmarkTesting/.snakemake/tmp.vu04rgxz/snakejob.cuteSV_truvari.71.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Wed Mar  9 17:51:40 2022]
+Error in rule cuteSV_truvari:
+    jobid: 77
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Output_Benchmark_Cmp/summary.txt
+    shell:
+        
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Bgzip/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Bgzip/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Bgzip/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Output_Benchmark_Cmp) >>  2>&1
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3189893 ("snakejob.cuteSV_truvari.77.sh") has been submitted
+
+Error executing rule cuteSV_truvari on cluster (jobid: 77, external: Your job 3189893 ("snakejob.cuteSV_truvari.77.sh") has been submitted, jobscript: /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/BenchmarkTesting/.snakemake/tmp.vu04rgxz/snakejob.cuteSV_truvari.77.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Wed Mar  9 17:51:40 2022]
+Error in rule cuteSV_truvari:
+    jobid: 79
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Output_Benchmark_Cmp/summary.txt
+    shell:
+        
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Bgzip/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Bgzip/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Bgzip/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Output_Benchmark_Cmp) >>  2>&1
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3189894 ("snakejob.cuteSV_truvari.79.sh") has been submitted
+
+Error executing rule cuteSV_truvari on cluster (jobid: 79, external: Your job 3189894 ("snakejob.cuteSV_truvari.79.sh") has been submitted, jobscript: /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/BenchmarkTesting/.snakemake/tmp.vu04rgxz/snakejob.cuteSV_truvari.79.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Wed Mar  9 17:51:40 2022]
+Error in rule cuteSV_truvari:
+    jobid: 65
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Output_Benchmark_Cmp/summary.txt
+    shell:
+        
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Bgzip/StdReads.HG002.MD.sorted.10.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Bgzip/StdReads.HG002.MD.sorted.10.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Bgzip/StdReads.HG002.MD.sorted.10.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Output_Benchmark_Cmp) >>  2>&1
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3189895 ("snakejob.cuteSV_truvari.65.sh") has been submitted
+
+Error executing rule cuteSV_truvari on cluster (jobid: 65, external: Your job 3189895 ("snakejob.cuteSV_truvari.65.sh") has been submitted, jobscript: /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/BenchmarkTesting/.snakemake/tmp.vu04rgxz/snakejob.cuteSV_truvari.65.sh). For error details see the cluster log and the log files of the involved rule(s).
+Submitted job 73 with external jobid 'Your job 3189896 ("snakejob.cuteSV_truvari.73.sh") has been submitted'.
+Trying to restart job 75.
+Trying to restart job 67.
+Trying to restart job 69.
+Trying to restart job 71.
+Trying to restart job 77.
+Trying to restart job 79.
+Trying to restart job 65.
+Select jobs to execute...
+
+[Wed Mar  9 17:51:40 2022]
+rule cuteSV_truvari:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Output_Benchmark_Cmp/summary.txt
+    jobid: 77
+    wildcards: wcRefVersion=v37, wcAligner=pbmm2, wcReadsType=UltraLowReads, wcMinSupportCuteSV=10
+    resources: tmpdir=/tmp/3189887.1.seq-calling.q
+
+
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Bgzip/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Bgzip/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Bgzip/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Output_Benchmark_Cmp) >>  2>&1
+        
+Submitted job 77 with external jobid 'Your job 3189897 ("snakejob.cuteSV_truvari.77.sh") has been submitted'.
+
+[Wed Mar  9 17:51:41 2022]
+rule cuteSV_truvari:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Output_Benchmark_Cmp/summary.txt
+    jobid: 75
+    wildcards: wcRefVersion=v37, wcAligner=pbmm2, wcReadsType=StdReads, wcMinSupportCuteSV=5
+    resources: tmpdir=/tmp/3189887.1.seq-calling.q
+
+
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Bgzip/StdReads.HG002.MD.sorted.5.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Bgzip/StdReads.HG002.MD.sorted.5.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Bgzip/StdReads.HG002.MD.sorted.5.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Output_Benchmark_Cmp) >>  2>&1
+        
+Submitted job 75 with external jobid 'Your job 3189898 ("snakejob.cuteSV_truvari.75.sh") has been submitted'.
+
+[Wed Mar  9 17:51:41 2022]
+rule cuteSV_truvari:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Output_Benchmark_Cmp/summary.txt
+    jobid: 67
+    wildcards: wcRefVersion=v37, wcAligner=ngmlr, wcReadsType=StdReads, wcMinSupportCuteSV=5
+    resources: tmpdir=/tmp/3189887.1.seq-calling.q
+
+
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Bgzip/StdReads.HG002.MD.sorted.5.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Bgzip/StdReads.HG002.MD.sorted.5.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Bgzip/StdReads.HG002.MD.sorted.5.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Output_Benchmark_Cmp) >>  2>&1
+        
+Submitted job 67 with external jobid 'Your job 3189899 ("snakejob.cuteSV_truvari.67.sh") has been submitted'.
+
+[Wed Mar  9 17:51:41 2022]
+rule cuteSV_truvari:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Output_Benchmark_Cmp/summary.txt
+    jobid: 69
+    wildcards: wcRefVersion=v37, wcAligner=ngmlr, wcReadsType=UltraLowReads, wcMinSupportCuteSV=10
+    resources: tmpdir=/tmp/3189887.1.seq-calling.q
+
+
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Bgzip/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Bgzip/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Bgzip/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Output_Benchmark_Cmp) >>  2>&1
+        
+Submitted job 69 with external jobid 'Your job 3189900 ("snakejob.cuteSV_truvari.69.sh") has been submitted'.
+
+[Wed Mar  9 17:51:41 2022]
+rule cuteSV_truvari:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Output_Benchmark_Cmp/summary.txt
+    jobid: 71
+    wildcards: wcRefVersion=v37, wcAligner=ngmlr, wcReadsType=UltraLowReads, wcMinSupportCuteSV=5
+    resources: tmpdir=/tmp/3189887.1.seq-calling.q
+
+
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Bgzip/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Bgzip/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Bgzip/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Output_Benchmark_Cmp) >>  2>&1
+        
+Submitted job 71 with external jobid 'Your job 3189901 ("snakejob.cuteSV_truvari.71.sh") has been submitted'.
+
+[Wed Mar  9 17:51:41 2022]
+rule cuteSV_truvari:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Output_Benchmark_Cmp/summary.txt
+    jobid: 79
+    wildcards: wcRefVersion=v37, wcAligner=pbmm2, wcReadsType=UltraLowReads, wcMinSupportCuteSV=5
+    resources: tmpdir=/tmp/3189887.1.seq-calling.q
+
+
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Bgzip/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Bgzip/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Bgzip/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Output_Benchmark_Cmp) >>  2>&1
+        
+Submitted job 79 with external jobid 'Your job 3189902 ("snakejob.cuteSV_truvari.79.sh") has been submitted'.
+
+[Wed Mar  9 17:51:41 2022]
+rule cuteSV_truvari:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Output_Benchmark_Cmp/summary.txt
+    jobid: 65
+    wildcards: wcRefVersion=v37, wcAligner=ngmlr, wcReadsType=StdReads, wcMinSupportCuteSV=10
+    resources: tmpdir=/tmp/3189887.1.seq-calling.q
+
+
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Bgzip/StdReads.HG002.MD.sorted.10.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Bgzip/StdReads.HG002.MD.sorted.10.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Bgzip/StdReads.HG002.MD.sorted.10.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Output_Benchmark_Cmp) >>  2>&1
+        
+Submitted job 65 with external jobid 'Your job 3189903 ("snakejob.cuteSV_truvari.65.sh") has been submitted'.
+[Wed Mar  9 17:52:20 2022]
+Error in rule cuteSV_truvari:
+    jobid: 73
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Output_Benchmark_Cmp/summary.txt
+    shell:
+        
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Bgzip/StdReads.HG002.MD.sorted.10.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Bgzip/StdReads.HG002.MD.sorted.10.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Bgzip/StdReads.HG002.MD.sorted.10.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Output_Benchmark_Cmp) >>  2>&1
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3189896 ("snakejob.cuteSV_truvari.73.sh") has been submitted
+
+Error executing rule cuteSV_truvari on cluster (jobid: 73, external: Your job 3189896 ("snakejob.cuteSV_truvari.73.sh") has been submitted, jobscript: /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/BenchmarkTesting/.snakemake/tmp.vu04rgxz/snakejob.cuteSV_truvari.73.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Wed Mar  9 17:52:20 2022]
+Error in rule cuteSV_truvari:
+    jobid: 77
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Output_Benchmark_Cmp/summary.txt
+    shell:
+        
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Bgzip/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Bgzip/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Bgzip/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Output_Benchmark_Cmp) >>  2>&1
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3189897 ("snakejob.cuteSV_truvari.77.sh") has been submitted
+
+Error executing rule cuteSV_truvari on cluster (jobid: 77, external: Your job 3189897 ("snakejob.cuteSV_truvari.77.sh") has been submitted, jobscript: /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/BenchmarkTesting/.snakemake/tmp.vu04rgxz/snakejob.cuteSV_truvari.77.sh). For error details see the cluster log and the log files of the involved rule(s).
+Job failed, going on with independent jobs.
+Job failed, going on with independent jobs.
+[Wed Mar  9 17:52:20 2022]
+Error in rule cuteSV_truvari:
+    jobid: 75
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Output_Benchmark_Cmp/summary.txt
+    shell:
+        
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Bgzip/StdReads.HG002.MD.sorted.5.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Bgzip/StdReads.HG002.MD.sorted.5.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Bgzip/StdReads.HG002.MD.sorted.5.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Output_Benchmark_Cmp) >>  2>&1
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3189898 ("snakejob.cuteSV_truvari.75.sh") has been submitted
+
+Error executing rule cuteSV_truvari on cluster (jobid: 75, external: Your job 3189898 ("snakejob.cuteSV_truvari.75.sh") has been submitted, jobscript: /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/BenchmarkTesting/.snakemake/tmp.vu04rgxz/snakejob.cuteSV_truvari.75.sh). For error details see the cluster log and the log files of the involved rule(s).
+Job failed, going on with independent jobs.
+[Wed Mar  9 17:52:20 2022]
+Error in rule cuteSV_truvari:
+    jobid: 67
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Output_Benchmark_Cmp/summary.txt
+    shell:
+        
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Bgzip/StdReads.HG002.MD.sorted.5.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Bgzip/StdReads.HG002.MD.sorted.5.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Bgzip/StdReads.HG002.MD.sorted.5.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Output_Benchmark_Cmp) >>  2>&1
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3189899 ("snakejob.cuteSV_truvari.67.sh") has been submitted
+
+Error executing rule cuteSV_truvari on cluster (jobid: 67, external: Your job 3189899 ("snakejob.cuteSV_truvari.67.sh") has been submitted, jobscript: /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/BenchmarkTesting/.snakemake/tmp.vu04rgxz/snakejob.cuteSV_truvari.67.sh). For error details see the cluster log and the log files of the involved rule(s).
+Job failed, going on with independent jobs.
+[Wed Mar  9 17:52:20 2022]
+Error in rule cuteSV_truvari:
+    jobid: 69
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Output_Benchmark_Cmp/summary.txt
+    shell:
+        
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Bgzip/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Bgzip/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Bgzip/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Output_Benchmark_Cmp) >>  2>&1
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3189900 ("snakejob.cuteSV_truvari.69.sh") has been submitted
+
+Error executing rule cuteSV_truvari on cluster (jobid: 69, external: Your job 3189900 ("snakejob.cuteSV_truvari.69.sh") has been submitted, jobscript: /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/BenchmarkTesting/.snakemake/tmp.vu04rgxz/snakejob.cuteSV_truvari.69.sh). For error details see the cluster log and the log files of the involved rule(s).
+Job failed, going on with independent jobs.
+[Wed Mar  9 17:52:20 2022]
+Error in rule cuteSV_truvari:
+    jobid: 71
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Output_Benchmark_Cmp/summary.txt
+    shell:
+        
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Bgzip/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Bgzip/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Bgzip/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Output_Benchmark_Cmp) >>  2>&1
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3189901 ("snakejob.cuteSV_truvari.71.sh") has been submitted
+
+Error executing rule cuteSV_truvari on cluster (jobid: 71, external: Your job 3189901 ("snakejob.cuteSV_truvari.71.sh") has been submitted, jobscript: /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/BenchmarkTesting/.snakemake/tmp.vu04rgxz/snakejob.cuteSV_truvari.71.sh). For error details see the cluster log and the log files of the involved rule(s).
+Job failed, going on with independent jobs.
+[Wed Mar  9 17:52:20 2022]
+Error in rule cuteSV_truvari:
+    jobid: 79
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Output_Benchmark_Cmp/summary.txt
+    shell:
+        
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Bgzip/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Bgzip/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Bgzip/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Output_Benchmark_Cmp) >>  2>&1
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3189902 ("snakejob.cuteSV_truvari.79.sh") has been submitted
+
+Error executing rule cuteSV_truvari on cluster (jobid: 79, external: Your job 3189902 ("snakejob.cuteSV_truvari.79.sh") has been submitted, jobscript: /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/BenchmarkTesting/.snakemake/tmp.vu04rgxz/snakejob.cuteSV_truvari.79.sh). For error details see the cluster log and the log files of the involved rule(s).
+Job failed, going on with independent jobs.
+[Wed Mar  9 17:52:20 2022]
+Error in rule cuteSV_truvari:
+    jobid: 65
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Output_Benchmark_Cmp/summary.txt
+    shell:
+        
+        #1: Create a separate folder to save the bgzip file
+        echo "1: Create a separate folder to save the bgzip file" 
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Bgzip
+        echo
+        
+        #2: Compress vcf file by using bgzip and save it into the bgzip folder
+        echo "2: Compress vcf file by using bgzip and save it into the bgzip folder"
+        cat < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf | grep '^#')             < (cat /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf | grep -vE '^#'                 | grep 'DUP\|INS\|DEL' | sed 's/DUP/INS/g' | sort -k1,1 -k2,2g)                 | bgzip -c > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Bgzip/StdReads.HG002.MD.sorted.10.cuteSV.vcf.gz
+        echo
+        
+        #3: Build bgzip Index file
+        echo "3: Build bgzip Index file"
+        tabix /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Bgzip/StdReads.HG002.MD.sorted.10.cuteSV.vcf.gz 
+        echo
+
+        #4: Remove existing output Dir
+        echo "4: Remove existing output Dir"
+        rm -rf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Output_Benchmark_Cmp
+        echo
+        
+        #5: Run truvari
+        echo "5: Run truvari"
+        truvari bench                 -b /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz                 -c /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Bgzip/StdReads.HG002.MD.sorted.10.cuteSV.vcf.gz                 -f /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                 -o /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Output_Benchmark_Cmp) >>  2>&1
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3189903 ("snakejob.cuteSV_truvari.65.sh") has been submitted
+
+Error executing rule cuteSV_truvari on cluster (jobid: 65, external: Your job 3189903 ("snakejob.cuteSV_truvari.65.sh") has been submitted, jobscript: /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/BenchmarkTesting/.snakemake/tmp.vu04rgxz/snakejob.cuteSV_truvari.65.sh). For error details see the cluster log and the log files of the involved rule(s).
+Job failed, going on with independent jobs.
+Exiting because a job execution failed. Look above for error message
+Complete log: /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/BenchmarkTesting/.snakemake/log/2022-03-09T175043.279744.snakemake.log

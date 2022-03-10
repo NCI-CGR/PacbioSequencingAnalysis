@@ -1,0 +1,3 @@
+NameError in line 13 of /home/lixin/Documents/Prototype/PythonProject/PacbioSV/smCallSV.snake:
+name 'vSortedBAM' is not defined
+  File "/home/lixin/Documents/Prototype/PythonProject/PacbioSV/smCallSV.snake", line 13, in <module>

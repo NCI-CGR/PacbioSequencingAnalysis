@@ -1,0 +1,3 @@
+TypeError in line 4 of /home/lixin/Documents/Prototype/PythonProject/PacbioSV/smCallSV.snake:
+GetBuild() missing 1 required positional argument: 'strBAMDir'
+  File "/home/lixin/Documents/Prototype/PythonProject/PacbioSV/smCallSV.snake", line 4, in <module>

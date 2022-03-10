@@ -1,0 +1,742 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 50
+Job counts:
+	count	jobs
+	8	CallCuteSV
+	4	CallSniffle
+	1	all
+	2	ngmlr_buildSortedIndex
+	4	pbsv_call
+	2	pbsv_discover
+	21
+
+[Tue Feb 15 15:07:35 2022]
+rule pbsv_discover:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/UltraLowReads/discover/UltraLowReads.HG002.MD.sorted.svsig.gz
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/UltraLowReads/discover/Log/UltraLowReads.HG002.MD.sorted.log
+    jobid: 34
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/UltraLowReads/discover/Benchmark/UltraLowReads.HG002.MD.sorted.benchmark
+    wildcards: wcRefVersion=v37, wcAligner=ngmlr, wcReadsType=UltraLowReads
+
+
+        pbsv discover --log-level INFO                       --min-gap-comp-id-perc 97.0                       --tandem-repeats /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/Configs/human_hs37d5.trf.bed                       /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/UltraLowReads/discover/UltraLowReads.HG002.MD.sorted.svsig.gz > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/UltraLowReads/discover/Log/UltraLowReads.HG002.MD.sorted.log 2>&1
+        
+Submitted job 34 with external jobid 'Your job 3119703 ("snakejob.pbsv_discover.34.sh") has been submitted'.
+
+[Tue Feb 15 15:07:35 2022]
+rule CallCuteSV:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/StdReads/StdReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Log/StdReads.HG002.MD.sorted.10.cuteSV.log
+    jobid: 13
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Benchmark/StdReads.HG002.MD.sorted.10.cuteSV.benchmark
+    wildcards: wcRefVersion=v37, wcAligner=ngmlr, wcReadsType=StdReads, wcMinSupportCuteSV=10
+    threads: 24
+
+
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Tmp
+        
+        cuteSV /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/StdReads/StdReads.HG002.MD.sorted.bam /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Tmp                --threads 24                --genotype                --min_support 10                --max_cluster_bias_INS 1000                --diff_ratio_merging_INS 0.9                --max_cluster_bias_DEL 1000                --diff_ratio_merging_DEL 0.5 \ > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Log/StdReads.HG002.MD.sorted.10.cuteSV.log 2>&1
+        
+Submitted job 13 with external jobid 'Your job 3119704 ("snakejob.CallCuteSV.13.sh") has been submitted'.
+
+[Tue Feb 15 15:07:35 2022]
+rule CallCuteSV:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Log/UltraLowReads.HG002.MD.sorted.5.cuteSV.log
+    jobid: 16
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Benchmark/UltraLowReads.HG002.MD.sorted.5.cuteSV.benchmark
+    wildcards: wcRefVersion=v37, wcAligner=ngmlr, wcReadsType=UltraLowReads, wcMinSupportCuteSV=5
+    threads: 24
+
+
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Tmp
+        
+        cuteSV /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Tmp                --threads 24                --genotype                --min_support 5                --max_cluster_bias_INS 1000                --diff_ratio_merging_INS 0.9                --max_cluster_bias_DEL 1000                --diff_ratio_merging_DEL 0.5 \ > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Log/UltraLowReads.HG002.MD.sorted.5.cuteSV.log 2>&1
+        
+Submitted job 16 with external jobid 'Your job 3119705 ("snakejob.CallCuteSV.16.sh") has been submitted'.
+
+[Tue Feb 15 15:07:35 2022]
+rule ngmlr_buildSortedIndex:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam.bai
+    jobid: 3
+    wildcards: wcReadsType=UltraLowReads
+    threads: 24
+
+samtools index -@ 24 /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam.bai
+Submitted job 3 with external jobid 'Your job 3119706 ("snakejob.ngmlr_buildSortedIndex.3.sh") has been submitted'.
+
+[Tue Feb 15 15:07:35 2022]
+rule CallCuteSV:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Log/UltraLowReads.HG002.MD.sorted.10.cuteSV.log
+    jobid: 15
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Benchmark/UltraLowReads.HG002.MD.sorted.10.cuteSV.benchmark
+    wildcards: wcRefVersion=v37, wcAligner=ngmlr, wcReadsType=UltraLowReads, wcMinSupportCuteSV=10
+    threads: 24
+
+
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Tmp
+        
+        cuteSV /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Tmp                --threads 24                --genotype                --min_support 10                --max_cluster_bias_INS 1000                --diff_ratio_merging_INS 0.9                --max_cluster_bias_DEL 1000                --diff_ratio_merging_DEL 0.5 \ > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Log/UltraLowReads.HG002.MD.sorted.10.cuteSV.log 2>&1
+        
+Submitted job 15 with external jobid 'Your job 3119707 ("snakejob.CallCuteSV.15.sh") has been submitted'.
+
+[Tue Feb 15 15:07:35 2022]
+rule CallCuteSV:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/StdReads/StdReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Log/StdReads.HG002.MD.sorted.5.cuteSV.log
+    jobid: 14
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Benchmark/StdReads.HG002.MD.sorted.5.cuteSV.benchmark
+    wildcards: wcRefVersion=v37, wcAligner=ngmlr, wcReadsType=StdReads, wcMinSupportCuteSV=5
+    threads: 24
+
+
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Tmp
+        
+        cuteSV /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/StdReads/StdReads.HG002.MD.sorted.bam /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Tmp                --threads 24                --genotype                --min_support 5                --max_cluster_bias_INS 1000                --diff_ratio_merging_INS 0.9                --max_cluster_bias_DEL 1000                --diff_ratio_merging_DEL 0.5 \ > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Log/StdReads.HG002.MD.sorted.5.cuteSV.log 2>&1
+        
+Submitted job 14 with external jobid 'Your job 3119708 ("snakejob.CallCuteSV.14.sh") has been submitted'.
+
+[Tue Feb 15 15:07:35 2022]
+rule ngmlr_buildSortedIndex:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/StdReads/StdReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/StdReads/StdReads.HG002.MD.sorted.bam.bai
+    jobid: 1
+    wildcards: wcReadsType=StdReads
+    threads: 24
+
+samtools index -@ 24 /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/StdReads/StdReads.HG002.MD.sorted.bam /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/StdReads/StdReads.HG002.MD.sorted.bam.bai
+Submitted job 1 with external jobid 'Your job 3119709 ("snakejob.ngmlr_buildSortedIndex.1.sh") has been submitted'.
+
+[Tue Feb 15 15:07:35 2022]
+rule pbsv_discover:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/StdReads/StdReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/StdReads/discover/StdReads.HG002.MD.sorted.svsig.gz
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/StdReads/discover/Log/StdReads.HG002.MD.sorted.log
+    jobid: 33
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/StdReads/discover/Benchmark/StdReads.HG002.MD.sorted.benchmark
+    wildcards: wcRefVersion=v37, wcAligner=ngmlr, wcReadsType=StdReads
+
+
+        pbsv discover --log-level INFO                       --min-gap-comp-id-perc 97.0                       --tandem-repeats /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/Configs/human_hs37d5.trf.bed                       /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/StdReads/StdReads.HG002.MD.sorted.bam /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/StdReads/discover/StdReads.HG002.MD.sorted.svsig.gz > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/StdReads/discover/Log/StdReads.HG002.MD.sorted.log 2>&1
+        
+Submitted job 33 with external jobid 'Your job 3119710 ("snakejob.pbsv_discover.33.sh") has been submitted'.
+
+[Tue Feb 15 15:07:35 2022]
+rule CallSniffle:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/StdReads/StdReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.sniffles.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/StdReads/minSupport_10/Log/StdReads.HG002.MD.sorted.10.sniffles.log
+    jobid: 5
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/StdReads/minSupport_10/Benchmark/StdReads.HG002.MD.sorted.10.sniffles.benchmark
+    wildcards: wcRefVersion=v37, wcAligner=ngmlr, wcReadsType=StdReads, wcMinSupportSniffle=10
+    threads: 24
+
+(sniffles -t 24 --min_support 10 -m /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/StdReads/StdReads.HG002.MD.sorted.bam -v /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.sniffles.vcf) > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/StdReads/minSupport_10/Log/StdReads.HG002.MD.sorted.10.sniffles.log 2>&1
+Submitted job 5 with external jobid 'Your job 3119711 ("snakejob.CallSniffle.5.sh") has been submitted'.
+
+[Tue Feb 15 15:07:36 2022]
+rule CallSniffle:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.sniffles.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/UltraLowReads/minSupport_5/Log/UltraLowReads.HG002.MD.sorted.5.sniffles.log
+    jobid: 8
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/UltraLowReads/minSupport_5/Benchmark/UltraLowReads.HG002.MD.sorted.5.sniffles.benchmark
+    wildcards: wcRefVersion=v37, wcAligner=ngmlr, wcReadsType=UltraLowReads, wcMinSupportSniffle=5
+    threads: 24
+
+(sniffles -t 24 --min_support 5 -m /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam -v /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.sniffles.vcf) > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/UltraLowReads/minSupport_5/Log/UltraLowReads.HG002.MD.sorted.5.sniffles.log 2>&1
+Submitted job 8 with external jobid 'Your job 3119712 ("snakejob.CallSniffle.8.sh") has been submitted'.
+
+[Tue Feb 15 15:07:36 2022]
+rule CallCuteSV:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/pbmm2/v37/StdReads/StdReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Log/StdReads.HG002.MD.sorted.10.cuteSV.log
+    jobid: 17
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Benchmark/StdReads.HG002.MD.sorted.10.cuteSV.benchmark
+    wildcards: wcRefVersion=v37, wcAligner=pbmm2, wcReadsType=StdReads, wcMinSupportCuteSV=10
+    threads: 24
+
+
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Tmp
+        
+        cuteSV /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/pbmm2/v37/StdReads/StdReads.HG002.MD.sorted.bam /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Tmp                --threads 24                --genotype                --min_support 10                --max_cluster_bias_INS 1000                --diff_ratio_merging_INS 0.9                --max_cluster_bias_DEL 1000                --diff_ratio_merging_DEL 0.5 \ > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Log/StdReads.HG002.MD.sorted.10.cuteSV.log 2>&1
+        
+Submitted job 17 with external jobid 'Your job 3119713 ("snakejob.CallCuteSV.17.sh") has been submitted'.
+
+[Tue Feb 15 15:07:36 2022]
+rule CallCuteSV:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/pbmm2/v37/StdReads/StdReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Log/StdReads.HG002.MD.sorted.5.cuteSV.log
+    jobid: 18
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Benchmark/StdReads.HG002.MD.sorted.5.cuteSV.benchmark
+    wildcards: wcRefVersion=v37, wcAligner=pbmm2, wcReadsType=StdReads, wcMinSupportCuteSV=5
+    threads: 24
+
+
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Tmp
+        
+        cuteSV /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/pbmm2/v37/StdReads/StdReads.HG002.MD.sorted.bam /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Tmp                --threads 24                --genotype                --min_support 5                --max_cluster_bias_INS 1000                --diff_ratio_merging_INS 0.9                --max_cluster_bias_DEL 1000                --diff_ratio_merging_DEL 0.5 \ > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Log/StdReads.HG002.MD.sorted.5.cuteSV.log 2>&1
+        
+Submitted job 18 with external jobid 'Your job 3119714 ("snakejob.CallCuteSV.18.sh") has been submitted'.
+
+[Tue Feb 15 15:07:36 2022]
+rule CallCuteSV:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/pbmm2/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Log/UltraLowReads.HG002.MD.sorted.10.cuteSV.log
+    jobid: 19
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Benchmark/UltraLowReads.HG002.MD.sorted.10.cuteSV.benchmark
+    wildcards: wcRefVersion=v37, wcAligner=pbmm2, wcReadsType=UltraLowReads, wcMinSupportCuteSV=10
+    threads: 24
+
+
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Tmp
+        
+        cuteSV /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/pbmm2/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Tmp                --threads 24                --genotype                --min_support 10                --max_cluster_bias_INS 1000                --diff_ratio_merging_INS 0.9                --max_cluster_bias_DEL 1000                --diff_ratio_merging_DEL 0.5 \ > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Log/UltraLowReads.HG002.MD.sorted.10.cuteSV.log 2>&1
+        
+Submitted job 19 with external jobid 'Your job 3119715 ("snakejob.CallCuteSV.19.sh") has been submitted'.
+
+[Tue Feb 15 15:07:36 2022]
+rule CallCuteSV:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/pbmm2/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Log/UltraLowReads.HG002.MD.sorted.5.cuteSV.log
+    jobid: 20
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Benchmark/UltraLowReads.HG002.MD.sorted.5.cuteSV.benchmark
+    wildcards: wcRefVersion=v37, wcAligner=pbmm2, wcReadsType=UltraLowReads, wcMinSupportCuteSV=5
+    threads: 24
+
+
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Tmp
+        
+        cuteSV /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/pbmm2/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Tmp                --threads 24                --genotype                --min_support 5                --max_cluster_bias_INS 1000                --diff_ratio_merging_INS 0.9                --max_cluster_bias_DEL 1000                --diff_ratio_merging_DEL 0.5 \ > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Log/UltraLowReads.HG002.MD.sorted.5.cuteSV.log 2>&1
+        
+Submitted job 20 with external jobid 'Your job 3119716 ("snakejob.CallCuteSV.20.sh") has been submitted'.
+
+[Tue Feb 15 15:07:36 2022]
+rule CallSniffle:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.sniffles.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/UltraLowReads/minSupport_10/Log/UltraLowReads.HG002.MD.sorted.10.sniffles.log
+    jobid: 7
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/UltraLowReads/minSupport_10/Benchmark/UltraLowReads.HG002.MD.sorted.10.sniffles.benchmark
+    wildcards: wcRefVersion=v37, wcAligner=ngmlr, wcReadsType=UltraLowReads, wcMinSupportSniffle=10
+    threads: 24
+
+(sniffles -t 24 --min_support 10 -m /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam -v /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.sniffles.vcf) > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/UltraLowReads/minSupport_10/Log/UltraLowReads.HG002.MD.sorted.10.sniffles.log 2>&1
+Submitted job 7 with external jobid 'Your job 3119717 ("snakejob.CallSniffle.7.sh") has been submitted'.
+
+[Tue Feb 15 15:07:36 2022]
+rule CallSniffle:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/StdReads/StdReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.sniffles.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/StdReads/minSupport_5/Log/StdReads.HG002.MD.sorted.5.sniffles.log
+    jobid: 6
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/StdReads/minSupport_5/Benchmark/StdReads.HG002.MD.sorted.5.sniffles.benchmark
+    wildcards: wcRefVersion=v37, wcAligner=ngmlr, wcReadsType=StdReads, wcMinSupportSniffle=5
+    threads: 24
+
+(sniffles -t 24 --min_support 5 -m /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/StdReads/StdReads.HG002.MD.sorted.bam -v /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.sniffles.vcf) > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/StdReads/minSupport_5/Log/StdReads.HG002.MD.sorted.5.sniffles.log 2>&1
+Submitted job 6 with external jobid 'Your job 3119718 ("snakejob.CallSniffle.6.sh") has been submitted'.
+[Tue Feb 15 15:07:45 2022]
+Error in rule CallCuteSV:
+    jobid: 13
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Log/StdReads.HG002.MD.sorted.10.cuteSV.log
+    cluster_jobid: Your job 3119704 ("snakejob.CallCuteSV.13.sh") has been submitted
+
+Trying to restart job 13.
+
+[Tue Feb 15 15:07:45 2022]
+rule CallCuteSV:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/StdReads/StdReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Log/StdReads.HG002.MD.sorted.10.cuteSV.log
+    jobid: 13
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Benchmark/StdReads.HG002.MD.sorted.10.cuteSV.benchmark
+    wildcards: wcRefVersion=v37, wcAligner=ngmlr, wcReadsType=StdReads, wcMinSupportCuteSV=10
+    threads: 24
+
+
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Tmp
+        
+        cuteSV /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/StdReads/StdReads.HG002.MD.sorted.bam /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Tmp                --threads 24                --genotype                --min_support 10                --max_cluster_bias_INS 1000                --diff_ratio_merging_INS 0.9                --max_cluster_bias_DEL 1000                --diff_ratio_merging_DEL 0.5 \ > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Log/StdReads.HG002.MD.sorted.10.cuteSV.log 2>&1
+        
+[Tue Feb 15 15:07:45 2022]
+Error in rule CallCuteSV:
+    jobid: 16
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Log/UltraLowReads.HG002.MD.sorted.5.cuteSV.log
+    cluster_jobid: Your job 3119705 ("snakejob.CallCuteSV.16.sh") has been submitted
+
+Trying to restart job 16.
+[Tue Feb 15 15:07:45 2022]
+Error in rule ngmlr_buildSortedIndex:
+    jobid: 3
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam.bai
+    cluster_jobid: Your job 3119706 ("snakejob.ngmlr_buildSortedIndex.3.sh") has been submitted
+
+Trying to restart job 3.
+[Tue Feb 15 15:07:45 2022]
+Error in rule CallCuteSV:
+    jobid: 15
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Log/UltraLowReads.HG002.MD.sorted.10.cuteSV.log
+    cluster_jobid: Your job 3119707 ("snakejob.CallCuteSV.15.sh") has been submitted
+
+Trying to restart job 15.
+[Tue Feb 15 15:07:45 2022]
+Error in rule CallCuteSV:
+    jobid: 14
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Log/StdReads.HG002.MD.sorted.5.cuteSV.log
+    cluster_jobid: Your job 3119708 ("snakejob.CallCuteSV.14.sh") has been submitted
+
+Trying to restart job 14.
+[Tue Feb 15 15:07:45 2022]
+Error in rule ngmlr_buildSortedIndex:
+    jobid: 1
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/StdReads/StdReads.HG002.MD.sorted.bam.bai
+    cluster_jobid: Your job 3119709 ("snakejob.ngmlr_buildSortedIndex.1.sh") has been submitted
+
+Trying to restart job 1.
+Submitted job 13 with external jobid 'Your job 3119719 ("snakejob.CallCuteSV.13.sh") has been submitted'.
+[Tue Feb 15 15:07:45 2022]
+Error in rule CallSniffle:
+    jobid: 5
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.sniffles.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/StdReads/minSupport_10/Log/StdReads.HG002.MD.sorted.10.sniffles.log
+    cluster_jobid: Your job 3119711 ("snakejob.CallSniffle.5.sh") has been submitted
+
+Trying to restart job 5.
+[Tue Feb 15 15:07:45 2022]
+Error in rule CallSniffle:
+    jobid: 8
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.sniffles.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/UltraLowReads/minSupport_5/Log/UltraLowReads.HG002.MD.sorted.5.sniffles.log
+    cluster_jobid: Your job 3119712 ("snakejob.CallSniffle.8.sh") has been submitted
+
+
+[Tue Feb 15 15:07:45 2022]
+rule CallCuteSV:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Log/UltraLowReads.HG002.MD.sorted.5.cuteSV.log
+    jobid: 16
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Benchmark/UltraLowReads.HG002.MD.sorted.5.cuteSV.benchmark
+    wildcards: wcRefVersion=v37, wcAligner=ngmlr, wcReadsType=UltraLowReads, wcMinSupportCuteSV=5
+    threads: 24
+
+
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Tmp
+        
+        cuteSV /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Tmp                --threads 24                --genotype                --min_support 5                --max_cluster_bias_INS 1000                --diff_ratio_merging_INS 0.9                --max_cluster_bias_DEL 1000                --diff_ratio_merging_DEL 0.5 \ > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Log/UltraLowReads.HG002.MD.sorted.5.cuteSV.log 2>&1
+        
+Trying to restart job 8.
+Submitted job 16 with external jobid 'Your job 3119720 ("snakejob.CallCuteSV.16.sh") has been submitted'.
+
+[Tue Feb 15 15:07:45 2022]
+rule ngmlr_buildSortedIndex:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam.bai
+    jobid: 3
+    wildcards: wcReadsType=UltraLowReads
+    threads: 24
+
+samtools index -@ 24 /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam.bai
+Submitted job 3 with external jobid 'Your job 3119721 ("snakejob.ngmlr_buildSortedIndex.3.sh") has been submitted'.
+
+[Tue Feb 15 15:07:45 2022]
+rule CallCuteSV:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Log/UltraLowReads.HG002.MD.sorted.10.cuteSV.log
+    jobid: 15
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Benchmark/UltraLowReads.HG002.MD.sorted.10.cuteSV.benchmark
+    wildcards: wcRefVersion=v37, wcAligner=ngmlr, wcReadsType=UltraLowReads, wcMinSupportCuteSV=10
+    threads: 24
+
+
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Tmp
+        
+        cuteSV /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Tmp                --threads 24                --genotype                --min_support 10                --max_cluster_bias_INS 1000                --diff_ratio_merging_INS 0.9                --max_cluster_bias_DEL 1000                --diff_ratio_merging_DEL 0.5 \ > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Log/UltraLowReads.HG002.MD.sorted.10.cuteSV.log 2>&1
+        
+Submitted job 15 with external jobid 'Your job 3119722 ("snakejob.CallCuteSV.15.sh") has been submitted'.
+
+[Tue Feb 15 15:07:45 2022]
+rule CallCuteSV:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/StdReads/StdReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Log/StdReads.HG002.MD.sorted.5.cuteSV.log
+    jobid: 14
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Benchmark/StdReads.HG002.MD.sorted.5.cuteSV.benchmark
+    wildcards: wcRefVersion=v37, wcAligner=ngmlr, wcReadsType=StdReads, wcMinSupportCuteSV=5
+    threads: 24
+
+
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Tmp
+        
+        cuteSV /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/StdReads/StdReads.HG002.MD.sorted.bam /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Tmp                --threads 24                --genotype                --min_support 5                --max_cluster_bias_INS 1000                --diff_ratio_merging_INS 0.9                --max_cluster_bias_DEL 1000                --diff_ratio_merging_DEL 0.5 \ > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Log/StdReads.HG002.MD.sorted.5.cuteSV.log 2>&1
+        
+Submitted job 14 with external jobid 'Your job 3119723 ("snakejob.CallCuteSV.14.sh") has been submitted'.
+
+[Tue Feb 15 15:07:45 2022]
+rule ngmlr_buildSortedIndex:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/StdReads/StdReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/StdReads/StdReads.HG002.MD.sorted.bam.bai
+    jobid: 1
+    wildcards: wcReadsType=StdReads
+    threads: 24
+
+samtools index -@ 24 /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/StdReads/StdReads.HG002.MD.sorted.bam /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/StdReads/StdReads.HG002.MD.sorted.bam.bai
+Submitted job 1 with external jobid 'Your job 3119724 ("snakejob.ngmlr_buildSortedIndex.1.sh") has been submitted'.
+
+[Tue Feb 15 15:07:45 2022]
+rule CallSniffle:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/StdReads/StdReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.sniffles.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/StdReads/minSupport_10/Log/StdReads.HG002.MD.sorted.10.sniffles.log
+    jobid: 5
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/StdReads/minSupport_10/Benchmark/StdReads.HG002.MD.sorted.10.sniffles.benchmark
+    wildcards: wcRefVersion=v37, wcAligner=ngmlr, wcReadsType=StdReads, wcMinSupportSniffle=10
+    threads: 24
+
+(sniffles -t 24 --min_support 10 -m /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/StdReads/StdReads.HG002.MD.sorted.bam -v /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.sniffles.vcf) > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/StdReads/minSupport_10/Log/StdReads.HG002.MD.sorted.10.sniffles.log 2>&1
+Submitted job 5 with external jobid 'Your job 3119725 ("snakejob.CallSniffle.5.sh") has been submitted'.
+
+[Tue Feb 15 15:07:45 2022]
+rule CallSniffle:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.sniffles.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/UltraLowReads/minSupport_5/Log/UltraLowReads.HG002.MD.sorted.5.sniffles.log
+    jobid: 8
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/UltraLowReads/minSupport_5/Benchmark/UltraLowReads.HG002.MD.sorted.5.sniffles.benchmark
+    wildcards: wcRefVersion=v37, wcAligner=ngmlr, wcReadsType=UltraLowReads, wcMinSupportSniffle=5
+    threads: 24
+
+(sniffles -t 24 --min_support 5 -m /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam -v /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.sniffles.vcf) > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/UltraLowReads/minSupport_5/Log/UltraLowReads.HG002.MD.sorted.5.sniffles.log 2>&1
+Submitted job 8 with external jobid 'Your job 3119726 ("snakejob.CallSniffle.8.sh") has been submitted'.
+[Tue Feb 15 15:07:46 2022]
+Error in rule CallCuteSV:
+    jobid: 17
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Log/StdReads.HG002.MD.sorted.10.cuteSV.log
+    cluster_jobid: Your job 3119713 ("snakejob.CallCuteSV.17.sh") has been submitted
+
+Trying to restart job 17.
+
+[Tue Feb 15 15:07:46 2022]
+rule CallCuteSV:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/pbmm2/v37/StdReads/StdReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Log/StdReads.HG002.MD.sorted.10.cuteSV.log
+    jobid: 17
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Benchmark/StdReads.HG002.MD.sorted.10.cuteSV.benchmark
+    wildcards: wcRefVersion=v37, wcAligner=pbmm2, wcReadsType=StdReads, wcMinSupportCuteSV=10
+    threads: 24
+
+
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Tmp
+        
+        cuteSV /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/pbmm2/v37/StdReads/StdReads.HG002.MD.sorted.bam /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Tmp                --threads 24                --genotype                --min_support 10                --max_cluster_bias_INS 1000                --diff_ratio_merging_INS 0.9                --max_cluster_bias_DEL 1000                --diff_ratio_merging_DEL 0.5 \ > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Log/StdReads.HG002.MD.sorted.10.cuteSV.log 2>&1
+        
+[Tue Feb 15 15:07:46 2022]
+Error in rule CallCuteSV:
+    jobid: 18
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Log/StdReads.HG002.MD.sorted.5.cuteSV.log
+    cluster_jobid: Your job 3119714 ("snakejob.CallCuteSV.18.sh") has been submitted
+
+Trying to restart job 18.
+[Tue Feb 15 15:07:46 2022]
+Error in rule CallCuteSV:
+    jobid: 19
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Log/UltraLowReads.HG002.MD.sorted.10.cuteSV.log
+    cluster_jobid: Your job 3119715 ("snakejob.CallCuteSV.19.sh") has been submitted
+
+Trying to restart job 19.
+[Tue Feb 15 15:07:46 2022]
+Error in rule CallCuteSV:
+    jobid: 20
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Log/UltraLowReads.HG002.MD.sorted.5.cuteSV.log
+    cluster_jobid: Your job 3119716 ("snakejob.CallCuteSV.20.sh") has been submitted
+
+Trying to restart job 20.
+[Tue Feb 15 15:07:46 2022]
+Error in rule CallSniffle:
+    jobid: 7
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.sniffles.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/UltraLowReads/minSupport_10/Log/UltraLowReads.HG002.MD.sorted.10.sniffles.log
+    cluster_jobid: Your job 3119717 ("snakejob.CallSniffle.7.sh") has been submitted
+
+Submitted job 17 with external jobid 'Your job 3119727 ("snakejob.CallCuteSV.17.sh") has been submitted'.
+Trying to restart job 7.
+[Tue Feb 15 15:07:46 2022]
+Error in rule CallSniffle:
+    jobid: 6
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.sniffles.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/StdReads/minSupport_5/Log/StdReads.HG002.MD.sorted.5.sniffles.log
+    cluster_jobid: Your job 3119718 ("snakejob.CallSniffle.6.sh") has been submitted
+
+Trying to restart job 6.
+
+[Tue Feb 15 15:07:46 2022]
+rule CallCuteSV:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/pbmm2/v37/StdReads/StdReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Log/StdReads.HG002.MD.sorted.5.cuteSV.log
+    jobid: 18
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Benchmark/StdReads.HG002.MD.sorted.5.cuteSV.benchmark
+    wildcards: wcRefVersion=v37, wcAligner=pbmm2, wcReadsType=StdReads, wcMinSupportCuteSV=5
+    threads: 24
+
+
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Tmp
+        
+        cuteSV /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/pbmm2/v37/StdReads/StdReads.HG002.MD.sorted.bam /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Tmp                --threads 24                --genotype                --min_support 5                --max_cluster_bias_INS 1000                --diff_ratio_merging_INS 0.9                --max_cluster_bias_DEL 1000                --diff_ratio_merging_DEL 0.5 \ > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Log/StdReads.HG002.MD.sorted.5.cuteSV.log 2>&1
+        
+Submitted job 18 with external jobid 'Your job 3119728 ("snakejob.CallCuteSV.18.sh") has been submitted'.
+
+[Tue Feb 15 15:07:46 2022]
+rule CallCuteSV:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/pbmm2/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Log/UltraLowReads.HG002.MD.sorted.10.cuteSV.log
+    jobid: 19
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Benchmark/UltraLowReads.HG002.MD.sorted.10.cuteSV.benchmark
+    wildcards: wcRefVersion=v37, wcAligner=pbmm2, wcReadsType=UltraLowReads, wcMinSupportCuteSV=10
+    threads: 24
+
+
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Tmp
+        
+        cuteSV /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/pbmm2/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Tmp                --threads 24                --genotype                --min_support 10                --max_cluster_bias_INS 1000                --diff_ratio_merging_INS 0.9                --max_cluster_bias_DEL 1000                --diff_ratio_merging_DEL 0.5 \ > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Log/UltraLowReads.HG002.MD.sorted.10.cuteSV.log 2>&1
+        
+Submitted job 19 with external jobid 'Your job 3119729 ("snakejob.CallCuteSV.19.sh") has been submitted'.
+
+[Tue Feb 15 15:07:46 2022]
+rule CallCuteSV:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/pbmm2/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Log/UltraLowReads.HG002.MD.sorted.5.cuteSV.log
+    jobid: 20
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Benchmark/UltraLowReads.HG002.MD.sorted.5.cuteSV.benchmark
+    wildcards: wcRefVersion=v37, wcAligner=pbmm2, wcReadsType=UltraLowReads, wcMinSupportCuteSV=5
+    threads: 24
+
+
+        mkdir -p /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Tmp
+        
+        cuteSV /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/pbmm2/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam /scratch/lix33/Data/Reference/v37/hg19_canonical+phiX.fa                /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Tmp                --threads 24                --genotype                --min_support 5                --max_cluster_bias_INS 1000                --diff_ratio_merging_INS 0.9                --max_cluster_bias_DEL 1000                --diff_ratio_merging_DEL 0.5 \ > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Log/UltraLowReads.HG002.MD.sorted.5.cuteSV.log 2>&1
+        
+Submitted job 20 with external jobid 'Your job 3119730 ("snakejob.CallCuteSV.20.sh") has been submitted'.
+
+[Tue Feb 15 15:07:46 2022]
+rule CallSniffle:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.sniffles.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/UltraLowReads/minSupport_10/Log/UltraLowReads.HG002.MD.sorted.10.sniffles.log
+    jobid: 7
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/UltraLowReads/minSupport_10/Benchmark/UltraLowReads.HG002.MD.sorted.10.sniffles.benchmark
+    wildcards: wcRefVersion=v37, wcAligner=ngmlr, wcReadsType=UltraLowReads, wcMinSupportSniffle=10
+    threads: 24
+
+(sniffles -t 24 --min_support 10 -m /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam -v /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.sniffles.vcf) > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/UltraLowReads/minSupport_10/Log/UltraLowReads.HG002.MD.sorted.10.sniffles.log 2>&1
+Submitted job 7 with external jobid 'Your job 3119731 ("snakejob.CallSniffle.7.sh") has been submitted'.
+
+[Tue Feb 15 15:07:46 2022]
+rule CallSniffle:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/StdReads/StdReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.sniffles.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/StdReads/minSupport_5/Log/StdReads.HG002.MD.sorted.5.sniffles.log
+    jobid: 6
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/StdReads/minSupport_5/Benchmark/StdReads.HG002.MD.sorted.5.sniffles.benchmark
+    wildcards: wcRefVersion=v37, wcAligner=ngmlr, wcReadsType=StdReads, wcMinSupportSniffle=5
+    threads: 24
+
+(sniffles -t 24 --min_support 5 -m /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/StdReads/StdReads.HG002.MD.sorted.bam -v /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.sniffles.vcf) > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/StdReads/minSupport_5/Log/StdReads.HG002.MD.sorted.5.sniffles.log 2>&1
+Submitted job 6 with external jobid 'Your job 3119732 ("snakejob.CallSniffle.6.sh") has been submitted'.
+[Tue Feb 15 15:07:56 2022]
+Error in rule pbsv_discover:
+    jobid: 34
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/UltraLowReads/discover/UltraLowReads.HG002.MD.sorted.svsig.gz
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/UltraLowReads/discover/Log/UltraLowReads.HG002.MD.sorted.log
+    cluster_jobid: Your job 3119703 ("snakejob.pbsv_discover.34.sh") has been submitted
+
+Trying to restart job 34.
+
+[Tue Feb 15 15:07:56 2022]
+rule pbsv_discover:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/UltraLowReads/discover/UltraLowReads.HG002.MD.sorted.svsig.gz
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/UltraLowReads/discover/Log/UltraLowReads.HG002.MD.sorted.log
+    jobid: 34
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/UltraLowReads/discover/Benchmark/UltraLowReads.HG002.MD.sorted.benchmark
+    wildcards: wcRefVersion=v37, wcAligner=ngmlr, wcReadsType=UltraLowReads
+
+
+        pbsv discover --log-level INFO                       --min-gap-comp-id-perc 97.0                       --tandem-repeats /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/Configs/human_hs37d5.trf.bed                       /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/UltraLowReads/discover/UltraLowReads.HG002.MD.sorted.svsig.gz > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/UltraLowReads/discover/Log/UltraLowReads.HG002.MD.sorted.log 2>&1
+        
+Submitted job 34 with external jobid 'Your job 3119733 ("snakejob.pbsv_discover.34.sh") has been submitted'.
+[Tue Feb 15 15:07:57 2022]
+Error in rule pbsv_discover:
+    jobid: 33
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/StdReads/discover/StdReads.HG002.MD.sorted.svsig.gz
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/StdReads/discover/Log/StdReads.HG002.MD.sorted.log
+    cluster_jobid: Your job 3119710 ("snakejob.pbsv_discover.33.sh") has been submitted
+
+Trying to restart job 33.
+
+[Tue Feb 15 15:07:57 2022]
+rule pbsv_discover:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/StdReads/StdReads.HG002.MD.sorted.bam
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/StdReads/discover/StdReads.HG002.MD.sorted.svsig.gz
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/StdReads/discover/Log/StdReads.HG002.MD.sorted.log
+    jobid: 33
+    benchmark: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/StdReads/discover/Benchmark/StdReads.HG002.MD.sorted.benchmark
+    wildcards: wcRefVersion=v37, wcAligner=ngmlr, wcReadsType=StdReads
+
+
+        pbsv discover --log-level INFO                       --min-gap-comp-id-perc 97.0                       --tandem-repeats /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/Configs/human_hs37d5.trf.bed                       /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/StdReads/StdReads.HG002.MD.sorted.bam /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/StdReads/discover/StdReads.HG002.MD.sorted.svsig.gz > /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/StdReads/discover/Log/StdReads.HG002.MD.sorted.log 2>&1
+        
+Submitted job 33 with external jobid 'Your job 3119734 ("snakejob.pbsv_discover.33.sh") has been submitted'.
+[Tue Feb 15 15:08:07 2022]
+Error in rule CallCuteSV:
+    jobid: 13
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/Log/StdReads.HG002.MD.sorted.10.cuteSV.log
+    cluster_jobid: Your job 3119719 ("snakejob.CallCuteSV.13.sh") has been submitted
+
+Job failed, going on with independent jobs.
+[Tue Feb 15 15:08:07 2022]
+Error in rule CallCuteSV:
+    jobid: 16
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_5/Log/UltraLowReads.HG002.MD.sorted.5.cuteSV.log
+    cluster_jobid: Your job 3119720 ("snakejob.CallCuteSV.16.sh") has been submitted
+
+Job failed, going on with independent jobs.
+[Tue Feb 15 15:08:07 2022]
+Error in rule ngmlr_buildSortedIndex:
+    jobid: 3
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/UltraLowReads/UltraLowReads.HG002.MD.sorted.bam.bai
+    cluster_jobid: Your job 3119721 ("snakejob.ngmlr_buildSortedIndex.3.sh") has been submitted
+
+Job failed, going on with independent jobs.
+[Tue Feb 15 15:08:07 2022]
+Error in rule CallCuteSV:
+    jobid: 15
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/UltraLowReads/minSupport_10/Log/UltraLowReads.HG002.MD.sorted.10.cuteSV.log
+    cluster_jobid: Your job 3119722 ("snakejob.CallCuteSV.15.sh") has been submitted
+
+Job failed, going on with independent jobs.
+[Tue Feb 15 15:08:07 2022]
+Error in rule CallCuteSV:
+    jobid: 14
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_5/Log/StdReads.HG002.MD.sorted.5.cuteSV.log
+    cluster_jobid: Your job 3119723 ("snakejob.CallCuteSV.14.sh") has been submitted
+
+Job failed, going on with independent jobs.
+[Tue Feb 15 15:08:07 2022]
+Error in rule ngmlr_buildSortedIndex:
+    jobid: 1
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37/StdReads/StdReads.HG002.MD.sorted.bam.bai
+    cluster_jobid: Your job 3119724 ("snakejob.ngmlr_buildSortedIndex.1.sh") has been submitted
+
+Job failed, going on with independent jobs.
+[Tue Feb 15 15:08:07 2022]
+Error in rule CallSniffle:
+    jobid: 5
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.sniffles.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/StdReads/minSupport_10/Log/StdReads.HG002.MD.sorted.10.sniffles.log
+    cluster_jobid: Your job 3119725 ("snakejob.CallSniffle.5.sh") has been submitted
+
+Job failed, going on with independent jobs.
+[Tue Feb 15 15:08:07 2022]
+Error in rule CallSniffle:
+    jobid: 8
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.sniffles.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/UltraLowReads/minSupport_5/Log/UltraLowReads.HG002.MD.sorted.5.sniffles.log
+    cluster_jobid: Your job 3119726 ("snakejob.CallSniffle.8.sh") has been submitted
+
+Job failed, going on with independent jobs.
+[Tue Feb 15 15:08:07 2022]
+Error in rule CallCuteSV:
+    jobid: 17
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/StdReads.HG002.MD.sorted.10.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_10/Log/StdReads.HG002.MD.sorted.10.cuteSV.log
+    cluster_jobid: Your job 3119727 ("snakejob.CallCuteSV.17.sh") has been submitted
+
+Job failed, going on with independent jobs.
+[Tue Feb 15 15:08:08 2022]
+Error in rule CallCuteSV:
+    jobid: 18
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/StdReads/minSupport_5/Log/StdReads.HG002.MD.sorted.5.cuteSV.log
+    cluster_jobid: Your job 3119728 ("snakejob.CallCuteSV.18.sh") has been submitted
+
+Job failed, going on with independent jobs.
+[Tue Feb 15 15:08:08 2022]
+Error in rule CallCuteSV:
+    jobid: 19
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_10/Log/UltraLowReads.HG002.MD.sorted.10.cuteSV.log
+    cluster_jobid: Your job 3119729 ("snakejob.CallCuteSV.19.sh") has been submitted
+
+Job failed, going on with independent jobs.
+[Tue Feb 15 15:08:08 2022]
+Error in rule CallCuteSV:
+    jobid: 20
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/UltraLowReads.HG002.MD.sorted.5.cuteSV.vcf, /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Tmp
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/pbmm2/UltraLowReads/minSupport_5/Log/UltraLowReads.HG002.MD.sorted.5.cuteSV.log
+    cluster_jobid: Your job 3119730 ("snakejob.CallCuteSV.20.sh") has been submitted
+
+Job failed, going on with independent jobs.
+[Tue Feb 15 15:08:08 2022]
+Error in rule CallSniffle:
+    jobid: 7
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/UltraLowReads/minSupport_10/UltraLowReads.HG002.MD.sorted.10.sniffles.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/UltraLowReads/minSupport_10/Log/UltraLowReads.HG002.MD.sorted.10.sniffles.log
+    cluster_jobid: Your job 3119731 ("snakejob.CallSniffle.7.sh") has been submitted
+
+Job failed, going on with independent jobs.
+[Tue Feb 15 15:08:08 2022]
+Error in rule CallSniffle:
+    jobid: 6
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/StdReads/minSupport_5/StdReads.HG002.MD.sorted.5.sniffles.vcf
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/sniffles/ngmlr/StdReads/minSupport_5/Log/StdReads.HG002.MD.sorted.5.sniffles.log
+    cluster_jobid: Your job 3119732 ("snakejob.CallSniffle.6.sh") has been submitted
+
+Job failed, going on with independent jobs.
+[Tue Feb 15 15:08:18 2022]
+Error in rule pbsv_discover:
+    jobid: 34
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/UltraLowReads/discover/UltraLowReads.HG002.MD.sorted.svsig.gz
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/UltraLowReads/discover/Log/UltraLowReads.HG002.MD.sorted.log
+    cluster_jobid: Your job 3119733 ("snakejob.pbsv_discover.34.sh") has been submitted
+
+Job failed, going on with independent jobs.
+[Tue Feb 15 15:08:18 2022]
+Error in rule pbsv_discover:
+    jobid: 33
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/StdReads/discover/StdReads.HG002.MD.sorted.svsig.gz
+    log: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/pbsv/ngmlr/StdReads/discover/Log/StdReads.HG002.MD.sorted.log
+    cluster_jobid: Your job 3119734 ("snakejob.pbsv_discover.33.sh") has been submitted
+
+Job failed, going on with independent jobs.
+Exiting because a job execution failed. Look above for error message
+Complete log: /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/BenchmarkTesting/.snakemake/log/2022-02-15T150722.939810.snakemake.log
