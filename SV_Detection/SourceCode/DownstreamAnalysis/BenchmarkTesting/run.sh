@@ -14,7 +14,7 @@ module load miniconda/4.8.3 sge
 source /home/lix33/.conda/envs/envCGR/etc/profile.d/conda.sh
 conda activate /home/lix33/.conda/envs/envCGR
 
-module load python3/3.7.0 samtools/1.10
+module load python3/3.8.12 samtools/1.10 tabix/1.9 bgzip/0.2.6 gcc/7.2.0
 
 # Clean output file content ->
 #logFile="../../../Log/BM.out"

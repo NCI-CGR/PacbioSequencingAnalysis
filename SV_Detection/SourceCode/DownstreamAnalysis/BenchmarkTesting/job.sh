@@ -1,7 +1,7 @@
 #!/bin/bash -l
 
-#$ -N test_pacbio_ngmlr
-#$ -q long.q
+#$ -N pacbio_all
+#$ -q seq-calling.q
 #$ -pe by_node 1
 #$ -o ../../../Log/BenchmarkTest.std.out
 #$ -e ../../../Log/BenchmarkTest.std.err

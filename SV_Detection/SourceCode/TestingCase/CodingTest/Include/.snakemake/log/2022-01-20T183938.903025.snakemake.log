@@ -1,7 +1,0 @@
-Building DAG of jobs...
-Relative file path './Output/Sum.txt' starts with './'. This is redundant and strongly discouraged. It can also lead to inconsistent results of the file-matching approach used by Snakemake. You can simply omit the './' for relative file paths.
-Relative file path './Input/Empty.txt' starts with './'. This is redundant and strongly discouraged. It can also lead to inconsistent results of the file-matching approach used by Snakemake. You can simply omit the './' for relative file paths.
-Relative file path './Output/Sum.txt' starts with './'. This is redundant and strongly discouraged. It can also lead to inconsistent results of the file-matching approach used by Snakemake. You can simply omit the './' for relative file paths.
-MissingInputException in line 1 of /home/lixin/Documents/Prototype/PythonProject/PacbioSV/TestingCase/CodingTest/Include/./rule_SUM:
-Missing input files for rule TestSUM:
-./Input/Empty.txt

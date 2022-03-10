@@ -1,4 +1,0 @@
-Building DAG of jobs...
-MissingInputException in line 51 of /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/Rules/SV_Caller/cutesv.rule:
-Missing input files for rule cuteSV_call:
-/CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV/v37/cuteSV/ngmlr/StdReads/minSupport_10/ngmlr_Mid_File

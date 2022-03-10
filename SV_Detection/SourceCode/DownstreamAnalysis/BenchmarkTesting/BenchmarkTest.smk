@@ -34,32 +34,40 @@ include: "../../Rules/SV_Caller/sniffles.rule"
 strBAMDir = config["GeneralInfo"]["bamDir"]
 strSVRootDir = config["GeneralInfo"]["svDir"]
 
-rule all:    
-    input:  
+rule all:
+    input:
         # For Alinger
         expand(strBAMDir + "/{wcAligner}/v37/{wcReadsType}/{wcReadsType}.HG002.MD.sorted.bam.bai", 
                 wcReadsType = ["StdReads", "UltraLowReads"],
                 wcAligner=["ngmlr","pbmm2"]),
          # For sniffles                      
-         expand(strSVRootDir + "/{wcRefVersion}/sniffles/{wcAligner}/{wcReadsType}/minSupport_{wcMinSupportSniffle}/{wcReadsType}.HG002.MD.sorted.{wcMinSupportSniffle}.sniffles.vcf", 
+         expand(strSVRootDir + "/{wcRefVersion}/sniffles/{wcAligner}/{wcReadsType}/minSupport_{wcMinSupportSniffle}/Output_Benchmark_Cmp/summary.txt", 
                 wcRefVersion = ["v37"],
                 wcAligner = ["ngmlr","pbmm2"],
                 wcReadsType = ["StdReads", "UltraLowReads"],
                 wcMinSupportSniffle = config["sniffles"]["minSupport"].split(',')),
         # For cuteSV
-        expand(strSVRootDir + "/{wcRefVersion}/cuteSV/{wcAligner}/{wcReadsType}/minSupport_{wcMinSupportCuteSV}/{wcReadsType}.HG002.MD.sorted.{wcMinSupportCuteSV}.cuteSV.vcf", 
+        expand(strSVRootDir + "/{wcRefVersion}/cuteSV/{wcAligner}/{wcReadsType}/minSupport_{wcMinSupportCuteSV}/Output_Benchmark_Cmp/summary.txt", 
                 wcRefVersion = ["v37"],
                 wcAligner = ["ngmlr", "pbmm2"],
                 wcReadsType = ["StdReads", "UltraLowReads"],
                 wcMinSupportCuteSV = config["cuteSV"]["minSupport"].split(',')),
         # For pbsv
-        expand(strSVRootDir + "/{wcRefVersion}/pbsv/{wcAligner}/{wcReadsType}/minReads_{wcMinReads}/{wcReadsType}.HG002.MD.sorted.{wcMinReads}.pbsv.vcf", 
+        expand(strSVRootDir + "/{wcRefVersion}/pbsv/{wcAligner}/{wcReadsType}/minReads_{wcMinReads}/Output_Benchmark_Cmp/summary.txt", 
                 wcRefVersion = ["v37"],
                 wcAligner = ["ngmlr", "pbmm2"],
                 wcReadsType = ["StdReads", "UltraLowReads"],
-                wcMinReads = config["pbsv"]["minReads"].split(','))
-         
+                wcMinReads = config["pbsv"]["minReads"].split(',')),
+        # For Summary Report
+        strSVRootDir + "BenchmarkSummary.csv"
 
+rule GenerateSummaryCSV:
+    input:
+        svDir = strSVRootDir
+    output:
+        strSVRootDir + "BenchmarkSummary.csv"
+    shell:
+        """
+        cd ../../Scripts && python3 ./BenchmarkSummaryTruvari.py
+        """
         
-        
-    

@@ -1,8 +1,0 @@
-General:
-    ref : /DCEG/CGF/TempFileSwap/Kristie/References/GRCh38.p2.maimcontigs.fa
-    pbsv: pbsv
-Customized:
-    rootDir  : /CGF/Bioinformatics/Production/Wen/20191120_pacbio_24320/bam_location_post
-    outputDir: /scratch/lix33/lxwg/Test/pacbio/06_04_2021/sv
-RuleCallSV:
-    core: 4

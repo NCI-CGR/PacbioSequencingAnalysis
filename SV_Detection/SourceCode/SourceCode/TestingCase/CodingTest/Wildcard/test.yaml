@@ -1,1 +1,0 @@
-fq_glob: '/home/lix33/hiSeqData/Data/210615_A00423_0127_AHCJYGDSX2/CASAVA/L*/Project*/*%s/*001.fastq.gz' # the Snakefile will insert the sampleID wildcard

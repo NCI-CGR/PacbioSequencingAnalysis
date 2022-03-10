@@ -1,4 +1,0 @@
-Building DAG of jobs...
-WildcardError in line 39 of /mnt/nfs/gigantor/ifs/DCEG/Home/lix33/lxwg/Git/CGR/PacbioSequencingAnalysis/SV_Detection/SourceCode/TestingCase/CodingTest/Wildcard/Snakefile:
-Wildcards in input files cannot be determined from output files:
-'sampleID'

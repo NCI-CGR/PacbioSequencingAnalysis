@@ -1,5 +1,0 @@
-Building DAG of jobs...
-InputFunctionException in line 25 of /mnt/nfs/gigantor/ifs/DCEG/Home/lix33/lxwg/Git/CGR/PacbioSequencingAnalysis/SV_Detection/SourceCode/TestingCase/CodingTest/Wildcard/Snakefile:
-AttributeError: 'Wildcards' object has no attribute 'sampleID'
-Wildcards:
-

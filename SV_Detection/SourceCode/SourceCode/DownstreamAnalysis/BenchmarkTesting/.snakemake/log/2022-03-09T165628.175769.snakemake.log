@@ -1,3 +1,0 @@
-SyntaxError in line 114 of /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/BenchmarkTesting/../../Rules/SV_Caller/cutesv.rule:
-invalid syntax (cutesv.rule, line 114)
-  File "/scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/BenchmarkTesting/BenchmarkTest.smk", line 33, in <module>

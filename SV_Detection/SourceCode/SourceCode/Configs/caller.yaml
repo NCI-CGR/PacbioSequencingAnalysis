@@ -1,8 +1,0 @@
-pbsv:
-    coverage: [10, 5]
-cuteSV:
-    coverage: [10, 5]
-sniffles:
-    coverage: [10, 5]
-
-    

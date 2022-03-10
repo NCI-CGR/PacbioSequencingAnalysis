@@ -1,3 +1,0 @@
-SyntaxError in line 88 of /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/BenchmarkTesting/../../Rules/SV_Caller/cutesv.rule:
-Colon expected after keyword params. (cutesv.rule, line 88)
-  File "/scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/BenchmarkTesting/BenchmarkTest.smk", line 33, in <module>

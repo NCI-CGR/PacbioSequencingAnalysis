@@ -1,3 +1,0 @@
-NameError in line 21 of /home/lixin/Documents/Prototype/PythonProject/PacbioSV/smCallSV.snake:
-name 'expend' is not defined
-  File "/home/lixin/Documents/Prototype/PythonProject/PacbioSV/smCallSV.snake", line 21, in <module>

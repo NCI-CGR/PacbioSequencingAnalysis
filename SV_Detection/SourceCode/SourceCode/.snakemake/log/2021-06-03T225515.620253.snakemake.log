@@ -1,3 +1,0 @@
-Building DAG of jobs...
-CyclicGraphException in line 18 of /home/lixin/Documents/Prototype/PythonProject/PacbioSV/smCallSV.snake:
-Cyclic dependency on rule bwa_map.

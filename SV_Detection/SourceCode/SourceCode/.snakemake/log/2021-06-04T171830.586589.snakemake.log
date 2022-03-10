@@ -1,4 +1,0 @@
-Building DAG of jobs...
-MissingInputException in line 23 of /home/lixin/Documents/Prototype/PythonProject/PacbioSV/smCallSV.snake:
-Missing input files for rule call_sv:
-/DCEG/CGF/Bioinformatics/Production/data/hg38/Homo_sapiens_assembly38.fasta

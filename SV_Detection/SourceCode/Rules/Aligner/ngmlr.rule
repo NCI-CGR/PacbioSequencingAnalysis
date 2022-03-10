@@ -113,3 +113,4 @@ rule ngmlr_buildSortedIndex:
         24
     shell:
         "samtools index -@ {threads} {input} {output}"
+        

@@ -1,4 +1,0 @@
-AttributeError in line 35 of /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/Rules/Aligner_Mila/pbmm2.rule:
-'Rules' object has no attribute 'pbmm2_mergeBAM'
-  File "/scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/MilaTesting/MilaTesting.smk", line 20, in <module>
-  File "/scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/Rules/Aligner_Mila/pbmm2.rule", line 35, in <module>

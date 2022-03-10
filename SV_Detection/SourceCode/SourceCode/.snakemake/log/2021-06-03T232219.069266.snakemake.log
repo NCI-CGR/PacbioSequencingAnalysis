@@ -1,3 +1,0 @@
-TypeError in line 21 of /home/lixin/Documents/Prototype/PythonProject/PacbioSV/smCallSV.snake:
-unhashable type: 'list'
-  File "/home/lixin/Documents/Prototype/PythonProject/PacbioSV/smCallSV.snake", line 21, in <module>

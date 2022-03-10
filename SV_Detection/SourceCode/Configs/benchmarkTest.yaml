@@ -14,6 +14,7 @@ GeneralInfo:
     bamDir: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark
     svDir: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV
     tr_bed: /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/Configs/human_hs37d5.trf.bed
+    svTrueSet: /scratch/lix33/Test/truvari/vcf/bgzip_dir/HG002_SVs_Tier1_v0.6.withchar.vcf.gz
 
 sniffles:
     minSupport: 10,5

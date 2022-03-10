@@ -53,5 +53,5 @@ snakemake \
     --rerun-incomplete --restart-times 1\
     --latency-wait 120 all \
     --cluster "${smClusterPara}" \
-    -np
+    -p
 #    -np
