@@ -52,4 +52,7 @@ snakemake \
     --keep-going --local-cores 1 --jobs 100 \
     --rerun-incomplete --restart-times 1\
     --latency-wait 120 all \
-    --cluster "${smClusterPara}"
+    --cluster "${smClusterPara}" \
+    --cores 8 \
+    -np
+    #-np

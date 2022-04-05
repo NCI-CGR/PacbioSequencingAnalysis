@@ -1,0 +1,49 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 100
+Job stats:
+job                count    min threads    max threads
+---------------  -------  -------------  -------------
+CheckRawReadsQC        1              8              8
+all                    1              1              1
+total                  2              1              8
+
+Select jobs to execute...
+
+[Fri Apr  1 17:54:37 2022]
+rule CheckRawReadsQC:
+    input: /scratch/lix33/Test/Pacbio/StdPipeline/Data/Build_readslist_2022-04-01
+    output: /scratch/lix33/Test/Pacbio/StdPipeline/Data/Build_readslist_2022-04-01/Report/NanoPlot/NanoPlot-report.html
+    log: /scratch/lix33/Test/Pacbio/StdPipeline/Data/Build_readslist_2022-04-01/Log/NanoPlot/NanoPlot.log
+    jobid: 1
+    benchmark: /scratch/lix33/Test/Pacbio/StdPipeline/Data/Build_readslist_2022-04-01/Benchmark/NanoPlot/NanoPlot.benchmark.txt
+    wildcards: wcBuildList=/scratch/lix33/Test/Pacbio/StdPipeline/Data/Build_readslist_2022-04-01
+    threads: 8
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted job 1 with external jobid 'Your job 3738569 ("snakejob.CheckRawReadsQC.1.sh") has been submitted'.
+[Fri Apr  1 17:57:37 2022]
+Error in rule CheckRawReadsQC:
+    jobid: 1
+    output: /scratch/lix33/Test/Pacbio/StdPipeline/Data/Build_readslist_2022-04-01/Report/NanoPlot/NanoPlot-report.html
+    log: /scratch/lix33/Test/Pacbio/StdPipeline/Data/Build_readslist_2022-04-01/Log/NanoPlot/NanoPlot.log (check log file(s) for error message)
+    cluster_jobid: Your job 3738569 ("snakejob.CheckRawReadsQC.1.sh") has been submitted
+
+Error executing rule CheckRawReadsQC on cluster (jobid: 1, external: Your job 3738569 ("snakejob.CheckRawReadsQC.1.sh") has been submitted, jobscript: /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/STDCallSV/.snakemake/tmp.4fe0fsh1/snakejob.CheckRawReadsQC.1.sh). For error details see the cluster log and the log files of the involved rule(s).
+Trying to restart job 1.
+Select jobs to execute...
+
+[Fri Apr  1 17:57:37 2022]
+rule CheckRawReadsQC:
+    input: /scratch/lix33/Test/Pacbio/StdPipeline/Data/Build_readslist_2022-04-01
+    output: /scratch/lix33/Test/Pacbio/StdPipeline/Data/Build_readslist_2022-04-01/Report/NanoPlot/NanoPlot-report.html
+    log: /scratch/lix33/Test/Pacbio/StdPipeline/Data/Build_readslist_2022-04-01/Log/NanoPlot/NanoPlot.log
+    jobid: 1
+    benchmark: /scratch/lix33/Test/Pacbio/StdPipeline/Data/Build_readslist_2022-04-01/Benchmark/NanoPlot/NanoPlot.benchmark.txt
+    wildcards: wcBuildList=/scratch/lix33/Test/Pacbio/StdPipeline/Data/Build_readslist_2022-04-01
+    threads: 8
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted job 1 with external jobid 'Your job 3738570 ("snakejob.CheckRawReadsQC.1.sh") has been submitted'.
+Terminating processes on user request, this might take some time.
+No --cluster-cancel given. Will exit after finishing currently running jobs.

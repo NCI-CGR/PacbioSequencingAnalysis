@@ -1,0 +1,64 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 50
+Job stats:
+job                   count    min threads    max threads
+------------------  -------  -------------  -------------
+GenerateSummaryCSV        1              1              1
+all                       1              1              1
+total                     2              1              1
+
+Select jobs to execute...
+
+[Thu Mar 10 14:57:57 2022]
+rule GenerateSummaryCSV:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SVBenchmarkSummary.csv
+    jobid: 109
+    resources: tmpdir=/tmp/3214848.1.seq-calling.q
+
+
+        cd ../../Scripts && python3 ./BenchmarkSummaryTruvari.py
+        
+Submitted job 109 with external jobid 'Your job 3214851 ("snakejob.GenerateSummaryCSV.109.sh") has been submitted'.
+[Thu Mar 10 15:00:37 2022]
+Error in rule GenerateSummaryCSV:
+    jobid: 109
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SVBenchmarkSummary.csv
+    shell:
+        
+        cd ../../Scripts && python3 ./BenchmarkSummaryTruvari.py
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3214851 ("snakejob.GenerateSummaryCSV.109.sh") has been submitted
+
+Error executing rule GenerateSummaryCSV on cluster (jobid: 109, external: Your job 3214851 ("snakejob.GenerateSummaryCSV.109.sh") has been submitted, jobscript: /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/BenchmarkTesting/.snakemake/tmp.018frffh/snakejob.GenerateSummaryCSV.109.sh). For error details see the cluster log and the log files of the involved rule(s).
+Trying to restart job 109.
+Select jobs to execute...
+
+[Thu Mar 10 15:00:37 2022]
+rule GenerateSummaryCSV:
+    input: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SV
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SVBenchmarkSummary.csv
+    jobid: 109
+    resources: tmpdir=/tmp/3214848.1.seq-calling.q
+
+
+        cd ../../Scripts && python3 ./BenchmarkSummaryTruvari.py
+        
+Submitted job 109 with external jobid 'Your job 3214858 ("snakejob.GenerateSummaryCSV.109.sh") has been submitted'.
+[Thu Mar 10 15:04:17 2022]
+Error in rule GenerateSummaryCSV:
+    jobid: 109
+    output: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/SVBenchmarkSummary.csv
+    shell:
+        
+        cd ../../Scripts && python3 ./BenchmarkSummaryTruvari.py
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3214858 ("snakejob.GenerateSummaryCSV.109.sh") has been submitted
+
+Error executing rule GenerateSummaryCSV on cluster (jobid: 109, external: Your job 3214858 ("snakejob.GenerateSummaryCSV.109.sh") has been submitted, jobscript: /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/BenchmarkTesting/.snakemake/tmp.018frffh/snakejob.GenerateSummaryCSV.109.sh). For error details see the cluster log and the log files of the involved rule(s).
+Job failed, going on with independent jobs.
+Exiting because a job execution failed. Look above for error message
+Complete log: /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/BenchmarkTesting/.snakemake/log/2022-03-10T145726.487233.snakemake.log

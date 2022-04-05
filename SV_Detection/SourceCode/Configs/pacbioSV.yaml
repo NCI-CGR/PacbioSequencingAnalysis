@@ -1,8 +1,16 @@
 General:
-    ref : /DCEG/CGF/TempFileSwap/Kristie/References/GRCh38.p2.maimcontigs.fa
-    pbsv: pbsv
+    ref : /DCEG/CGF/TempFileSwap/Kristie/References/GRCh38.p2.maimcontigs.fa    
+    tr_bed: /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Mila/Dependence/human_GRCh38_no_alt_analysis_set.trf.bed
+    buildDir: /scratch/lix33/Test/Pacbio/StdPipeline/Data
+    
 Customized:
-    rootDir  : /CGF/Bioinformatics/Production/Wen/20191120_pacbio_24320/bam_location_post
-    outputDir: /scratch/lix33/lxwg/Test/pacbio/06_04_2021/sv
-RuleCallSV:
-    core: 4
+    readsList: /scratch/lix33/Test/NanoPlot/readslist.csv    
+    
+sniffles:
+    minSupport: 5
+    
+cuteSV:
+    minSupport: 5
+    
+pbsv:    
+    minReads: 5

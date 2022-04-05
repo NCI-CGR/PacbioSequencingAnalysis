@@ -1,0 +1,3 @@
+KeyError in line 12 of /scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/STDCallSV/smCallSV.smk:
+'buildDir'
+  File "/scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/DownstreamAnalysis/STDCallSV/smCallSV.smk", line 12, in <module>

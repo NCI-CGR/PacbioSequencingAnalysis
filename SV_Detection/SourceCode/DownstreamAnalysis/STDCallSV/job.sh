@@ -1,9 +1,10 @@
 #!/bin/bash -l
 
 #$ -N test_pacbio
-#$ -q bigmem.q
+#$ -q seq-calling.q
 #$ -pe by_node 1
-#$ -o ../../Log/test.out
+#$ -o ../../../Log/STDCallSV.std.out
+#$ -e ../../../Log/STDCallSV.std.err
 #$ -cwd
 #$ -j y
 #$ -S /bin/bash
