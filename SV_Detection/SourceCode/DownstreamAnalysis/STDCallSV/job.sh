@@ -1,7 +1,7 @@
 #!/bin/bash -l
 
 #$ -N test_pacbio
-#$ -q seq-calling.q
+#$ -q long.q
 #$ -pe by_node 1
 #$ -o ../../../Log/STDCallSV.std.out
 #$ -e ../../../Log/STDCallSV.std.err

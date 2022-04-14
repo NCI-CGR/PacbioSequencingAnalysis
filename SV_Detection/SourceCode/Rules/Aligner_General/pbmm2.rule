@@ -1,0 +1,113 @@
+import sys
+import os
+import glob
+sys.path.insert(0, '/scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/Scripts')
+from RunPacbioSV import *
+
+configfile: "../../Configs/pacbioSV.yaml"
+workdir: os.environ['PWD']
+shell.executable('bash')
+
+# Get reference
+strRef = config["General"]["ref"]
+
+          
+# Rules -> Go!
+rule buildIndex:
+    input:
+        ref = strRef
+    output:
+        index = strRef + ".mmi"
+    threads:
+        12    
+    shell:
+        "pbmm2 index -j {threads} {input} {output}"
+
+rule pbmm2_alignment:                        
+    input:
+        ref = rules.buildIndex.output.index,
+        uBAM = buidDir + "/{wcCurBuildName}/Sample/{wcCurSampleName}/{wcCurSampleName}_hifi_reads.bam"
+    output:        
+        buidDir + "/{wcCurBuildName}/BAM/{wcRefVersion}/PBMM2/{wcCurSampleName}_hifi.bam"  
+    threads:
+        24
+    params:
+        index = rules.buildIndex.output
+    log:
+        buidDir + "/{wcCurBuildName}/Log/Align/{wcRefVersion}/PBMM2/{wcCurSampleName}_pbmm2.log"
+    benchmark:
+        buidDir + "/{wcCurBuildName}/Benchmark/Align/{wcRefVersion}/PBMM2/{wcCurSampleName}_pbmm2.benchmark.txt"
+    shell:
+      "pbmm2 align -j {threads} {params.index} {input.uBAM} {output}"
+
+rule pbmm2_sortSubBAM:
+    input:
+        rules.pbmm2_alignment.output
+    output:
+        buidDir + "/{wcCurBuildName}/BAM/{wcRefVersion}/PBMM2/{wcCurSampleName}_hifi.sorted.bam"
+    threads:
+        32
+    shell:
+        """
+        samtools sort -@ {threads} -o {output} {input}
+        rm {input}
+        """
+      
+rule pbmm2_addMDTag:
+    input:
+        rules.pbmm2_sortSubBAM.output        
+    output: 
+        buidDir + "/{wcCurBuildName}/BAM/{wcRefVersion}/PBMM2/{wcCurSampleName}_hifi.sorted.MD.bam"               
+    params:
+        ref = strRef
+    threads:
+        16
+    log:
+        buidDir + "/{wcCurBuildName}/Log/Align/{wcRefVersion}/PBMM2/{wcCurSampleName}_hifi.sorted.MD.log"
+    benchmark:
+        buidDir + "/{wcCurBuildName}/Benchmark/Align/{wcRefVersion}/PBMM2/{wcCurSampleName}_hifi.sorted.MD.benchmark.txt"
+    shell:
+        # Do not need -Ar (suggested by samtools maintenance team)
+        """
+        samtools calmd -@ {threads} {input} {params.ref} -b > {output}
+        rm {input}
+        """
+        
+
+#rule pbmm2_mergeBAM:
+#    input:        
+#        vBAM = lambda wildcards: expand(strBAMDir + "/pbmm2/v37/" + wildcards.wcReadsType + "/Tmp/rawReads{index}.sorted.MD.bam", index = dictReadsIndex[wildcards.wcReadsType])
+#    output:
+#        strBAMDir + "/pbmm2/v37/" + "{wcReadsType}" + "/" + "{wcReadsType}" + ".HG002.MD.bam"         
+#    threads:
+#        32
+#    log:
+#        strBAMDir + "/pbmm2/v37/{wcReadsType}/Log/" + "{wcReadsType}" + ".HG002.MD.log"
+#    shell:    
+#        #print({input})
+#        #shell("samtools merge -@ {threads} -f {output} %s" %' '.join({input.vBAM}))        
+#        #shell("samtools merge -@ {threads} -f {output} {input}")
+#        "samtools merge -@ {threads} -f {output} {input.vBAM}"
+
+rule pbmm2_sortBAM:
+    input:
+        rules.pbmm2_addMDTag.output
+    output:
+        buidDir + "/{wcCurBuildName}/BAM/{wcRefVersion}/PBMM2/{wcCurSampleName}_hifi.RG.MD.sorted.bam"
+    threads:
+        32
+    shell:
+        """
+        samtools sort -@ {threads} -o {output} {input}
+        rm {input}
+        """                
+
+rule pbmm2_buildSortedIndex:
+    input:
+        rules.pbmm2_sortBAM.output
+    output:
+        buidDir + "/{wcCurBuildName}/BAM/{wcRefVersion}/PBMM2/{wcCurSampleName}_hifi.RG.MD.sorted.bam.bai"
+    threads:
+        32
+    shell:
+        "samtools index -@ {threads} {input} {output}"

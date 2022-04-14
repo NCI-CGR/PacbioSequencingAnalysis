@@ -7,10 +7,10 @@ Customized:
     readsList: /scratch/lix33/Test/NanoPlot/readslist.csv    
     
 sniffles:
-    minSupport: 5
+    minSupport: 10,5
     
 cuteSV:
-    minSupport: 5
+    minSupport: 10,5
     
 pbsv:    
-    minReads: 5
+    minReads: 1,5

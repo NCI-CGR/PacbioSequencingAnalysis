@@ -1,0 +1,46 @@
+import sys
+import os
+import glob
+sys.path.insert(0, '/scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/Scripts')
+from RunPacbioSV import *
+
+configfile: "../../Configs/pacbioSV.yaml"
+workdir: os.environ['PWD']
+shell.executable('bash')
+
+# Get reference
+strRef = config["General"]["ref"]
+
+rule cuteSV_call:
+    input:
+        bam = buidDir + "/{wcCurBuildName}/BAM/{wcRefVersion}/{wcAligner}/{wcCurSampleName}_hifi.RG.MD.sorted.bam"
+    output:
+        vcf = buidDir + "/{wcCurBuildName}/Report/SV/cuteSV/{wcCurSampleName}/{wcRefVersion}/{wcAligner}/minSupport_{wcMinSupportCuteSV}/{wcCurSampleName}_hifi.RG.MD.sorted.{wcMinSupportCuteSV}.cuteSV.vcf"            
+    params:
+        workDir = buidDir + "/{wcCurBuildName}/Report/SV/cuteSV/{wcCurSampleName}/{wcRefVersion}/{wcAligner}/minSupport_{wcMinSupportCuteSV}/{wcAligner}_Mid_File",
+        ms = lambda wildcards: wildcards.wcMinSupportCuteSV,
+        ref = strRef,
+        mcbINS = 1000,
+        drmINS = 0.9,
+        mcbDEL = 1000,
+        drmDEL = 0.5        
+    threads:
+        12
+    log:
+        buidDir + "/{wcCurBuildName}/Log/SV/cuteSV/{wcCurSampleName}/{wcRefVersion}/{wcAligner}/minSupport_{wcMinSupportCuteSV}/{wcCurSampleName}_hifi.RG.MD.sorted.{wcMinSupportCuteSV}.cuteSV.log"
+    benchmark:
+        buidDir + "/{wcCurBuildName}/Benchmark/SV/cuteSV/{wcCurSampleName}/{wcRefVersion}/{wcAligner}/minSupport_{wcMinSupportCuteSV}/{wcCurSampleName}_hifi.RG.MD.sorted.{wcMinSupportCuteSV}.cuteSV.benchmark"
+    run:
+        shell("mkdir -p {params.workDir}")
+        
+        shell("(cuteSV {input.bam} {params.ref} {output.vcf} {params.workDir} \
+                --threads {threads} \
+                --genotype \
+                --min_support {params.ms} \
+                --max_cluster_bias_INS {params.mcbINS} \
+                --diff_ratio_merging_INS {params.drmINS} \
+                --max_cluster_bias_DEL {params.mcbDEL} \
+                --diff_ratio_merging_DEL {params.drmDEL}) > {log} 2>&1")
+                
+                
+                

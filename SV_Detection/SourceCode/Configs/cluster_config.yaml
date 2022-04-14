@@ -7,7 +7,7 @@ default:
 
 BenchmarkTest:
     account  : lix33
-    queue    : seq-calling.q
+    queue    : long.q
     pe       : by_node
     numCore  : 1
     smlogDir : /scratch/lix33/lxwg/Test/pacbio/01_25_2022/sv/log

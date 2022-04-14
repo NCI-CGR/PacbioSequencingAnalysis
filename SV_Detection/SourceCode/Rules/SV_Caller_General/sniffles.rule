@@ -1,0 +1,26 @@
+import sys
+import os
+import glob
+sys.path.insert(0, '/scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/Scripts')
+from RunPacbioSV import *
+
+configfile: "../../Configs/pacbioSV.yaml"
+workdir: os.environ['PWD']
+shell.executable('bash')
+        
+rule sniffles_call:
+    input:
+        bam = buidDir + "/{wcCurBuildName}/BAM/{wcRefVersion}/{wcAligner}/{wcCurSampleName}_hifi.RG.MD.sorted.bam"
+    output:
+        buidDir + "/{wcCurBuildName}/Report/SV/sniffles/{wcCurSampleName}/{wcRefVersion}/{wcAligner}/minSupport_{wcMinSupportSniffle}/{wcCurSampleName}_hifi.RG.MD.sorted.{wcMinSupportSniffle}.sniffles.vcf"
+    params:
+        ms = lambda wildcards: wildcards.wcMinSupportSniffle
+    threads:
+        12
+    log:
+        buidDir + "/{wcCurBuildName}/Log/SV/sniffles/{wcCurSampleName}/{wcRefVersion}/{wcAligner}/minSupport_{wcMinSupportSniffle}/{wcMinSupportSniffle}_hifi.RG.MD.sorted.{wcMinSupportSniffle}.sniffles.log"
+    benchmark:
+        buidDir + "/{wcCurBuildName}/Benchmark/SV/sniffles/{wcCurSampleName}/{wcRefVersion}/{wcAligner}/minSupport_{wcMinSupportSniffle}/{wcMinSupportSniffle}_hifi.RG.MD.sorted.{wcMinSupportSniffle}.sniffles.benchmark"    
+    shell:
+        "(sniffles -t {threads} --min_support {params.ms} -m {input.bam} -v {output}) > {log} 2>&1"
+

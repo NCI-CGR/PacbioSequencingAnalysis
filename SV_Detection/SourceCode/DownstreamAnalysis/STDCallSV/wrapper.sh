@@ -54,5 +54,5 @@ snakemake \
     --latency-wait 120 all \
     --cluster "${smClusterPara}" \
     --cores 8 \
-    -np
+    -p
     #-np

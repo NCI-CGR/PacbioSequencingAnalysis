@@ -1,0 +1,104 @@
+import sys
+import os
+import glob
+sys.path.insert(0, '/scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/Scripts')
+#sys.path.insert(0, '/home/lixin/Documents/Prototype/PythonProject/PacbioSV/Scripts')
+
+from RunPacbioSV import *
+configfile: "../../Configs/pacbioSV.yaml"
+
+workdir: os.environ['PWD']
+shell.executable('bash')
+
+#1: Pre-quality check (NanoPlot)
+rule CheckRawReadsQC:
+    input:
+        curBuild = buidDir + "/{wcBuildName}"
+    output:
+        buidDir + "/{wcBuildName}/Report/NanoPlot/NanoPlot-report.html"
+    params:
+        outputDir = buidDir + "/{wcBuildName}/Report/NanoPlot"        
+    threads: 8
+    log:
+        buidDir + "/{wcBuildName}/Log/readsQC/NanoPlot.log"
+    benchmark:
+        buidDir + "/{wcBuildName}/Benchmark/readsQC/NanoPlot.benchmark.txt"
+    run:        
+        CMD = "find " + input.curBuild + "/Sample -maxdepth 2 -type l -iname '*.bam'"
+        vReadsList = subprocess.getoutput(CMD).split('\n')
+        print("Reads List:", vReadsList)
+        strReadsList = " ".join(vReadsList)
+        
+#        shell('echo "\n"')
+#        shell('echo "NanoPlot -t {threads} --ubam ${strReadsList} --maxlength 40000 --plots dot --legacy hex"')
+#        shell('echo "\n"')
+#        shell('NanoPlot -t 8 --ubam ${strReadsList} --maxlength 40000 --plots dot --legacy hex')
+        
+        CMD = "NanoPlot -t " + str(threads) + " --ubam " + strReadsList + " --maxlength 40000 --plots dot --legacy hex --outdir " + params.outputDir
+        print("CMD:", CMD)
+        os.system(CMD)
+
+# uBam to fastq
+rule qc_ubam2fastq:
+    input:
+        buidDir + "/{wcCurBuildName}/Sample/{wcCurSampleName}/{wcCurSampleName}_hifi_reads.bam"
+    output:
+        buidDir + "/{wcCurBuildName}/Sample/{wcCurSampleName}/Fastq/{wcCurSampleName}_hifi_reads.fastq.gz"
+    params:
+        fastqReads = buidDir + "/{wcCurBuildName}/Sample/{wcCurSampleName}/Fastq/{wcCurSampleName}_hifi_reads.fastq"
+    log:
+        buidDir + "/{wcCurBuildName}/Log/readsQC/{wcCurSampleName}_ubam2fastq.log"
+    benchmark:
+        buidDir + "/{wcCurBuildName}/Benchmark/readsQC/{wcCurSampleName}_ubam2fastq.benchmark.txt"     
+    shell:
+        """
+        bedtools bamtofastq -i {input} -fq {params.fastqReads}
+        gzip {params.fastqReads}
+        rm {params.fastqReads}
+        """
+
+#3: Quality Filter (filtlong)
+#rule qc_filtLong:
+#    input: 
+#        rules.qc_ubam2fastq.output
+#    output:
+#        buidDir + "/{wcCurBuildName}/Sample/{wcCurSampleName}/Fastq/{wcCurSampleName}_hifi_reads.HQ.fastq.gz"
+#    params:
+#        filtLongBin = "/scratch/lix33/lxwg/software/filtlong/Filtlong/bin/filtlong",
+#        minLength = 1000,
+#        keepPercent = 90,
+#        targetBases = 500000000
+#    log:
+#        buidDir + "/{wcCurBuildName}/Log/readsQC/{wcCurSampleName}_filtlong.log"
+#    benchmark:
+#        buidDir + "/{wcCurBuildName}/Benchmark/readsQC/{wcCurSampleName}_filtlong.benchmark.txt"
+#    shell:
+#        '''
+#        {params.filtLongBin} --min_length {params.minLength} \
+#                             --keep_percent {params.keepPercent} \
+#                             --target_bases {params.targetBases} \
+#                             {input} | gzip > {output}
+#        '''
+         
+        
+#4: Quality Check again (NanoPlot)
+#rule CheckHQReadsQC:
+#    input:    
+#        curBuild = buidDir + "/{wcBuildName}"
+#    output:
+#        buidDir + "/{wcBuildName}/Report/NanoPlot_HQ/NanoPlot-report.html"
+#    params:
+#        outputDir = buidDir + "/{wcBuildName}/Report/NanoPlot_HQ"        
+#    threads: 8
+#    log:
+#        buidDir + "/{wcBuildName}/Log/readsQC/NanoPlot_HQ.log"
+#    benchmark:
+#        buidDir + "/{wcBuildName}/Benchmark/readsQC/NanoPlot_HQ.benchmark.txt"
+#    run:        
+#        CMD = "find " + input.curBuild + "/Sample -maxdepth 2 -type f -iname '*.fastq.gz'"
+#        vReadsList = subprocess.getoutput(CMD).split('\n')
+#        print("Reads List:", vReadsList)
+#        strReadsList = " ".join(vReadsList)
+#        CMD = "NanoPlot -t " + str(threads) + " --fastq " + strReadsList + " --maxlength 40000 --plots dot --legacy hex --outdir " + params.outputDir
+#        print("CMD:", CMD)
+#        os.system(CMD)

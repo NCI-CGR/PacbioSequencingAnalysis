@@ -1,0 +1,60 @@
+import sys
+import os
+import glob
+sys.path.insert(0, '/scratch/lix33/lxwg/SourceCode/PacbioSV/SourceCode/Scripts')
+from RunPacbioSV import *
+
+configfile: "../../Configs/pacbioSV.yaml"
+workdir: os.environ['PWD']
+shell.executable('bash')
+
+# Get reference
+strRef = config["General"]["ref"]
+
+rule pbsv_discover:
+    input:
+        bam = buidDir + "/{wcCurBuildName}/BAM/{wcRefVersion}/{wcAligner}/{wcCurSampleName}_hifi.RG.MD.sorted.bam"
+    output:
+        svsigFile = buidDir + "/{wcCurBuildName}/Report/SV/pbsv/{wcCurSampleName}/{wcRefVersion}/{wcAligner}/discover/{wcCurSampleName}_hifi.RG.MD.sorted.svsig.gz"
+    log: 
+        buidDir + "/{wcCurBuildName}/Log/SV/pbsv/{wcCurSampleName}/{wcRefVersion}/{wcAligner}/discover/{wcCurSampleName}_hifi.RG.MD.sorted.log"
+    benchmark: 
+        buidDir + "/{wcCurBuildName}/Benchmark/SV/pbsv/{wcCurSampleName}/{wcRefVersion}/{wcAligner}/discover/{wcCurSampleName}_hifi.RG.MD.sorted.benchmark"
+    params:        
+        loglevel = "INFO",
+        mgcPerc = 97.0,
+        tr_bed = config["General"]["tr_bed"]
+    shell:
+        """
+        pbsv discover --log-level {params.loglevel} \
+                      --min-gap-comp-id-perc {params.mgcPerc} \
+                      --tandem-repeats {params.tr_bed} \
+                      {input.bam} {output} > {log} 2>&1
+        """
+
+rule pbsv_call:
+    input:        
+        svsigs = rules.pbsv_discover.output,
+        reference = strRef
+    output: 
+        vcf = buidDir + "/{wcCurBuildName}/Report/SV/pbsv/{wcCurSampleName}/{wcRefVersion}/{wcAligner}/minReads_{wcMinReads}/{wcCurSampleName}_hifi.RG.MD.sorted.{wcMinReads}.pbsv.vcf",
+    log: 
+        buidDir + "/{wcCurBuildName}/Log/SV/pbsv/{wcCurSampleName}/{wcRefVersion}/{wcAligner}/minReads_{wcMinReads}/{wcCurSampleName}_hifi.RG.MD.sorted.{wcMinReads}.pbsv.log"
+    benchmark: 
+        buidDir + "/{wcCurBuildName}/Benchmark/SV/pbsv/{wcCurSampleName}/{wcRefVersion}/{wcAligner}/minReads_{wcMinReads}/{wcCurSampleName}_hifi.RG.MD.sorted.{wcMinReads}.pbsv.benchmark"
+    params:
+        extra = "--ccs -m 20 -A 3 -O 3",
+        loglevel = "INFO",
+        minReads = lambda wildcards: wildcards.wcMinReads
+    threads: 
+        12
+    message: "Executing {rule}: Calling structural variants from SVSIGs: {input.svsigs}"
+    shell:
+        """
+        pbsv call {params.extra} \
+                  --log-level {params.loglevel} \
+                  --num-threads {threads} \
+                  --call-min-reads-per-strand-all-samples {params.minReads} \
+                  {input.reference} {input.svsigs} {output} > {log} 2>&1
+        """
+        
