@@ -22,7 +22,7 @@
 2. TBD
     * Summarize the guaidline
 
-### Resources
+### Resources (Doc)
 1. Frogbug tickets
    * https://cgr-bugz.nci.nih.gov/f/cases/30037/
    * https://cgr-bugz.nci.nih.gov/f/cases/30000
