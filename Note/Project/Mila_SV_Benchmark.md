@@ -13,7 +13,7 @@
 4. New project: Create a general SV pipeline to handle NCI/CGR-site-wide samples for general purpose
    * Will crate another doc for this project
 
-### Prgress 
+### Progress 
 1. Finished
    * Find a way to call these missing SVs
    * Explain why these SVs were missing
