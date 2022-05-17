@@ -28,4 +28,35 @@
    * https://cgr-bugz.nci.nih.gov/f/cases/30000
  
 2. Repo
-   * 
+   * https://github.com/NCI-CGR/PacbioSequencingAnalysis/tree/main/SV_Detection/SourceCode
+ 
+### Data Resources (Benchmark)
+1. Reference (v37)
+   * /CGF/Resources/Data/genome/obsolete/hg19_canonical+phiX.fa
+
+2. SV True Set (v37)
+   * /CGF/Bioinformatics/Production/data/Giab/AshkenazimTrio_v4.2.1/HG002_SVs_Tier1_v0.6.vcf.gz
+
+3. pbmm2 BAM location (Mila's data, v38)
+   * /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_location
+
+4. NGMLR BAM location (Mila's data, v38)
+   * /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_location_ngmlr
+
+5. SV calling results location
+   * /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Callset
+
+6. SV Benchmark Analysis results:
+   * /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/SV/Benchmark
+
+7. Benchmark pbmm2 BAM location (HG002 with v37)
+   * /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/pbmm2/v37
+
+8. Benchmark NGMLR BAM location (HG002 with v37)
+   * /CGF/Bioinformatics/Production/Wen/20200117_pacbio_snp_call/29461_WGS_cell_line/bam_bemchmark/ngmlr/v37
+
+9. Raw reads (HG002):
+   * a)HG002 standard (3 smart cell): 
+      * 24385-Standard    NP0084-002    15611    17449    15024    
+   * b)HG002 Ultra Low (4 smart cell)
+      * 24385-Ultra-Low    NP0084-002      7880    8308    15230
