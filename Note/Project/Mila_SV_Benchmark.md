@@ -10,6 +10,8 @@
    * how to choose parameters
    * how to choose aligners
    * how to choose SV callsers
+4. New project: Create a general SV pipeline to handle NCI/CGR-site-wide samples for general purpose
+   * Will crate another doc for this project
 
 ### Prgress 
 1. Finished
